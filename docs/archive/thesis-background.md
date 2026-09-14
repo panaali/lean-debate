@@ -4,6 +4,9 @@ Moved from the main thesis so that it can describe the current proposal directly
 The original wording is preserved here as background material; the concept map records
 analogies, not equivalences between formal logic, statistics, law, and journalism.
 
+For the current treatment of these ideas and their connections to the implementation,
+see [Related ideas](../related-ideas.md). The appendices below retain their original text.
+
 ## Appendix A. The roles
 
 Detective, investigative journalist, logician, debater, lawyer, judge, scientist. Einstein

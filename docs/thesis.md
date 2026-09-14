@@ -84,7 +84,7 @@ weight ([C12 and Q13](open-questions.md#q13-is-the-two-layer-convergence-real-or
 
 These requirements connect to practical ideas about rationality: unpack the assumptions
 inside words, investigate how evidence was selected, and revise confidence when new
-evidence arrives. [Rationality and cognitive biases](related-ideas.md) develops the
+evidence arrives. [Related ideas](related-ideas.md#rationality-and-belief-revision) develops the
 connections to the Sequences and identifies tests of whether the protocol makes
 judgments less sensitive to biased presentation.
 
@@ -205,5 +205,7 @@ supply examples; they do not yet provide comparative measurements.
    Training on checkable outcomes remains a further experiment, outside current means
    (Q14).
 
-Further reference material: [roles, analogies, and concept map](archive/thesis-background.md)
-and [source discussions](sources/discussion-2026-09-13.md).
+Further reference material: [seven roles](related-ideas.md#seven-roles-different-responsibilities),
+[cross-domain concept map](related-ideas.md#a-concept-map-across-domains),
+[implementation map](related-ideas.md#where-these-ideas-enter-the-project), and
+[source discussions](sources/discussion-2026-09-13.md).

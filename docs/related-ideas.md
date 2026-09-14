@@ -5,6 +5,13 @@ inferences, investigating evidence, challenging a position, and deciding what th
 result justifies. This page explains those connections and maps them to the project's
 protocols, code, and open questions.
 
+For an overview, start with the [seven roles](#seven-roles-different-responsibilities)
+and [concept map](#a-concept-map-across-domains). The
+[implementation map](#where-these-ideas-enter-the-project) locates the corresponding
+claims, questions, and checks. The [Sequences](#connections-to-the-sequences) and
+[cognitive biases](#cognitive-biases-as-test-targets) sections connect the design to
+practices of belief revision and possible evaluation tasks.
+
 ## Seven roles, different responsibilities
 
 The detective, investigative journalist, logician, debater, lawyer, judge, and scientist

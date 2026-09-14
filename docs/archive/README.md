@@ -10,8 +10,9 @@ for the current design, capabilities, and results.
 - [Project-description draft](project-description-draft.md): the draft used to rewrite
   the main descriptions.
 - [Run history](run-history.md): versioned measurements and the development chronology.
-- [Thesis background](thesis-background.md): supporting analogies, the concept map, and
-  the account of what each source contributed.
+- [Thesis background](thesis-background.md): the original supporting analogies, concept
+  map, and account of what each source contributed. The current discussion and
+  implementation map are in [Related ideas](../related-ideas.md).
 - [Evidence protocol provenance](evidence-protocol-provenance.md): its original preface.
 
 Primary source conversations remain in [sources](../sources/). Completed run setups,
