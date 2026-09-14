@@ -23,6 +23,8 @@ lean-toolchain            Lean 4 v4.24.0, no Mathlib
 | Read | For |
 |---|---|
 | `docs/thesis.md` | Start here: what the project is for, the two layers, the concept map, the roadmap |
+| `docs/claims.md` | The proposal's own claim ledger: ID, status, evidence, strongest objection |
+| `docs/open-questions.md` | Open questions with candidate answers and what would resolve each |
 | `docs/project-overview.md` | The whole project end to end: origin, protocol, Lean design, results, learnings |
 | `docs/results.md` | What was built and what it found, with the tallies |
 | `docs/inference-protocol.md` | The inference-layer specification (checked by Lean) |
@@ -36,3 +38,17 @@ lean-toolchain            Lean 4 v4.24.0, no Mathlib
 lake build       # builds the library and prints the axiom audit
 lake exe report  # prints the judge-facing ledger
 ```
+
+## How to work on this
+
+The project is a working document set, not a publication. To contribute:
+
+- Attack a claim in `docs/claims.md` or answer a question in `docs/open-questions.md`.
+  Reference them by ID (`C7`, `Q2`). Change a status only with the evidence that changed it.
+- Never delete a row or an entry. Mark it superseded and say why.
+- New findings that change the frame go in `docs/thesis.md`; new reference material goes
+  in `docs/project-overview.md`; raw conversations go in `docs/sources/` with a descriptive
+  name.
+- Lean changes must build. `lake build` must still report every verdict as depending on no
+  axioms, and `Debate/Birthright/Audit.lean` must list every new theorem.
+- Commit as you go, with a message that names the claim or question the change bears on.

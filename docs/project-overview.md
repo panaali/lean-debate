@@ -19,6 +19,8 @@ All documentation lives in `docs/`. Companion documents, each with a different j
 | `learnings.md` | The judgment layer: what the exercise is worth, and where it fails |
 | `project-overview.md` | This file: the project described end to end |
 | `thesis.md` | The frame: why a logician for English, two layers one ledger, concept map, roadmap |
+| `claims.md` | The proposal's own claim ledger, with status, evidence, and strongest objection per claim |
+| `open-questions.md` | Open questions, candidate answers, and what would resolve each |
 | `evidence-protocol.md` | The evidence-layer specification (Phase 3 of the protocol) |
 | `sources/` | The raw conversations everything above was derived from |
 

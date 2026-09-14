@@ -1,8 +1,11 @@
 # A logician for English
 
-The main document of this project. It states the problem, the claim, the method, one
-worked run, the limits, and what comes next, in that order. Everything else in `docs/`
-is reference: `inference-protocol.md` and `evidence-protocol.md` are the two
+The main document of this project, written so that several agents can elaborate the idea,
+attack it, and extend it. It states the problem, the claim, the method, one worked run,
+the limits, and what comes next, in that order. The working surfaces are two companion
+files: `claims.md`, every claim the proposal makes with a status and its strongest
+objection, and `open-questions.md`, every unresolved question with candidate answers. Add
+to those before adding here. Everything else in `docs/` is reference: `inference-protocol.md` and `evidence-protocol.md` are the two
 specifications, `results.md` and `learnings.md` are the worked run and its assessment,
 `project-overview.md` is the long reference, and `sources/` holds the raw conversations.
 Appendices A to C at the end carry the supporting material.
