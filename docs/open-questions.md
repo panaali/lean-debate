@@ -78,7 +78,9 @@ back-translator, frozen sources, same formal proposition. **Candidate answers:**
 until run. **Resolves it:** Running it on the birthright motion.
 
 ### Q8. Which parts of the evidence layer can be made kernel-checkable?
-**Status:** PARTIAL. **Why it matters:** C15. Moving anything across the trusted line is
+**Status:** PARTIAL (candidate (a) implemented in `run-birthright-2`: `Debate/Evidence.lean`
+with orderings and partition sums as decidable checks, run on both real tables; (b) and
+(c) remain). **Why it matters:** C15. Moving anything across the trusted line is
 progress on Q2. **Known:** Probability orderings across sub-propositions
 (P(caused death) ≤ P(occurred)) are cheap. Conflations of distinct propositions can be
 GAPs. **Candidate answers:** (a) An evidence ledger type in `Protocol.lean` with
@@ -96,7 +98,8 @@ edge stays uncertified without being scored against either side. **Resolves it:*
 with a larger signature, and a decision on whether to add UNKNOWN.
 
 ### Q10. Can the meta-rule (§2.6) be enforced structurally rather than by prose?
-**Status:** OPEN. **Why it matters:** C5. A rule that lives only in a document is the thing
+**Status:** PARTIAL (candidate (b) stated as `Debate.Evidence.preservesBoard` in
+`run-birthright-2`; not yet wired into a run or tested against a disguised merge). **Why it matters:** C5. A rule that lives only in a document is the thing
 Gödel's loophole is about. **Candidate answers:** (a) Environment and Phase 0 rules as a
 Lean structure with no update operation exposed during a run. (b) Any change to the
 environment is itself a theorem obligation: show the old and new environments agree on
@@ -111,7 +114,10 @@ instances, is/ought) parameterized over vocabularies; the run already contains o
 **Resolves it:** Factoring the run's six branches into schemas and rerunning the audit.
 
 ### Q12. Formalize Article V as load-bearing.
-**Status:** OPEN. **Why it matters:** C11. The Motion vocabulary declares amendability and
+**Status:** ANSWERED in `run-birthright-2`: `Motion.lean` §"Article V made load-bearing",
+E31–E34, claims G-S/G-E/G-A/G-C. Suber's reading is a contestable shared node;
+entrenchment is a symbol. Result: neither side's constitutional case rests on legality;
+each rests on its own unstated normative bridge. **Why it matters:** C11. The Motion vocabulary declares amendability and
 never uses it. **Candidate answer:** State Suber's reading as a premise, `Amendable →
 (ConstitutionRequires does not entail ¬ShouldEnd)`, and prove NB1 and NB2 are the only
 bridges. Note the one substantive limit in Article V and whether it needs a symbol.

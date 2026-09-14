@@ -1,4 +1,6 @@
 import Debate.Protocol
+import Debate.Evidence
+import Debate.Evidence.Examples
 import Debate.Birthright.Constitutional
 import Debate.Birthright.Ancestry
 import Debate.Birthright.Judicial

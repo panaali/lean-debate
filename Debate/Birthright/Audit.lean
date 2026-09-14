@@ -4,6 +4,7 @@ import Debate.Birthright.Judicial
 import Debate.Birthright.Policy
 import Debate.Birthright.Normative
 import Debate.Birthright.Motion
+import Debate.Evidence.Examples
 
 /-!
 # Audit
@@ -66,5 +67,15 @@ open Debate.Birthright
 #print axioms Motion.gap_oughtFromPermission
 #print axioms Motion.certified_bridges
 #print axioms Motion.certified_bridges'
+#print axioms Motion.certified_lawfullyEndable
+#print axioms Motion.gap_requiresNotUnendable
+#print axioms Motion.certified_lawfullyKeepable
+#print axioms Motion.gap_notRequiredNotUnkeepable
+
+-- Evidence layer: the checkable slice
+#print axioms Debate.Evidence.Examples.amini_severe_le_any
+#print axioms Debate.Evidence.Examples.amini_cause_le_any
+#print axioms Debate.Evidence.Examples.creditDispute_partition
+#print axioms Debate.Evidence.Examples.rejects_incoherent
 
 end Debate.Birthright.Audit

@@ -23,6 +23,12 @@ structure Vocab where
   ShouldEnd : Prop
   /-- The Constitution is amendable by the Article V process. -/
   AmendableByArticleV : Prop
+  /-- Protected by Article V's one substantive limit (equal suffrage in the Senate). -/
+  Entrenched : Prop
+  /-- Ending birthright citizenship is available by some lawful process. -/
+  LawfullyEndable : Prop
+  /-- Keeping birthright citizenship is available by some lawful process. -/
+  LawfullyKeepable : Prop
 
 /-- **NB1 [extracted, NORMATIVE].** What the Constitution currently requires settles what
 we should do — i.e. amendment is off the table as a matter of practical politics or of
@@ -41,6 +47,9 @@ def amendVocab : Vocab where
   ConstitutionRequires := True
   ShouldEnd := True
   AmendableByArticleV := True
+  Entrenched := False
+  LawfullyEndable := True
+  LawfullyKeepable := True
 
 /-- A world in which the Constitution does not require birthright citizenship and it
 should be kept anyway — by statute, as a good policy. -/
@@ -48,6 +57,9 @@ def statutoryVocab : Vocab where
   ConstitutionRequires := False
   ShouldEnd := False
   AmendableByArticleV := True
+  Entrenched := False
+  LawfullyEndable := True
+  LawfullyKeepable := True
 
 /-- **GAP.** Winning the constitutional branch does not settle the motion. Even granting
 Mayes and Newman everything — the clause requires birthright citizenship, *Wong Kim Ark*
@@ -81,5 +93,62 @@ theorem certified_bridges (V : Vocab)
 theorem certified_bridges' (V : Vocab)
     (hb : permissionIsReason V) (hc : ¬ V.ConstitutionRequires) : V.ShouldEnd :=
   hb hc
+
+/-! ## Article V made load-bearing (Gödel's loophole, Suber's reading)
+
+The field `AmendableByArticleV` was declared above and, until this section, used by no
+theorem. Gödel's loophole is the reason it should be. On Peter Suber's reading (*The
+Paradox of Self-Amendment*, 1990) Article V constrains procedure only, not content: any
+provision not protected by Article V's single substantive limit can be lawfully removed.
+The consequence for this debate is that even the purely *legal* proposition "the
+Constitution requires birthright citizenship" does not deliver "it cannot lawfully be
+ended". The anti-motion side's constitutional case therefore cannot rest on legality at
+all; it rests on the normative bridge NB1, and only on that. Symmetrically, "the
+Constitution does not require it" does not deliver "it cannot lawfully be kept", because
+Congress may legislate; the pro-motion side rests only on NB2. -/
+
+/-- **G-S [SHARED, INTERPRETIVE].** Suber's reading of Article V: if the Constitution is
+amendable and the provision is not entrenched, ending it is lawfully available. Introduced
+by the protocol, not by any speaker; either side may contest it as a labelled node. -/
+def suber (V : Vocab) : Prop := V.AmendableByArticleV → ¬ V.Entrenched → V.LawfullyEndable
+
+/-- **G-E [SHARED, DEFINITION].** Birthright citizenship is not among the provisions Article
+V entrenches. The clause protects equal suffrage in the Senate and nothing else. -/
+def notEntrenched (V : Vocab) : Prop := ¬ V.Entrenched
+
+/-- **G-A [SHARED, DEFINITION].** The Constitution is amendable by Article V. -/
+def amendable (V : Vocab) : Prop := V.AmendableByArticleV
+
+/-- **G-C [SHARED, DEFINITION].** Where the Constitution does not require a provision,
+Congress may keep it by statute. -/
+def congressMayLegislate (V : Vocab) : Prop := ¬ V.ConstitutionRequires → V.LawfullyKeepable
+
+/-- **CERTIFIED.** Under Suber's reading, ending birthright citizenship is lawfully available
+even in a world where the Constitution currently requires it. -/
+theorem certified_lawfullyEndable (V : Vocab)
+    (hs : suber V) (ha : amendable V) (he : notEntrenched V) : V.LawfullyEndable :=
+  hs ha he
+
+/-- **GAP.** "The Constitution requires it" does not deliver "it cannot lawfully be ended".
+`amendVocab` satisfies Suber's reading, amendability, non-entrenchment, and the
+constitutional requirement, and ending is lawful there. So the anti-motion side's legal
+victory, granted in full, leaves the motion exactly where NB1 alone can carry it. -/
+theorem gap_requiresNotUnendable :
+    ¬ ∀ V : Vocab, suber V → amendable V → notEntrenched V →
+        V.ConstitutionRequires → ¬ V.LawfullyEndable :=
+  fun h => h amendVocab (fun _ _ => trivial) trivial (fun hx => hx) trivial trivial
+
+/-- **CERTIFIED.** Symmetrically: where the Constitution does not require it, keeping it is
+lawfully available. -/
+theorem certified_lawfullyKeepable (V : Vocab)
+    (hc : congressMayLegislate V) (hn : ¬ V.ConstitutionRequires) : V.LawfullyKeepable :=
+  hc hn
+
+/-- **GAP.** "The Constitution does not require it" does not deliver "it cannot lawfully be
+kept". The pro-motion side's legal victory, granted in full, leaves the motion exactly
+where NB2 alone can carry it. -/
+theorem gap_notRequiredNotUnkeepable :
+    ¬ ∀ V : Vocab, congressMayLegislate V → ¬ V.ConstitutionRequires → ¬ V.LawfullyKeepable :=
+  fun h => h statutoryVocab (fun _ => trivial) (fun hx => hx) trivial
 
 end Debate.Birthright.Motion

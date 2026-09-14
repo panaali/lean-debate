@@ -50,22 +50,28 @@ merely unrefuted. Nobody wins by being harder to refute than their opponent can 
 There are **no `axiom` declarations anywhere**. The debate vocabulary is a signature, the
 agreed constitutional text is a structure field, arguments are theorems quantified over
 all models. `Debate/Birthright/Audit.lean` prints `#print axioms` for all 30 verdicts;
-every one reports *does not depend on any axioms*.
+every one reports *does not depend on any axioms*. As of `run-birthright-2` the audit
+covers 38 theorems: the 30 original verdicts, 4 for the Article V section added after the
+Gödel's-loophole reading, and 4 coherence checks in the evidence layer.
 
 ## Results
 
 ```
-edges certified .......... 14
+edges certified .......... 16
 edges refuted ............ 3
-edges with proved gaps ... 11    (countermodel exhibited; no proof exists)
+edges with proved gaps ... 13    (countermodel exhibited; no proof exists)
 apparent clashes that are
   not clashes ............ 2
 
 premises needing evidence  8
-contested meanings ....... 7
+contested meanings ....... 8
 value premises ........... 3
 premises nobody stated ... 4
 ```
+
+These are the `run-birthright-2` tallies. `run-birthright-1` (git tag) had 14 certified,
+11 gaps, 7 contested meanings; the difference is the Article V section (E31–E34, claims
+G-S, G-E, G-A, G-C) described under "Article V made load-bearing" below.
 
 **Nothing in the debate is `PROVED`.** Not one substantive claim about the Constitution,
 history or policy. Every verdict concerns the *relationship* between claims. That is the
@@ -111,18 +117,45 @@ Each is required by its own speaker's argument, and none is uttered in the debat
   come apart, and neither side supplies the bridge (`E27`, `E28`). Winning the
   constitutional argument outright settles nothing about the motion — in either direction.
 
+### Article V made load-bearing (added in run-birthright-2)
+
+Reading Gödel's loophole (Suber's hypothesis: Article V constrains procedure, not content)
+showed that the Motion branch's `AmendableByArticleV` field was declared and never used.
+Four verdicts now use it. Under Suber's reading (`G-S`), amendability (`G-A`) and
+non-entrenchment (`G-E`), ending birthright citizenship is lawfully available even where
+the Constitution currently requires it (`E31`), so "the Constitution requires it" does not
+deliver "it cannot lawfully be ended" (`E32`, countermodel). Symmetrically, where the
+Constitution does not require it, Congress may keep it by statute (`G-C`, `E33`), so "not
+required" does not deliver "cannot lawfully be kept" (`E34`). The consequence: neither
+side's constitutional case can rest on *legality* at all. Each rests only on its own
+unstated normative bridge, NB1 or NB2. Suber's reading is entered as a SHARED,
+INTERPRETIVE node so either side may contest it.
+
+### Evidence layer (added in run-birthright-2)
+
+`Debate/Evidence.lean` types the evidence layer: a grade scale, provenance records that
+say what was inspected and never what it means, and calibrated credences as percent
+intervals with two decidable coherence checks (entailment ordering, partition sum).
+`Debate/Evidence/Examples.lean` runs those checks on the two real probability tables the
+evidence layer produced in `docs/sources/` and shows the check rejecting an incoherent
+table. The ledger now carries an EVIDENCE section grading the run's empirical leaves. Every
+grade there was assigned from general knowledge and nothing was inspected; the report says
+so on every line (`docs/open-questions.md` Q17).
+
 ## Layout
 
 ```
 Debate/Protocol.lean               statuses, verdicts, rendering — no debate content
+Debate/Evidence.lean               evidence-layer types; credence coherence; the meta-rule
+Debate/Evidence/Examples.lean      coherence checks on two real probability tables
 Debate/Birthright/
   Constitutional.lean              the Citizenship Clause; "subject to the jurisdiction"
   Ancestry.lean                    "none of us would be citizens"
   Judicial.lean                    Harlan's dissents; predicting the Supreme Court
   Policy.lean                      statelessness; the moderator's domain objection
   Normative.lean                   punishing children; the stolen-money analogy
-  Motion.lean                      the is/ought gap between branches and the motion
-  Audit.lean                       #print axioms for all 30 verdicts
+  Motion.lean                      the is/ought gap; Article V made load-bearing
+  Audit.lean                       #print axioms for all 38 theorems
   Ledger.lean                      the judge-facing report
 ```
 

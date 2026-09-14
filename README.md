@@ -4,6 +4,11 @@ A machine-checked formalization of one real political debate, *Should America En
 Birthright Citizenship?* (Open to Debate, June 2026), built as a test of a protocol in
 which every claimed inference must carry a certificate a proof assistant can check.
 
+Current state (`run-birthright-2`): 38 theorems, all reporting no axioms; 34 ledger
+edges (16 certified, 3 refuted, 13 gaps with countermodels, 2 compatible); 4 premises
+carrying the debate that no speaker stated; an evidence layer with a kernel-checked
+coherence slice. `lake exe report` prints the judge-facing ledger.
+
 ## Layout
 
 ```
@@ -13,6 +18,8 @@ docs/sources/             raw source conversations
 Debate.lean               library root; imports every module
 Main.lean                 entry point for the `report` executable
 Debate/Protocol.lean      statuses, verdicts, rendering; no debate content
+Debate/Evidence.lean      evidence-layer types; credence coherence checks; the meta-rule
+Debate/Evidence/          coherence checks on two real evidence tables
 Debate/Birthright/        the six argument branches, the axiom audit, the ledger
 lakefile.toml             Lake build config (library `Debate`, executable `report`)
 lean-toolchain            Lean 4 v4.24.0, no Mathlib
@@ -58,6 +65,7 @@ The project is a working document set, not a publication. To contribute:
   same analogy, a second debate) is added as a sibling module under the same branch
   namespace, with its own signature, listed in `Audit.lean`, and with a comparison note in
   `docs/results.md`. No version folders.
-- Each completed run is tagged (`run-birthright-1` is the current one) so the tallies in
-  `docs/results.md` stay reproducible after the protocol layer moves on.
+- Each completed run is tagged (`run-birthright-2` is the current one; `run-birthright-1`
+  is the original 30-verdict development) so the tallies in `docs/results.md` stay
+  reproducible after the protocol layer moves on.
 - Commit as you go, with a message that names the claim or question the change bears on.

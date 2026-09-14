@@ -218,14 +218,16 @@ lake exe report  # prints the judge-facing ledger
 Debate.lean                        imports every module
 Main.lean                          entry point for the report executable
 Debate/Protocol.lean               statuses, verdicts, claim and edge records, rendering
+Debate/Evidence.lean               evidence-layer types, credence coherence, the meta-rule
+Debate/Evidence/Examples.lean      coherence checks on two real probability tables
 Debate/Birthright/
   Constitutional.lean              the Citizenship Clause; "subject to the jurisdiction"
   Ancestry.lean                    "none of us would be citizens"
   Judicial.lean                    Harlan's dissents; predicting the Supreme Court
   Policy.lean                      statelessness; the moderator's domain objection
   Normative.lean                   punishing children; the stolen-money analogy
-  Motion.lean                      the is/ought gap between branches and the motion
-  Audit.lean                       #print axioms for all 30 verdicts
+  Motion.lean                      the is/ought gap; Article V made load-bearing
+  Audit.lean                       #print axioms for all 38 theorems
   Ledger.lean                      the judge-facing report
 ```
 
@@ -495,6 +497,27 @@ plus a transfer principle is itself a substantive choice. The protocol assumes
 participants who agreed to it.
 
 ---
+
+## 6a. Changes in run-birthright-2 (14 September 2026)
+
+Three Lean changes, each verified by a clean build with every theorem reporting no axioms:
+
+- `Debate/Evidence.lean`: the evidence-layer grade scale, provenance records, calibrated
+  credences as percent intervals with decidable coherence checks (entailment ordering and
+  partition sum), and `preservesBoard`, the meta-rule of `inference-protocol.md` §2.6 as a
+  proposition (Q10 candidate b).
+- `Debate/Evidence/Examples.lean`: the coherence checks run on the Amini sub-proposition
+  table and the credit-dispute scenario partition from `sources/`, plus one theorem
+  showing an incoherent table rejected.
+- `Debate/Birthright/Motion.lean`: Article V made load-bearing. Four new verdicts
+  (E31–E34) and four shared claims (G-S Suber's reading, G-E not entrenched, G-A
+  amendable, G-C Congress may legislate). Result: neither side's constitutional case can
+  rest on legality; each rests only on its own unstated normative bridge.
+- `Ledger.lean`: the new claims and edges, and an EVIDENCE section grading the run's
+  empirical leaves, every grade marked as assigned from general knowledge and not inspected.
+
+Tallies moved from 14/3/11/2 to 16/3/13/2 (certified/refuted/gap/compatible), contested
+meanings from 7 to 8, audited theorems from 30 to 38.
 
 ## 7. The evidence layer
 

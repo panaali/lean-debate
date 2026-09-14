@@ -1,4 +1,5 @@
 import Debate.Protocol
+import Debate.Evidence
 
 /-!
 # The ledger
@@ -103,6 +104,19 @@ def claims : List Claim :=
       formal := "Motion.permissionIsReason",
       english := "If the Constitution does not require birthright citizenship, America should end it."
       note := "Never stated. Without it the pro-motion constitutional case does not reach the motion." }
+  , { id := "G-S",  speaker := .shared,    status := .interpretive,
+      formal := "Motion.suber",
+      english := "Article V limits procedure, not content: any non-entrenched provision can lawfully be removed by amendment."
+      note := "Suber's reading of Godel's loophole. Introduced by the protocol after the run; either side may contest it." }
+  , { id := "G-E",  speaker := .shared,    status := .definitional,
+      formal := "Motion.notEntrenched",
+      english := "Birthright citizenship is not among the provisions Article V entrenches." }
+  , { id := "G-A",  speaker := .shared,    status := .definitional,
+      formal := "Motion.amendable",
+      english := "The Constitution is amendable by the Article V process." }
+  , { id := "G-C",  speaker := .shared,    status := .definitional,
+      formal := "Motion.congressMayLegislate",
+      english := "Where the Constitution does not require a provision, Congress may keep it by statute." }
   ]
 
 def edges : List Edge :=
@@ -187,6 +201,43 @@ def edges : List Edge :=
       verdict := .certified, witness := "Motion.certified_bridges" }
   , { id := "E30", premises := ["NB2", "the Constitution does not require it"], concl := "America should end it",
       verdict := .certified, witness := "Motion.certified_bridges'" }
+  , { id := "E31", premises := ["G-S", "G-A", "G-E"], concl := "ending it is lawfully available",
+      verdict := .certified, witness := "Motion.certified_lawfullyEndable",
+      note := "Article V made load-bearing. Holds even where the Constitution currently requires it." }
+  , { id := "E32", premises := ["G-S", "G-A", "G-E", "the Constitution requires it"], concl := "it cannot lawfully be ended",
+      verdict := .gap, witness := "Motion.gap_requiresNotUnendable",
+      note := "The anti-motion legal case, granted in full, leaves the motion where NB1 alone can carry it." }
+  , { id := "E33", premises := ["G-C", "the Constitution does not require it"], concl := "keeping it is lawfully available",
+      verdict := .certified, witness := "Motion.certified_lawfullyKeepable" }
+  , { id := "E34", premises := ["G-C", "the Constitution does not require it"], concl := "it cannot lawfully be kept",
+      verdict := .gap, witness := "Motion.gap_notRequiredNotUnkeepable",
+      note := "Symmetrically: the pro-motion legal case leaves the motion where NB2 alone can carry it." }
+  ]
+
+/-! ## Evidence layer: grades for the leaves
+
+Every grade below was assigned by the author during reconstruction from general knowledge.
+None of the provenance was inspected. This is recorded in each `basis` and in the report
+header, and it is `docs/open-questions.md` Q17. The table exists so that the report shows
+what the evidence layer *would* carry, and so that a real evidence run has a place to write. -/
+
+open Debate.Evidence in
+def evidence : List Debate.Evidence.Entry :=
+  let unverified := "graded from general knowledge during reconstruction; not inspected (Q17)"
+  [ { claim := "A4",  grade := .contradicted, basis := unverified,
+      challenging := [{ source := "Naturalization Act of 1790", locator := "1 Stat. 103" }] }
+  , { claim := "M-L", grade := .established, basis := "uncontested by both sides in the debate; consent, not inspection" }
+  , { claim := "A2",  grade := .plausible, basis := unverified }
+  , { claim := "C2",  grade := .stronglySupported, basis := unverified,
+      supporting := [{ source := "Brown v. Board of Education (1954), overruling Plessy" }] }
+  , { claim := "P1",  grade := .unresolved, basis := "not checked; the lower-court record at the debate date was not pulled" }
+  , { claim := "S-P", grade := .unresolved, basis := "prediction about an order not yet in force; needs the order's text and a mechanism" }
+  , { claim := "S-K", grade := .plausible, basis := unverified,
+      supporting := [{ source := "French nationality code, acquisition at majority" },
+                     { source := "Australian Citizenship Act 2007, ten-year rule" }] }
+  , { claim := "K1",  grade := .unresolved, basis := "historical/interpretive; the run's evidence step was never taken",
+      supporting := [{ source := "Elk v. Wilkins (1884)" }],
+      challenging := [{ source := "United States v. Wong Kim Ark (1898)" }] }
   ]
 
 /-! ## Tallies -/
@@ -219,6 +270,8 @@ def render : String :=
   "\n" ++ String.intercalate "\n" (edges.map Edge.render) ++
   rule "\nPREMISES NOBODY STATED" ++
   "\n" ++ String.intercalate "\n" (unsupported.map Claim.render) ++
+  rule "\nEVIDENCE  (leaf grades; every grade below is a labelled judgement, nothing was inspected)" ++
+  "\n" ++ String.intercalate "\n" (evidence.map Debate.Evidence.Entry.render) ++
   rule "\nSUMMARY" ++ "\n" ++ summary ++ "\n"
 
 end Debate.Birthright.Ledger

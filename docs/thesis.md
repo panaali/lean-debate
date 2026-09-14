@@ -101,11 +101,14 @@ Citizenship?* (Open to Debate, June 2026). Two speakers for, two against. Result
 
 | | |
 |---|---|
-| edges certified | 14 |
+| edges certified | 16 |
 | edges refuted | 3 |
-| edges with proved gaps | 11 |
+| edges with proved gaps | 13 |
 | apparent clashes that are not clashes | 2 |
 | premises nobody stated | 4 |
+
+(`run-birthright-2`. The original run had 14 certified and 11 gaps; the four added
+verdicts are the Article V section below.)
 
 Three findings justified the effort.
 
@@ -127,7 +130,13 @@ side supplies the bridge. Gödel's loophole, on Suber's reading that Article V l
 procedure but not content, is the strong form of this: no constitutional fact ever reaches
 a "should" on its own.
 
-The audit is mechanical. All 30 verdicts, countermodels included, report that they depend
+Article V is now load-bearing in the formalization. Under Suber's reading, entered as a
+contestable shared node, ending birthright citizenship is lawfully available even where
+the Constitution requires it, and keeping it is lawfully available even where it does not.
+So neither side's constitutional case can rest on legality; each rests only on its own
+unstated normative bridge.
+
+The audit is mechanical. All 38 theorems, countermodels included, report that they depend
 on no axioms.
 
 ## 5. Limits
@@ -162,22 +171,20 @@ on no axioms.
 
 ## 6. Next steps
 
-Ordered by what unblocks the most. Items marked **Lean** change the development and need a
-build to verify; none has been made yet.
+Ordered by what unblocks the most. Items marked done were verified by a clean build with
+every theorem reporting no axioms.
 
 1. **Adopt `evidence-protocol.md` as Phase 3 and run it adversarially.** Two instances
    assigned opposing hypotheses, or one instance plus a critic scored on what it finds
    against its own side. This is the direct attack on the hole in Section 5.
-2. **Lean: an evidence ledger type.** Extend `Protocol.lean` so an EMPIRICAL leaf carries
-   its evidence grade and provenance into the judge-facing report.
-3. **Lean: probability coherence constraints.** The evidence layer's subquestion
-   probabilities have orderings that must hold: P(assault caused death) ≤ P(assault
-   occurred). Cheap to state, cheap to check, and the first piece of the evidence layer
-   that becomes kernel-checked rather than trusted.
-4. **Lean: make Article V load-bearing.** The Motion vocabulary declares Article V
-   amendability and never uses it. State the Suber reading as a premise and show that under
-   it the two unstated bridge premises are the only routes from any constitutional fact to
-   the motion, in either direction.
+2. **Done (`run-birthright-2`): an evidence ledger type.** `Debate/Evidence.lean`; the
+   report's EVIDENCE section carries grade and provenance per leaf, every grade marked as
+   unverified.
+3. **Done (`run-birthright-2`): probability coherence constraints.** Entailment orderings
+   and partition sums as decidable checks, run on the two real tables in `sources/`. Weak
+   by design: they catch incoherence, not lopsided search.
+4. **Done (`run-birthright-2`): Article V load-bearing.** See Section 4. Suber's reading
+   is a contestable node, not an assumption.
 5. **A second debate**, chosen before reading it, through both layers.
 6. **A two-AI run** on the birthright motion, third-party formalizer, back-translator,
    sources frozen at a stated date.
