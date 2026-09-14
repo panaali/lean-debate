@@ -11,7 +11,7 @@ Run records retain the source material, submissions, and evidence supporting eac
 
 ## Running it
 
-Use the [README's prerequisites and commands](../README.md#running-it).
+Use the [README's prerequisites and commands](../README.md#run-the-reports).
 `lake exe report` prints the birthright ledger, `lake exe report deathpenalty`
 prints the death-penalty ledger, and `lake exe report all` prints both.
 

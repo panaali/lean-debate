@@ -21,109 +21,75 @@ investigation and scrutiny of the translation are therefore essential parts of t
 method. The larger ambition is to make sophisticated reasoning answerable to people who
 cannot reproduce every step themselves.
 
-## What the project has shown
+## What is implemented
 
-The birthright-citizenship reconstruction exposes unstated premises and apparent
-rebuttals that leave the opposing conclusion untouched. The death-penalty reconstruction
-shows similar patterns. In a separate two-AI
-run, both sides' arguments were valid under different readings of the question; the
-formalization made that difference explicit. An evidence run tested whether agents
-assigned opposing positions would converge after investigating the same disputed claim.
+The project includes formal reconstructions of birthright-citizenship and death-penalty
+debates, a two-AI debate, an adversarial evidence investigation, and tests of the setup
+rules. The reconstructions expose missing premises and apparent rebuttals that leave
+the opposing conclusion possible. The two-AI run makes a disagreement over the meaning
+of the question explicit.
 
-These are initial demonstrations. Their value at scale, their fidelity to speakers'
-intentions, and their resistance to a deceptive participant remain research questions.
-The [thesis](docs/thesis.md) develops the case; [results](docs/results.md) records the
-experiments and their limits.
+The main Lean development audits **90 theorems**, all reporting no axioms. These are
+initial demonstrations: their fidelity, usefulness at scale, and resistance to deliberate
+deception remain research questions. [Results](docs/results.md) records what each run
+establishes and what it leaves open.
 
-The main development currently audits **90 theorems**: 36 birthright verdicts,
-35 death-penalty verdicts, 8 two-AI verdicts, and 11 evidence checks. All report no axioms.
-The two human-debate reconstructions identify 4 and 9 unstated premises respectively.
-The theorem count records what was checked; it does not measure how much of a debate
-was faithfully captured.
+A separate [EPR and Bohr experiment](experiments/epr-bohr-1935/README.md) applies the
+approach to scientific papers, with readable companions and a report that carries Lean
+proof terms. Its scope and audit are documented independently of the 90-theorem debate build.
 
-## Start reading
+## Read the project
 
 | Document | Purpose |
 |---|---|
-| [Thesis](docs/thesis.md) | The problem, central hypothesis, method, findings, and next experiments |
-| [Results](docs/results.md) | What each run found, with reproducible tallies and limitations |
-| [Learnings](docs/learnings.md) | What formal checking adds and where the approach still fails |
-| [Claims ledger](docs/claims.md) | The proposal's claims, evidence, statuses, and strongest objections |
-| [Open questions](docs/open-questions.md) | Candidate answers and what would resolve each question |
-| [Inference protocol](docs/inference-protocol.md) | Rules for formalizing arguments and checking inferences |
-| [Evidence protocol](docs/evidence-protocol.md) | Rules for investigating factual and probabilistic claims |
+| [Thesis](docs/thesis.md) | The central argument, findings, limits, and next experiments |
 | [Project overview](docs/project-overview.md) | Current architecture, workflow, and implementation boundaries |
-| [Scientific papers](docs/scientific-papers.md) | Proposed extension to papers with linked proofs and evidence records |
-| [Contributing](docs/contributing.md) | Useful work, ownership checks, and editing conventions |
-| [Source conversations](docs/sources/) | The discussions from which the project developed |
-| [Archive](docs/archive/README.md) | Preserved earlier descriptions, tallies, and development history |
+| [Results](docs/results.md) | Completed experiments, checked outcomes, and source limitations |
+| [Learnings](docs/learnings.md) | What formal checking adds and where the approach can still fail |
+| [Inference protocol](docs/inference-protocol.md) | Rules for making arguments precise and checking their inferences |
+| [Evidence protocol](docs/evidence-protocol.md) | Rules for investigating factual and probabilistic premises |
+| [Claims](docs/claims.md) and [open questions](docs/open-questions.md) | Evidence for the proposal and tests that would resolve its uncertainties |
+| [Scientific papers](docs/scientific-papers.md) | The proposed extension to papers with linked proofs and evidence records |
 
-Read [Learnings §6](docs/learnings.md#6-the-hole-worked-through) before presenting the
-project: checked reasoning can still rest on a biased or incomplete evidence search.
+[Learnings §6](docs/learnings.md#6-the-hole-worked-through) explains the central remaining
+risk: checked reasoning can still rest on a biased or incomplete evidence search.
 
-## Running it
+## Run the reports
 
 Run from the repository root with `lake` on your PATH. The
-[toolchain file](lean-toolchain) pins Lean 4 v4.24.0; the main build uses no Mathlib or
+[toolchain](lean-toolchain) pins Lean 4 v4.24.0. The main build uses no Mathlib or
 external Lean packages.
 
 ```bash
-lake build                    # builds the library and report; runs both axiom audits
+lake build                    # builds the main project and runs both axiom audits
 lake exe report               # birthright citizenship ledger
 lake exe report deathpenalty  # death-penalty ledger
 lake exe report all           # both ledgers
 ```
 
-To inspect the audits explicitly after building:
+The executable renders existing ledgers. The translation, debate, and evidence
+investigations are conducted through the documented runs. Separate experiments have
+their own setup and build scope.
 
-```bash
-lake env lean Debate/Birthright/Audit.lean
-lake env lean Debate/DeathPenalty/Audit.lean
-```
+## Contribute
 
-The executable renders existing ledgers. The debate, translation, and evidence workflows
-are conducted through the documented runs. Lean checks their formal theorems; the
-report's English labels and theorem references are maintained separately.
+Use the [roadmap](docs/thesis.md#6-next-steps) and
+[contributor guide](docs/contributing.md) to choose useful work. Independent fidelity
+checks, deliberate-deception tests, harder evidence searches, and studies of judge
+usefulness would most directly test the proposal.
 
-## Status and where to go next
+Before editing, read the relevant `SETUP.md` and `STATUS.md` and check
+`git status --short`. Run records are in [docs/runs](docs/runs/);
+[red-team status](docs/redteam-STATUS.md) lists available follow-up work.
+An unfinished task may already belong to another session.
 
-Updated 14 September 2026. Run results record completed work; `STATUS.md` files record
-ownership and available follow-up work.
+## Repository map
 
-| Work | State | Record |
-|---|---|---|
-| Birthright reconstruction | complete, `run-birthright-3` | [Results](docs/results.md), [Lean](Debate/Birthright/) |
-| Evidence types and initial coherence checks | complete | [Types](Debate/Evidence.lean), [examples](Debate/Evidence/Examples.lean) |
-| Article V in the Motion branch | complete, E31–E34 | [Explanation](docs/results.md#legal-availability-and-policy-recommendations) |
-| Adversarial evidence run on K1 | complete, `run-evidence-1`; findings entered in the ledger | [Results](docs/runs/evidence-1/RESULTS.md), [status](docs/runs/evidence-1/STATUS.md) |
-| Two-AI constitutional debate | complete, `run-twoai-1`; 8 verdicts and matching back-translation | [Results](docs/runs/two-ai-1/RESULTS.md), [status](docs/runs/two-ai-1/STATUS.md) |
-| Death-penalty reconstruction | complete, `run-deathpenalty-1`; selected from titles only | [Results](docs/runs/death-penalty/RESULTS.md), [status](docs/runs/death-penalty/STATUS.md) |
-| First Phase 0 red team | complete; ten attacks, protocol revisions, and three Lean repairs | [Findings](docs/redteam-phase0.md), [status](docs/redteam-STATUS.md) |
-| Reusable argument schemas | not started; two debates now supply examples | [Q11](docs/open-questions.md#q11-is-there-a-reusable-library-or-does-every-debate-need-its-own-signatures) |
-| Further adversarial tests of the protocol | not started | [Available work](docs/redteam-STATUS.md) |
-| Training on the checkable part | not started, outside current means | [Q14](docs/open-questions.md#q14-does-training-on-the-checkable-half-transfer-to-leaf-honesty) |
-
-[Thesis §6](docs/thesis.md#6-next-steps) explains which experiments would be most
-informative. Before taking work, read the relevant setup and status, and check
-`git status --short`. An unfinished run is not necessarily available to take over.
-Independent critiques can go in [reviews](docs/reviews/).
-
-## Layout
-
-```text
-README.md                 project description and reading guide
-docs/                     thesis, protocols, results, learnings, and registers
-docs/sources/             raw source conversations
-docs/runs/                fixed setups, submissions, status, and results
-docs/reviews/             critiques and editorial drafts
-Debate.lean               library root and module imports
-Main.lean                 entry point for the report executable
-Debate/Protocol.lean      claim/edge records, statuses, verdicts, rendering
-Debate/Evidence.lean      evidence types, coherence checks, meta-rule proposition
-Debate/Evidence/          worked evidence checks
-Debate/Birthright/        six argument branches, two-AI run, audit, and ledger
-Debate/DeathPenalty/      six argument branches, audit, and ledger
-experiments/              separate experiments with their own setup and status
-lakefile.toml             Lake build configuration
-lean-toolchain            pinned Lean version
-```
+| Location | Contents |
+|---|---|
+| [Debate/](Debate/) | Protocol types, argument formalizations, evidence checks, ledgers, and audits |
+| [docs/](docs/) | Thesis, specifications, results, and research questions |
+| [docs/runs/](docs/runs/) | Setups, submissions, extractions, evidence, and results |
+| [experiments/](experiments/) | Separate experiments with their own scope and build instructions |
+| [docs/sources/](docs/sources/) | Preserved source conversations |
+| [docs/archive/](docs/archive/README.md) | Superseded descriptions, background material, and earlier measurements |

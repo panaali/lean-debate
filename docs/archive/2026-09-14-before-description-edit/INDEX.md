@@ -34,3 +34,6 @@ overview, and a post-freeze verification note to results. Full snapshots from co
 
 - [Updated overview](concurrent-updates/docs/project-overview.md)
 - [Updated results](concurrent-updates/docs/results.md)
+
+The [scientific-paper proposal](docs/scientific-papers.md) is also preserved as it stood
+at `5be10db`, before its final paragraph linked the completed EPR/Bohr experiment.

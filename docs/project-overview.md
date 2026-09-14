@@ -68,7 +68,7 @@ successful steps alone would conceal that distinction.
 ## 4. The Lean development
 
 The main project uses Lean 4 v4.24.0 without Mathlib or external Lean packages.
-The [README](../README.md#running-it) gives the build, report, and audit commands.
+The [README](../README.md#run-the-reports) gives the build, report, and audit commands.
 
 | Path | Role |
 |---|---|
@@ -96,7 +96,9 @@ witnessing each side's position. Satisfiability and neutrality remain different 
 The report records English descriptions, verdict labels, and theorem references as
 metadata. Lean checks the theorem declarations; the record types do not enforce that
 a displayed description or reference matches the theorem's type. That correspondence
-requires review. The executable prints claims and edges before its summaries; aligning it with the
+requires review. The separate [paper experiment](../experiments/epr-bohr-1935/README.md)
+uses a report registry carrying actual proof terms; its English captions still require
+review. The main executable prints claims and edges before its summaries; aligning it with the
 protocol's proposed judge-facing order remains implementation work.
 
 ## 5. Results

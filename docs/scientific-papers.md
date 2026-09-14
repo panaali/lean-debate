@@ -135,7 +135,13 @@ the translation, reviewer time, and formalization cost. These would test the cen
 hypothesis: that making a paper's reasoning explicit and partly machine-checkable can
 improve scientific review across fields.
 
-This is a proposed extension of the project's [thesis](thesis.md),
-[inference protocol](inference-protocol.md), and [evidence protocol](evidence-protocol.md).
-It does not change the status of existing claims or report a completed scientific-paper
-experiment.
+The [EPR and Bohr experiment](../experiments/epr-bohr-1935/README.md) provides a narrow
+worked example: companions to two papers, explicit argument models, checked proofs and
+countermodels, and a report carrying proof terms. Its quantum states, Fourier calculations,
+and apparatus physics are not fully formalized. The experiment's documentation makes
+those boundaries explicit.
+
+Reliable conversion across fields remains a research objective. This proposal extends the
+project's [thesis](thesis.md), [inference protocol](inference-protocol.md), and
+[evidence protocol](evidence-protocol.md); the current experiment does not establish a
+general automatic conversion capability.
