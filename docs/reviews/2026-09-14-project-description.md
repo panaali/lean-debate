@@ -1,5 +1,9 @@
 # Project description draft
 
+**Status:** incorporated into the README and thesis on 14 September 2026, then adapted
+to describe all completed runs. The original draft and its initial context remain below.
+Pre-edit documents are preserved in the [archive](../archive/2026-09-14-before-description-edit/INDEX.md).
+
 Proposed opening for the README and project overview. Related: proposal C1, C7, C13,
 and C14. This draft is separate because another session is updating the shared docs.
 It changes no claim statuses or run results.

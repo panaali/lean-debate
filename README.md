@@ -57,6 +57,9 @@ was faithfully captured.
 | [Contributing](docs/contributing.md) | Useful work, ownership checks, and editing conventions |
 | [Source conversations](docs/sources/) | The discussions from which the project developed |
 
+Earlier wording and details moved out of the main pages are preserved in the
+[pre-edit archive](docs/archive/2026-09-14-before-description-edit/INDEX.md).
+
 Read [Learnings §6](docs/learnings.md#6-the-hole-worked-through) before presenting the
 project: checked reasoning can still rest on a biased or incomplete evidence search.
 
