@@ -1,216 +1,222 @@
 # A logician for English
 
-The main document of this project, written so that several agents can elaborate the idea,
-attack it, and extend it. It states the problem, the claim, the method, one worked run,
-the limits, and what comes next, in that order. The working surfaces are two companion
-files: `claims.md`, every claim the proposal makes with a status and its strongest
-objection, and `open-questions.md`, every unresolved question with candidate answers. Add
-to those before adding here. Everything else in `docs/` is reference: `inference-protocol.md` and `evidence-protocol.md` are the two
-specifications, `results.md` and `learnings.md` are the worked run and its assessment,
-`project-overview.md` is the long reference, and `sources/` holds the raw conversations.
-Appendices A to C at the end carry the supporting material.
+This project investigates whether language models and formal proof can make complex
+arguments easier to judge. Its central proposal is to expose an argument's assumptions,
+check the reasoning that connects them, and leave a precise record of what still needs
+to be settled.
 
----
+The [claims ledger](claims.md) records the evidence and strongest objection for each
+part of the proposal. [Open questions](open-questions.md) identifies what would resolve
+the remaining uncertainties. This document develops the argument connecting them.
 
 ## 1. The problem
 
-Debate is proposed as a way for a weak judge to oversee strong reasoners: let two of them
-argue and let the judge pick. Geoffrey Irving's objection is that a dishonest debater can
-produce an argument that is long, sophisticated, and false, and that neither the honest
-opponent nor the judge can say where the flaw is. Absence of a rebuttal then reads as
-strength. In human experiments on physics questions this actually happened.
+A persuasive argument can be wrong in ways that neither an opponent nor a judge can
+identify. For AI oversight, this raises a difficult question: how can people evaluate
+reasoning from systems more capable than themselves?
 
-The same failure has an older illustration. In 1947 Kurt Gödel read the text of the United
-States Constitution as a formal system and found what he believed was a legal path from
-republic to dictatorship. At his citizenship hearing he told the judge "I can prove it".
-The judge declined to hear the proof. Gödel never wrote it down, and constitutional
-scholars still cannot reconstruct it. An honest, capable claimant, a judge who could not
-evaluate the claim, and no certificate left behind.
+Debate offers one possible answer. Two systems argue opposing positions, and a judge
+uses their exchange to decide what to believe. But disagreement alone does not ensure
+that a flaw will be found. A complicated false argument may survive because the opponent
+cannot explain where it fails. The absence of a successful rebuttal can then be mistaken
+for evidence that the argument is sound. This is the failure discussed in the project's
+[source conversation on Geoffrey Irving's work](sources/lean-in-social-science.md).
+
+The source discussions also connect this problem to Gödel's reported constitutional
+loophole: a claim of proof without a surviving certificate that others could inspect.
+The anecdote and its competing interpretations are recorded in
+[the discussion notes](sources/discussion-2026-09-13.md). They motivate a practical aim:
+leave behind something more precise than a claim that an argument works.
 
 ## 2. The claim
 
-**A logician can find real holes in real English, and that skill can now be run at scale
-and made checkable.** Ordinary legal and political text has enough structure that its
-unstated premises, missing bridges, and self-referential rules can be located by someone
-who reads it as a system. Language models can do the reading and the formalizing. A proof
-assistant can make the result an object that a person who distrusts the finder can verify
-mechanically, without redoing the reasoning.
+**AI may be able to act as a logician for ordinary language: exposing hidden
+assumptions, making disagreements precise, and producing reasoning that can be checked
+independently.**
 
-The product is never a verdict on the question. It is the extracted premise, the disputed
-node set, and the countermodel, left behind in a form anyone can inspect. Nothing about
-the Constitution, history, or policy ever comes out proved. Only the relationships between
-claims do, and that is the design working.
+Legal and political arguments contain structure that can be made explicit: a condition
+that has been dropped, a generalization drawn from one example, an analogy that depends
+on an unstated resemblance, or a recommendation that needs a value premise. Language
+models can propose these reconstructions. A proof assistant can check the formal
+relationships they identify.
 
-**What this does not do, stated first.** The kernel validates no content. Whether a formal
-claim means what the speaker meant is unprovable from inside the system. And the evidence
-layer, where facts are checked, is still trusted rather than verified. Section 5 says
-exactly how far that trust reaches.
+The intended result is a record of what an argument establishes, which assumptions it
+requires, and where disagreement remains. A reader can inspect a particular missing
+premise or counterexample without reconstructing the whole exchange.
+
+The experiments so far show instances of this process. They do not yet establish how
+reliably it finds important problems, how often it introduces problems through its own
+translation, or whether it works at scale. Those are the central tests of
+[proposal C13 and Q3](open-questions.md#q3-can-a-language-model-find-gödel-style-holes-in-real-english-at-scale-what-are-its-recall-and-precision).
 
 ## 3. The method
 
-An argument has an inference layer and an evidence layer. The project has one
-specification for each, and they share a single claim ledger.
+The approach separates two questions: **does a conclusion follow from its premises,
+and what justifies accepting those premises?** The inference and evidence protocols
+address these questions through linked records of claims and their dependencies.
 
-**The inference layer** (`inference-protocol.md`, enforced by Lean). Every claim is a node
-labelled by what would settle it: PROVED, EMPIRICAL, INTERPRETIVE, PROBABILISTIC,
-NORMATIVE, DEFINITION, or UNSUPPORTED. Every claimed step between nodes is an edge, and
-the kernel returns exactly one verdict per edge:
+In the [inference layer](inference-protocol.md), the formalizer gives each claim a
+precise reading and labels the kind of support it needs: proof, evidence,
+interpretation, probabilistic assessment, a value judgment, or agreement on a definition.
+An assumption needed by the argument but never asserted is marked `UNSUPPORTED` and
+returned to its speaker.
 
-| Verdict | Meaning |
+Each proposed inference must then carry a proof or countermodel that Lean can check:
+
+| Verdict | What the certificate establishes |
 |---|---|
-| CERTIFIED | the conclusion follows from the listed premises |
-| REFUTED | the negation follows |
-| GAP | a countermodel exists: every premise holds, the conclusion fails, so no proof can |
-| COMPATIBLE | two claims that sounded like a clash hold together in one world |
+| CERTIFIED | The conclusion follows from the stated premises |
+| REFUTED | The negation of the target follows from the stated premises |
+| GAP | A model satisfies the environment and premises while falsifying the conclusion |
+| COMPATIBLE | A model satisfies both claims, so their apparent conflict is not a logical contradiction |
 
-The governing rule: any claim may be asserted provided it is typed, and every claimed
-inference must be certified, including every claimed non-inference. There are no axioms.
-The shared vocabulary is a signature, the agreed text is a structure field, arguments are
-theorems over all models, and a GAP is always an exhibited world, never a failed search.
+A GAP is a demonstrated failure of entailment. Failure to find a proof is a separate
+outcome and cannot by itself justify that verdict. The shared vocabulary and environment
+are explicit; arguments are conditional theorems, and countermodels must respect the
+same environment.
 
-**The evidence layer** (`evidence-protocol.md`, run by an adversarial investigation
-process). Every EMPIRICAL or PROBABILISTIC leaf is handed to it. It produces a claim
-ledger with actor, action, object, date, scope, and qualifiers, a graded status
-(established, strongly supported, plausible, unresolved, weakened, contradicted),
-provenance rather than conclusions, calibrated probability ranges, and a record of the
-challenges tested.
+The [evidence layer](evidence-protocol.md) investigates factual and probabilistic claims.
+It records the exact proposition, source provenance, supporting and challenging evidence,
+a graded assessment, subjective probability ranges where justified, and consequential
+revisions. Observation is kept separate from interpretation: a document containing a
+sentence and that sentence establishing someone's intent are different claims.
 
-**The two were written separately and converged on the same rules.** That convergence is
-the strongest evidence the decomposition is right:
+Both protocols emphasize six habits: distinguish concepts before evaluating them;
+match scope and time before declaring a contradiction; keep refutation of a premise
+separate from refutation of a conclusion; fix readings before rebuttals; expose the
+assumptions inside loaded language; and preserve source provenance. Their convergence
+suggests a useful common structure, though their shared origins limit its evidential
+weight ([C12 and Q13](open-questions.md#q13-is-the-two-layer-convergence-real-or-a-shared-prior)).
 
-- Split before you judge. Contact occurred versus what was said. Subject to US law versus
-  subject to US jurisdiction. Any assault versus severe assault versus assault that caused
-  death. One symbol for two things is where every case in this folder went wrong.
-- A contradiction needs the same thing, period, and scope. Otherwise both sides were right.
-- No promotion. A refuted premise returns the conclusion to unsupported, never to refuted.
-- Fix the reading before the answer is known. Ask which quantifier the speaker means at
-  assertion time, not after the rebuttal.
-- Audit the loaded words. "Pressure", "admission", "punish", an analogy: each smuggles a
-  premise. Extract it and make its owner approve it.
-- Provenance, not conclusions. "Document D contains string S" and "S shows the speaker
-  believed P" are two claims, and the second stays interpretive.
-
-The roles this reproduces, and the same objects under the names science, law, and
-journalism give them, are in Appendices A and B.
+The repository currently contains formal reconstructions, evidence investigations, and
+reports from specific runs. It does not implement a general service that automatically
+translates any debate, finds the weakest missing premise, or searches every rebuttal for
+a countermodel. Lean checks the supplied formal objects; the report's English descriptions
+and theorem references require a separate correspondence review.
 
 ## 4. One worked run
 
-The full pipeline has now been run on two real debates, a two-AI debate, and one
-evidence leaf; `results.md` carries all four. The first run is described here, since it
-is the one the rest of the documents were written around: *Should America End Birthright
-Citizenship?* (Open to Debate, June 2026). Two speakers for, two against. Results in
-`results.md`; the Lean development in `Debate/`.
+The first case study reconstructed *Should America End Birthright Citizenship?*
+(Open to Debate, June 2026), with two speakers on each side. The
+[results](results.md) retain its development history. Three findings illustrate what
+the method contributes.
 
-| | |
-|---|---|
-| edges certified | 16 |
-| edges refuted | 3 |
-| edges with proved gaps | 13 |
-| apparent clashes that are not clashes | 2 |
-| premises nobody stated | 4 |
+**Failing one condition does not rule out every route to a conclusion.** In the model,
+the Citizenship Clause supplies a sufficient condition for citizenship. Showing that
+someone fails that condition does not establish non-citizenship unless other routes
+are excluded. The reconstruction exposes that additional premise as `K-EX). It emerged
+when the attempted proof needed an assumption the speaker had not stated.
 
-(`run-birthright-2`. The original run had 14 certified and 11 gaps; the four added
-verdicts are the Article V section below.)
+**A rebuttal can defeat an argument while leaving its conclusion untouched.** The
+historical-counterexample exchange has a model in which Krikorian's counterexample and
+Mayes's conclusion both hold. The statelessness exchange has the same pattern under
+the narrower reading of Mayes's claim. Making the claims precise reveals which
+proposition the rebuttal actually reaches.
 
-Three findings justified the effort.
+**A conclusion about the law needs a further premise to become a recommendation.**
+The debate's constitutional arguments concern what the law requires; its motion asks
+what the country should do. The Motion branch makes the missing value premises explicit.
+The Article V extension adds conditional results about what can lawfully be changed,
+using Suber's reading as a contestable premise. Those results still do not supply a
+recommendation by themselves.
 
-**The largest hole belonged to the side that argued better, and nobody saw it.** The
-Citizenship Clause says born here and subject to jurisdiction implies citizen. That is a
-way in, not the only way in. So showing a child fails the jurisdiction test proves nothing
-about citizenship until every other route is closed. The entire pro-motion case needs that
-premise and never states it. This is a small Gödel-style finding about the text of the
-Fourteenth Amendment, and it surfaced only because the proof would not close without it.
+At `run-birthright-3`, the ledger contains 16 certified edges, 3 refutations, 13 gaps,
+and 4 compatibility results, with 4 unstated premises. Two compatibility results concern
+the exchanges above; the other two show that each side's stated position is consistent
+with the environment. The tag audits 40 theorems: 36 debate verdicts and 4 initial
+evidence checks. Earlier tags retain the original 30 verdicts and the Article V extension.
 
-**Two of the sharpest exchanges were not disagreements.** The statelessness exchange and
-the historical-counterexample exchange each have a world in which both speakers are right.
-An audience hears a knockout. The COMPATIBLE verdict is mechanical to produce and nearly
-impossible to catch live.
+Subsequent experiments broadened the test:
 
-**The largest gap is between branches.** Most of the hour argues what the law is. The
-motion asks what the country should do. Article V exists, so those come apart, and neither
-side supplies the bridge. Gödel's loophole, on Suber's reading that Article V limits
-procedure but not content, is the strong form of this: no constitutional fact ever reaches
-a "should" on its own.
+- **[Death penalty](runs/death-penalty/RESULTS.md):** a second debate, selected from titles
+  only and extracted by a separate agent, yielded 35 verdicts and 9 unstated premises.
+  The gap between factual claims and policy recommendations recurred. The moderator
+  asked for the missing value premise during the debate.
+- **[Two-AI debate](runs/two-ai-1/RESULTS.md):** both sides accepted the premises supporting
+  the other's conclusion under a different reading of the question. Eight verdicts and
+  a matching back-translation exposed the ambiguity introduced by the initial signature.
+  Both participants were cooperative; deliberate deception remains untested.
+- **[Adversarial evidence review](runs/evidence-1/RESULTS.md):** two agents with opposing
+  assignments converged on a narrower reading of the pivotal historical claim K1.
+  Their findings entered the ledger. Checks of their probability intervals establish
+  arithmetic constraints, not the adequacy of their evidence search.
+- **[Phase 0 red team](redteam-phase0.md):** ten attacks targeted the setup rather than
+  the proofs. One exposed a substantive premise hidden in the project's own environment.
+  The repair made it an explicit claim; other repairs added nonempty domains and
+  models witnessing each side's position.
 
-Article V is now load-bearing in the formalization. Under Suber's reading, entered as a
-contestable shared node, ending birthright citizenship is lawfully available even where
-the Constitution requires it, and keeping it is lawfully available even where it does not.
-So neither side's constitutional case can rest on legality; each rests only on its own
-unstated normative bridge.
-
-The audit is mechanical. All 38 theorems, countermodels included, report that they depend
-on no axioms.
+Together the main development audits 90 theorems, all reporting no axioms. The
+[results register](results.md) gives the breakdown and the limits of each run.
 
 ## 5. Limits
 
-- **Lean is mostly overhead for human debate.** Everything the checker found, a careful
-  reader with a notepad also finds. What Lean added is narrower: it would not let the
-  author skip a step, a distrustful reader can check the work without redoing it, and the
-  zero-axiom audit proves nothing was smuggled in. Lean earns its cost in one situation:
-  two AIs debating, neither trustworthy, a judge weaker than both.
-- **Fidelity is the trusted component.** That the formal claim means what the speaker
-  meant is what the approval step is for. Back-translation narrows the gap. Nothing closes it.
-- **The evidence layer is where a lopsided reasoner still wins.** Take the pivotal
-  historical claim in the run. Lean certifies that if it is true, the opposing rule breaks,
-  and says nothing about whether it is true. An agent better at finding support than
-  counterevidence returns four real sources. The system then reports every step certified,
-  no hidden assumptions, leaf well sourced. Green across the board, and wrong. This is
-  worse than doing nothing, because a certified graph looks rigorous. The honest opponent
-  is reduced to "something is off about that claim, but I cannot say what", the exact
-  sentence the idea was built to eliminate. The evidence protocol narrows this by forcing
-  advocacy for each party and explicit falsification tests. It does not close it, because
-  nothing in it is checkable by anyone but the agent that ran it.
-- **The attack surface is the vocabulary, not the proofs, and the rules that fix the
-  vocabulary.** Merge two symbols and you get a clean, axiom-free, worthless proof. Amend
-  the rule for amending the environment, Guerra-Pujol's reading of Gödel's loophole, and
-  you can simplify the protocol from inside it. The protocol now grants any split by
-  default and puts its Phase 0 rules outside the environment for the duration of a run.
-- **This was reconstruction, not live operation**, with the full transcript and the
-  author's own cut points. Live, the quantifier question must be asked before anyone knows
-  which answer helps.
-- **Nothing here generates hypotheses.** Einstein's detective invents the plot. These
-  protocols only check it.
+**Translation remains a judgment.** A valid proof may formalize the wrong claim.
+Speaker approval, independent back-translation, and domain review can expose discrepancies.
+The human-debate reconstructions did not have the speakers' approval.
+
+**The evidence search can remain biased.** An analyst may find several real supporting
+sources and miss decisive counterevidence. Every formal inference could then check while
+the resulting assessment remains wrong. The evidence protocol requires opposing advocacy
+and explicit challenges, but the first run used a case whose counterevidence was readily
+available. It does not establish resistance to harder cases
+([Learnings §6](learnings.md#6-the-hole-worked-through)).
+
+**A clean audit does not establish a neutral model.** The zero-axiom audit reports proof
+dependencies. It cannot tell whether an environment field gives one side an unjustified
+advantage. The red team demonstrated this in the original Normative branch. Position
+witnesses establish satisfiability; neutrality still needs scrutiny.
+
+**Finding a certificate can be difficult even when checking it is straightforward.**
+The runs use small models. Larger arguments may exceed the available search budget.
+A protocol must preserve that uncertainty rather than label unsuccessful search a
+refutation.
+
+**The benefit to judges remains unmeasured.** A careful reader can find many of these
+logical gaps without Lean. Formalization forces the reconstruction to supply each step
+and lets others check the resulting proofs. Whether that benefit justifies the cost,
+especially when evaluating stronger AI systems, needs comparative tests.
+
+**The method starts with proposed arguments.** It checks hypotheses and can suggest
+missing premises; it does not explain how to generate good scientific or political
+hypotheses in the first place. Reconstruction from a complete transcript is also easier
+than handling claims as they arrive.
 
 ## 6. Next steps
 
-Ordered by what unblocks the most. Items marked done were verified by a clean build with
-every theorem reporting no axioms.
+The completed milestones include the evidence types and initial coherence checks
+(`run-birthright-2`), the Article V extension, a second debate, a two-AI run, an
+adversarial evidence investigation, and the first Phase 0 red team. The next experiments
+should test the limits those runs exposed.
 
-1. **Adopt `evidence-protocol.md` as Phase 3 and run it adversarially.** Two instances
-   assigned opposing hypotheses, or one instance plus a critic scored on what it finds
-   against its own side. This is the direct attack on the hole in Section 5.
-2. **Done (`run-birthright-2`): an evidence ledger type.** `Debate/Evidence.lean`; the
-   report's EVIDENCE section carries grade and provenance per leaf, every grade marked as
-   unverified.
-3. **Done (`run-birthright-2`): probability coherence constraints.** Entailment orderings
-   and partition sums as decidable checks, run on the two real tables in `sources/`. Weak
-   by design: they catch incoherence, not lopsided search.
-4. **Done (`run-birthright-2`): Article V load-bearing.** See Section 4. Suber's reading
-   is a contestable node, not an assumption.
-5. **Done (`run-deathpenalty-1`): a second debate**, chosen from titles only. Nine
-   unstated premises; the is/ought gap recurred; the moderator asked the bridge question
-   live. Next: a second independent extraction to measure recall (Q3).
-6. **Done (two-AI run 1): a two-AI run** on the constitutional proposition. Both debaters
-   attacked the signature; the kernel isolated the one contested node. Next: a run with a
-   debater instructed to be deceptive (Q7).
-7. **Done (red team 1): Phase 0 red-teamed.** Ten attacks, none touching an inference;
-   protocol revised (§2.6–2.9, §3.4, §6, §8, §9.7); one attack found in the run's own
-   code and repaired. Next: a second red team against the revised protocol.
-8. **Done (`run-evidence-1`): adversarial evidence run** on one leaf. Two opposed agents
-   converged; grade fed back into the ledger. Next: a leaf where the counterevidence is
-   hard to find, and scoring (Q2).
+1. **Measure the quality of the reconstruction.** Use independent extractions and domain
+   review to count important problems found, problems missed, and false alarms introduced
+   by formalization. Compare the disputed claim set with expert readers' assessments
+   (Q1, Q3, Q6).
+2. **Test deliberate deception.** Repeat the two-AI setup with a participant instructed
+   to exploit the protocol, after independent review of its vocabulary (Q7). Red-team
+   the revised Phase 0 rules, including whether a satisfiable environment can still
+   favor one side (Q4, Q10).
+3. **Make the evidence test harder.** Choose a claim whose counterevidence is difficult
+   to find, score agents for useful challenges to their assigned position, and make source
+   records independently inspectable (Q2, Q8, Q17).
+4. **Test the cost and usefulness of the interface.** Measure proof and countermodel
+   search on larger examples, try quantifier elicitation as claims arrive, and test
+   whether unfamiliar judges can use the resulting report (Q5, Q9, Q16).
+5. **Reuse what the examples share.** Factor argument schemas from the two debates
+   (Q11) and evaluate the proposed extension to [scientific papers](scientific-papers.md).
+   Training on checkable outcomes remains a further experiment, outside current means
+   (Q14).
 
 ---
 
 ## Appendix A. The roles
 
 Detective, investigative journalist, logician, debater, lawyer, judge, scientist. Einstein
-compared the scientist to a detective who cannot turn to the back of the book. All seven
-run the same loop: break the question into separately testable claims, label each by what
+compared the scientist to a detective who cannot turn to the back of the book. These roles share several useful habits: break the question into separately testable claims, label each by what
 would settle it, keep observation and inference and verdict apart, generate rival
 explanations and hunt for what discriminates, state the standard of proof first.
 
-What separates them is loyalty.
+Their responsibilities differ:
 
 | Role | Loyal to | Produces | Checked by |
 |---|---|---|---|
@@ -219,20 +225,22 @@ What separates them is loyalty.
 | Detective, journalist, scientist | the truth | a reconstruction and its uncertainty | evidence, replication |
 | Judge | the standard of proof | a verdict | the record, appeal |
 
-The debater and the lawyer are not trying to be right. A good system is one where two of
-them trying to win produce something a judge can use, and every profession that works has
-a protocol that makes that conversion: burden of proof, rules of evidence, discovery,
-cross-examination, preregistration, peer review, replication. They all fail the same way
-when the protocol is missing: a persuasive case nobody can locate the flaw in.
+Debaters and lawyers advocate for a position; investigators are expected to revise their
+account as evidence changes; judges apply a stated standard. Procedures such as discovery,
+cross-examination, preregistration, peer review, and replication help make their work
+answerable to others.
 
-This project's division of labour: the machine takes the logician's job entirely, so the
-judge no longer needs to find the flaw. The evidence protocol makes one analyst rotate
-through detective, counsel for each party, and judge, so no single loyalty dominates. The
-two-AI setting in `inference-protocol.md` §9 puts side-loyal agents inside the fence.
+In this project, Lean checks the formal deductions. The evidence protocol asks an
+analyst to investigate, construct each party's strongest case, and assess the result,
+with a record of the evidence that changed the assessment. The two-AI setup assigns
+advocacy to separate participants. Whether these arrangements produce reliable judgments
+is a question for the experiments.
 
 ## Appendix B. Concept map
 
-The same objects under different names.
+Analogies that helped develop the protocol. These are comparisons of roles, not
+mathematical or legal equivalences; a p-value, a subjective credence, and a standard of
+proof answer different questions.
 
 | This project | Science | Law | Evidence protocol |
 |---|---|---|---|

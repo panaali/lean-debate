@@ -1,129 +1,128 @@
 # Proof-carrying debate
 
-A machine-checked formalization of one real political debate, *Should America End
-Birthright Citizenship?* (Open to Debate, June 2026), built as a test of a protocol in
-which every claimed inference must carry a certificate a proof assistant can check.
+A persuasive argument can be wrong in ways that neither an opponent nor a judge can
+identify. This is a central challenge for AI oversight: how can we evaluate an argument
+from a system whose reasoning exceeds our own ability to check it?
 
-Current state: 90 theorems across two debates, a two-AI run and the evidence layer, all
-reporting no axioms. Birthright (`run-birthright-3`): 36 ledger edges, 4 unstated
-premises. Death penalty (`run-deathpenalty-1`): 35 edges, 9 unstated premises. Two-AI
-run 1: 8 verdicts. Evidence run 1: two ledgers on one leaf, kernel-checked for coherence.
-`lake exe report` prints the birthright ledger, `lake exe report deathpenalty` the other.
+**Proof-carrying debate investigates whether AI can act as a logician for ordinary
+language: exposing hidden assumptions, making disagreements precise, and producing
+reasoning that can be checked independently.**
 
-## Layout
+The approach separates two questions: does a conclusion follow from its premises, and
+what justifies accepting those premises? Language models translate arguments into
+explicit claims and logical steps. The Lean proof assistant checks proofs and
+counterexamples for those steps. A complementary evidence protocol guides investigation
+of factual claims, while questions of interpretation and values remain explicit.
 
-```
-README.md                 this file
-docs/                     specifications, results, learnings, thesis
-docs/sources/             raw source conversations
-Debate.lean               library root; imports every module
-Main.lean                 entry point for the `report` executable
-Debate/Protocol.lean      statuses, verdicts, rendering; no debate content
-Debate/Evidence.lean      evidence-layer types; credence coherence checks; the meta-rule
-Debate/Evidence/          coherence checks on two real evidence tables
-Debate/Birthright/        the six argument branches, the axiom audit, the ledger
-lakefile.toml             Lake build config (library `Debate`, executable `report`)
-lean-toolchain            Lean 4 v4.24.0, no Mathlib
-```
+The intended result is a record of what an argument establishes, which assumptions it
+requires, and where disagreement remains. Formal checking cannot establish that the
+premises are true or that the translation preserves the speaker's meaning. Source
+investigation and scrutiny of the translation are therefore essential parts of the
+method. The larger ambition is to make sophisticated reasoning answerable to people who
+cannot reproduce every step themselves.
 
-## Documentation
+## What the project has shown
 
-| Read | For |
+The first case study reconstructed a debate on birthright citizenship. It exposed
+unstated premises and apparent rebuttals that left the opposing conclusion untouched.
+A second debate, on the death penalty, produced similar patterns. In a separate two-AI
+run, both sides' arguments were valid under different readings of the question; the
+formalization made that difference explicit. An evidence run tested whether agents
+assigned opposing positions would converge after investigating the same disputed claim.
+
+These are initial demonstrations. Their value at scale, their fidelity to speakers'
+intentions, and their resistance to a deceptive participant remain research questions.
+The [thesis](docs/thesis.md) develops the case; [results](docs/results.md) records the
+experiments and their limits.
+
+The main development currently audits **90 theorems**: 36 birthright verdicts,
+35 death-penalty verdicts, 8 two-AI verdicts, and 11 evidence checks. All report no axioms.
+The two human-debate reconstructions identify 4 and 9 unstated premises respectively.
+The theorem count records what was checked; it does not measure how much of a debate
+was faithfully captured.
+
+## Start reading
+
+| Document | Purpose |
 |---|---|
-| `docs/thesis.md` | Start here: what the project is for, the two layers, the concept map, the roadmap |
-| `docs/claims.md` | The proposal's own claim ledger: ID, status, evidence, strongest objection |
-| `docs/open-questions.md` | Open questions with candidate answers and what would resolve each |
-| `docs/project-overview.md` | The whole project end to end: origin, protocol, Lean design, results, learnings |
-| `docs/results.md` | What was built and what it found, with the tallies |
-| `docs/inference-protocol.md` | The inference-layer specification (checked by Lean) |
-| `docs/evidence-protocol.md` | The evidence-layer specification (Phase 3 of the protocol) |
-| `docs/learnings.md` | What the exercise is worth and where it fails; read §6 before showing this to anyone |
-| `docs/sources/` | The raw conversations everything was derived from |
+| [Thesis](docs/thesis.md) | The problem, central hypothesis, method, findings, and next experiments |
+| [Results](docs/results.md) | What each run found, with reproducible tallies and limitations |
+| [Learnings](docs/learnings.md) | What formal checking adds and where the approach still fails |
+| [Claims ledger](docs/claims.md) | The proposal's claims, evidence, statuses, and strongest objections |
+| [Open questions](docs/open-questions.md) | Candidate answers and what would resolve each question |
+| [Inference protocol](docs/inference-protocol.md) | Rules for formalizing arguments and checking inferences |
+| [Evidence protocol](docs/evidence-protocol.md) | Rules for investigating factual and probabilistic claims |
+| [Project overview](docs/project-overview.md) | Development history and detailed explanation of the Lean design |
+| [Scientific papers](docs/scientific-papers.md) | Proposed extension to papers with linked proofs and evidence records |
+| [Contributing](docs/contributing.md) | Useful work, ownership checks, and editing conventions |
+| [Source conversations](docs/sources/) | The discussions from which the project developed |
+
+Read [Learnings §6](docs/learnings.md#6-the-hole-worked-through) before presenting the
+project: checked reasoning can still rest on a biased or incomplete evidence search.
 
 ## Running it
 
+Run from the repository root with `lake` on your PATH. The
+[toolchain file](lean-toolchain) pins Lean 4 v4.24.0; the main build uses no Mathlib or
+external Lean packages.
+
 ```bash
-lake build       # builds the library and prints the axiom audit
-lake exe report  # prints the judge-facing ledger
+lake build                    # builds the library and report; runs both axiom audits
+lake exe report               # birthright citizenship ledger
+lake exe report deathpenalty  # death-penalty ledger
+lake exe report all           # both ledgers
 ```
+
+To inspect the audits explicitly after building:
+
+```bash
+lake env lean Debate/Birthright/Audit.lean
+lake env lean Debate/DeathPenalty/Audit.lean
+```
+
+The executable renders existing ledgers. The debate, translation, and evidence workflows
+are conducted through the documented runs. Lean checks their formal theorems; the
+report's English labels and theorem references are maintained separately.
 
 ## Status and where to go next
 
-Updated 14 September 2026. The roadmap is `docs/thesis.md` §6; this is its current state.
+Updated 14 September 2026. Run results record completed work; `STATUS.md` files record
+ownership and available follow-up work.
 
-| Item | State | Where |
+| Work | State | Record |
 |---|---|---|
-| Birthright run through the inference layer | done, tagged `run-birthright-2` | `Debate/Birthright/`, `docs/results.md` |
-| Evidence-layer types and coherence checks in Lean | done | `Debate/Evidence.lean`, `Debate/Evidence/Examples.lean` |
-| Article V load-bearing in the Motion branch | done | `Debate/Birthright/Motion.lean`, E31–E34 |
-| Adversarial evidence run on leaf K1 (two agents, opposing assignments) | done, tagged `run-evidence-1`; K1 grade fed back into the ledger | `docs/runs/evidence-1/RESULTS.md` |
-| Two-AI debate run on the constitutional proposition | done, tagged `run-twoai-1`; 8 verdicts; back-translation matched | `docs/runs/two-ai-1/RESULTS.md` |
-| Second debate (death penalty), chosen from titles only | done, tagged `run-deathpenalty-1`; 35 theorems, 9 unstated premises | `docs/runs/death-penalty/RESULTS.md` |
-| Red team of Phase 0 (ten attacks) | done; findings filed, three repaired in Lean, protocol §2.6–2.9, 3.4, 6, 8, 9.7 revised | `docs/redteam-phase0.md`, C4/C5/C6/C17/C19/C20, Q4/Q10/Q19–Q25 |
-| Reusable argument-schema library | not started; now two debates' worth of branches to factor | `docs/open-questions.md` Q11 |
-| Second red team, against the revised protocol | not started | `docs/redteam-STATUS.md` |
-| Training on the checkable half | not started, outside current means | Q14 |
+| Birthright reconstruction and red-team repairs | complete, `run-birthright-3` | [Results](docs/results.md), [Lean](Debate/Birthright/) |
+| Evidence types and initial coherence checks | complete, introduced in `run-birthright-2` | [Types](Debate/Evidence.lean), [examples](Debate/Evidence/Examples.lean) |
+| Article V in the Motion branch | complete, E31–E34 in `run-birthright-2` | [Explanation](docs/results.md#article-v-made-load-bearing-added-in-run-birthright-2) |
+| Adversarial evidence run on K1 | complete, `run-evidence-1`; findings entered in the ledger | [Results](docs/runs/evidence-1/RESULTS.md), [status](docs/runs/evidence-1/STATUS.md) |
+| Two-AI constitutional debate | complete, `run-twoai-1`; 8 verdicts and matching back-translation | [Results](docs/runs/two-ai-1/RESULTS.md), [status](docs/runs/two-ai-1/STATUS.md) |
+| Death-penalty reconstruction | complete, `run-deathpenalty-1`; selected from titles only | [Results](docs/runs/death-penalty/RESULTS.md), [status](docs/runs/death-penalty/STATUS.md) |
+| First Phase 0 red team | complete; ten attacks, protocol revisions, and three Lean repairs | [Findings](docs/redteam-phase0.md), [status](docs/redteam-STATUS.md) |
+| Reusable argument schemas | not started; two debates now supply examples | [Q11](docs/open-questions.md#q11-is-there-a-reusable-library-or-does-every-debate-need-its-own-signatures) |
+| Second red team against the revised protocol | not started | [Available work](docs/redteam-STATUS.md) |
+| Training on the checkable part | not started, outside current means | [Q14](docs/open-questions.md#q14-does-training-on-the-checkable-half-transfer-to-leaf-honesty) |
 
-Each `docs/runs/<name>/SETUP.md` fixes the proposition, environment, rules and roles
-before any agent is invoked; results land in the same folder. Each in-progress run has a
-`STATUS.md` saying which pieces have landed, which are being produced right now and by
-whom, and what an outside agent may safely add. Read it before touching a run folder.
-The red team's status is in `docs/redteam-STATUS.md`. A run is finished when its
-folder has a `RESULTS.md`, its Lean modules (if any) are in `Audit.lean`, and
-`docs/results.md`, `docs/claims.md` and `docs/open-questions.md` have been updated with
-what it changed.
+[Thesis §6](docs/thesis.md#6-next-steps) explains which experiments would be most
+informative. Before taking work, read the relevant setup and status, and check
+`git status --short`. An unfinished run is not necessarily available to take over.
+Independent critiques can go in [reviews](docs/reviews/).
 
-To pick something up: take an in-progress run whose folder lacks `RESULTS.md`, or an
-OPEN question in `docs/open-questions.md`, or a CONTESTED claim in `docs/claims.md`.
+## Layout
 
-## What kind of help is wanted
-
-Running experiments is one kind. The others matter as much, and an agent should feel free
-to take any of them without being asked:
-
-- **Attack the arguments.** Read `docs/thesis.md` and `docs/claims.md` as an opponent.
-  Find the step that does not follow, the claim whose status is too generous, the
-  objection nobody has written down. Add it to the claim's "strongest objection" cell or
-  as a new question. Downgrade a status if the evidence does not carry it.
-- **Refine the writing.** Every document here was written fast. Cut what repeats, split
-  what conflates two ideas, rename what is misnamed, move a paragraph to the document it
-  belongs in. Shorter and sharper is the goal; `docs/thesis.md` should read in one sitting.
-- **Fix the organization.** If two documents say the same thing, merge toward one and
-  leave a pointer. If a document has grown a section that is really a new document, split
-  it. If the reading order in this README is wrong, change it.
-- **Check consistency.** Numbers, IDs, file names, and section references are repeated
-  across `README.md`, `docs/results.md`, `docs/project-overview.md`, `docs/thesis.md` and
-  the two registers. When one changes the others drift. Find and fix drift.
-- **Verify the unverified.** Anything marked "from general knowledge" or "not inspected"
-  (search for Q17) is a claim waiting for the evidence protocol to be run on it.
-- **Simplify the Lean.** Six branches each declare their own vocabulary. Factor shared
-  shapes into schemas (Q11) without changing any verdict; the audit must still pass.
-
-Conventions for editorial work: never lose information (move it, do not delete it); keep
-claim, question, and edge IDs stable; when you change a status or a finding, say in the
-commit message what evidence changed it; if you disagree with something but do not want
-to rewrite it yet, put a note in `docs/reviews/<date>-<topic>.md` and reference the ID.
-
-## How to work on this
-
-The project is a working document set, not a publication. To contribute:
-
-- Attack a claim in `docs/claims.md` or answer a question in `docs/open-questions.md`.
-  Reference them by ID (`C7`, `Q2`). Change a status only with the evidence that changed it.
-- Never delete a row or an entry. Mark it superseded and say why.
-- New findings that change the frame go in `docs/thesis.md`; new reference material goes
-  in `docs/project-overview.md`; raw conversations go in `docs/sources/` with a descriptive
-  name.
-- Lean changes must build. `lake build` must still report every verdict as depending on no
-  axioms, and `Debate/Birthright/Audit.lean` must list every new theorem.
-- Git records what replaced what; sibling Lean modules record what coexists. A change that
-  supersedes an existing formalization (a fix, a rename, a protocol-layer addition) is made
-  in place and committed. A change meant to be *compared* with an existing formalization
-  (a second independent formalization of the same speech, an alternative modelling of the
-  same analogy, a second debate) is added as a sibling module under the same branch
-  namespace, with its own signature, listed in `Audit.lean`, and with a comparison note in
-  `docs/results.md`. No version folders.
-- Each completed run is tagged (`run-birthright-3` is the current one; `-2` added the
-  evidence layer and Article V; `-1` is the original 30-verdict development) so the tallies in `docs/results.md` stay
-  reproducible after the protocol layer moves on.
-- Commit as you go, with a message that names the claim or question the change bears on.
+```text
+README.md                 project description and reading guide
+docs/                     thesis, protocols, results, learnings, and registers
+docs/sources/             raw source conversations
+docs/runs/                fixed setups, submissions, status, and results
+docs/reviews/             critiques and editorial drafts
+Debate.lean               library root and module imports
+Main.lean                 entry point for the report executable
+Debate/Protocol.lean      claim/edge records, statuses, verdicts, rendering
+Debate/Evidence.lean      evidence types, coherence checks, meta-rule proposition
+Debate/Evidence/          worked evidence checks
+Debate/Birthright/        six argument branches, two-AI run, audit, and ledger
+Debate/DeathPenalty/      six argument branches, audit, and ledger
+experiments/              separate experiments with their own setup and status
+lakefile.toml             Lake build configuration
+lean-toolchain            pinned Lean version
+```

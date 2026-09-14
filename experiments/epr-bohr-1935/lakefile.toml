@@ -3,7 +3,7 @@ defaultTargets = ["PaperStudies", "report"]
 
 [[lean_lib]]
 name = "PaperStudies"
-globs = ["PaperStudies.+"]
+globs = ["PaperStudies", "PaperStudies.+"]
 
 [[lean_exe]]
 name = "report"
