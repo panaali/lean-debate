@@ -6,7 +6,7 @@ namespace PaperStudies
 def eprResults : List Certificate :=
   [ checked "EE1" "CERTIFIED: separate reality assignments under E1-E3"
       using EPR.separate_realities
-  , checked "EE2" "CERTIFIED: joint reality requires the explicit E4 bridge"
+  , checked "EE2" "CERTIFIED: joint reality via the explicit E4 bridge"
       using EPR.joint_reality
   , checked "EE3" "CERTIFIED: pair completeness and E5 exclude joint reality"
       using EPR.complete_excludes_joint_reality
@@ -43,8 +43,8 @@ def eprResults : List Certificate :=
 def bohrResults : List Certificate :=
   [ checked "BR1" "CERTIFIED: complementarity excludes joint predictive warrant"
       using Bohr.no_joint_warrant_of_complementary
-  , checked "BR2" "CERTIFIED: alternative warrants give both coarse prediction claims"
-      using Bohr.coarse_realities_of_alternatives
+  , checked "BR2" "CERTIFIED: alternative warrants give eligibility for both quantities under the reality criterion"
+      using Bohr.criterion_eligibility_of_alternatives
   , checked "BR3" "REPAIR: strong warrant transport suffices; it is not EPR reality invariance"
       using Bohr.joint_warrant_of_transport
   , checked "BR4" "WITNESS: the alternative predictive procedures coexist"

@@ -137,6 +137,9 @@ p₁ + p₂ = 0    iff   p₂ = −p₁
 
 The implementation uses integers as an arithmetic illustration. It does not replace
 the continuous variables, generalized eigenstates, or delta distributions of the paper.
+These two proofs use core integer lemmas that depend on Lean's standard `propext`
+axiom. The [audit](audit.txt) records this dependency; neither identity is a premise
+of the conditional incompleteness proof.
 
 EE15 is a diagnostic for E5. Two explicit linear integer-matrix operators do not commute
 but share a nonzero eigenvector. Four supporting lemmas verify their linearity. This

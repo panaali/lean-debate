@@ -1,3 +1,3 @@
 import PaperStudies.Report
 
-def main : IO Unit := IO.println PaperStudies.report
+def main : IO Unit := IO.print PaperStudies.report

@@ -1,0 +1,77 @@
+EPR AND BOHR (1935): CHECKED ARGUMENT COMPANIONS
+Conditional logical reconstructions; no Hilbert-space or apparatus derivation.
+Each entry carries a Lean proof. English descriptions require fidelity review.
+
+EPR (17 result entries)
+EE1  CERTIFIED: separate reality assignments under E1-E3
+  EPR.separate_realities
+EE2  CERTIFIED: joint reality via the explicit E4 bridge
+  EPR.joint_reality
+EE3  CERTIFIED: pair completeness and E5 exclude joint reality
+  EPR.complete_excludes_joint_reality
+EE4  CERTIFIED: E1-E5 entail failure of pair completeness
+  EPR.incomplete
+EE5  WITNESS: the EPR premise bundle is satisfiable
+  EPR.premises_satisfiable
+EE6  COUNTERMODEL: complete contextual assignments without E4
+  EPR.contextual_countermodel
+EE7  GAP: E1-E3 and E5 alone do not establish incompleteness
+  EPR.gap_without_invariance
+EE8  GAP: mechanical non-disturbance does not entail reality invariance
+  EPR.separation_does_not_imply_invariance
+EE9  COUNTERMODEL: separate assignments need not be joint
+  EPR.separate_does_not_imply_joint
+EE10  COUNTERMODEL: the reality criterion is a substantive dependency
+  EPR.gap_without_reality_criterion
+EE11  COUNTERMODEL: the representation restriction is a substantive dependency
+  EPR.gap_without_quantum_restriction
+EE12  GAP: the sufficient reality criterion has no converse
+  EPR.reality_criterion_has_no_converse
+EE13  ARITHMETIC: position offset fixes the sign (integer illustration)
+  EPR.position_prediction
+EE14  ARITHMETIC: zero total momentum fixes the sign (integer illustration)
+  EPR.momentum_prediction
+EE15  DIAGNOSTIC: noncommuting linear operators can share an eigenvector
+  EPR.noncommutation_allows_common_eigenvector
+EE16  ENCODING: invariance is built into an unindexed reality predicate
+  EPR.unindexed_reality_is_invariant
+EE17  CERTIFIED: the unindexed version of the conditional argument
+  EPR.unindexed_incomplete
+
+BOHR (11 result entries)
+BR1  CERTIFIED: complementarity excludes joint predictive warrant
+  Bohr.no_joint_warrant_of_complementary
+BR2  CERTIFIED: alternative warrants give eligibility for both quantities under the reality criterion
+  Bohr.criterion_eligibility_of_alternatives
+BR3  REPAIR: strong warrant transport suffices; it is not EPR reality invariance
+  Bohr.joint_warrant_of_transport
+BR4  WITNESS: the alternative predictive procedures coexist
+  Bohr.bohr_alternative_predictions
+BR5  COUNTERMODEL: no joint predictive warrant in the concrete scenario
+  Bohr.bohr_no_joint_warrant
+BR6  COMPATIBLE: joint external reality and no joint predictive warrant
+  Bohr.no_joint_warrant_compatible_with_simultaneous_reality
+BR7  GAP: the strong warrant-transport bridge fails in the concrete model
+  Bohr.bohr_transport_fails
+BR8  DISTINCTION: mechanical non-disturbance versus prediction conditions
+  Bohr.mechanical_non_disturbance_is_not_condition_preservation
+BR9  WITNESS: a context-relative scope-complete representation
+  Bohr.bohr_scope_complete
+BR10  DISTINCTION: scope completeness versus all-context sharp representation
+  Bohr.scope_complete_not_all_contexts_represented
+BR11  GAP: the predictive critique alone does not establish scope completeness
+  Bohr.critique_alone_does_not_entail_scope_completeness
+
+COMPARISON (5 result entries)
+CE1  ALIGNMENT: same prediction data under explicit label translation
+  Comparison.prediction_alignment
+CE2  ALIGNMENT: same mechanical-non-disturbance data
+  Comparison.mechanical_alignment
+CE3  ALIGNMENT: same sharp-representation data
+  Comparison.representation_alignment
+CE4  COMPATIBLE: joint reality and no joint predictive warrant
+  Comparison.joint_reality_without_joint_warrant
+CE5  DISTINCTION: different completeness tests give compatible verdicts
+  Comparison.different_completeness_tests
+
+Read EPR.md, BOHR.md and COMPARISON.md for assumptions and source coverage.

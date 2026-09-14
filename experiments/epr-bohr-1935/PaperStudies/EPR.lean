@@ -79,7 +79,7 @@ theorem separate_realities (s : Scenario)
   ⟨h3 .position .position h1.1 (h2 .position),
    h3 .momentum .momentum h1.2 (h2 .momentum)⟩
 
-/-- EE2: transporting those assignments into one context requires E4. -/
+/-- EE2: E4 supplies the transport of those assignments into one context. -/
 theorem joint_reality (s : Scenario)
     (h1 : Correlations s) (h2 : Separation s) (h3 : RealityCriterion s)
     (h4 : RealityInvariance s) (c : Context) : JointRealityAt s c := by
@@ -271,12 +271,21 @@ def MomentumRelation (left right : Int) : Prop := left + right = 0
 theorem position_prediction (offset left right : Int) :
     PositionRelation offset left right ↔ right = left + offset := by
   unfold PositionRelation
-  omega
+  constructor
+  · intro h
+    rw [← Int.sub_add_cancel right left, h]
+    exact Int.add_comm offset left
+  · intro h
+    rw [h, Int.add_comm left offset, Int.add_sub_cancel]
 
 theorem momentum_prediction (left right : Int) :
     MomentumRelation left right ↔ right = -left := by
   unfold MomentumRelation
-  omega
+  constructor
+  · intro h
+    exact (Int.neg_eq_of_add_eq_zero h).symm
+  · intro h
+    rw [h, Int.add_right_neg]
 
 /-! ## EE15: do not overgeneralize noncommutation
 
@@ -298,7 +307,7 @@ theorem projection_add (u v : Vector3) :
 
 theorem projection_scale (a : Int) (v : Vector3) :
     projection (vscale a v) = vscale a (projection v) := by
-  simp [projection, vscale]
+  exact congrArg (fun z : Int => (a * v.1, a * v.2.1, z)) (Int.mul_zero a).symm
 
 theorem swap_add (u v : Vector3) : swap (vadd u v) = vadd (swap u) (swap v) := rfl
 

@@ -39,7 +39,7 @@ metaphysical completeness theorem.
 | B-07 | pp. 700–701 | Complementarity is mutual exclusion of procedures permitting unambiguous definitions of complementary quantities. | `Complementary` | Modeling choice; consequence checked |
 | B-08 | pp. 701–702 | Object/instrument discrimination and classical description of apparatus delimit quantum description. | `ScopeComplete` | Highly compressed model |
 | B-09 | abstract, pp. 700–702 | Quantum mechanics may meet completeness demands within its scope. | `bohr_scope_complete` | Requires the model’s representation facts; checked only for the finite reconstruction |
-| B-10 | p. 700 wording “does not justify” | The predictive critique alone does not establish even scope-relative completeness. | `noRepresentationScenario`, `critique_alone_does_not_entail_scope_completeness` | Checked by a second nonempty countermodel |
+| B-10 | p. 700, negative critique and affirmative completeness claim | The predictive critique alone does not establish even scope-relative completeness. | `noRepresentationScenario`, `critique_alone_does_not_entail_scope_completeness` | Checked by a second nonempty countermodel |
 
 ## Assumptions and interpretive choices
 
@@ -48,7 +48,7 @@ metaphysical completeness theorem.
 | BE-01 | `Quantity` contains only position and momentum. | The reconstruction preserves the original example and makes no claim about all observables. |
 | BE-02 | `Arrangement` has a position frame and a momentum balance. | These are abstractions of Bohr’s rigid-support and momentum-controlled procedures, not apparatus simulations. |
 | BE-03 | `mechanicallyUndisturbed`, `predicts`, and `predictionConditionsPreserved` are independent fields. | This prevents “no mechanical disturbance” from silently implying that all predictive conditions remain fixed. |
-| BE-04 | `CoarseReality` existentially forgets the arrangement. | This represents the reading of EPR that Bohr attacks; it is not asserted as EPR’s only possible meaning. |
+| BE-04 | `CriterionEligible` existentially forgets the arrangement. | It records eligibility for EPR’s sufficient criterion, not physical reality itself. |
 | BE-05 | `ContextualWarrant` requires mechanical non-disturbance, a prediction, and preserved conditions in the same arrangement. | This is the formal reconstruction of the page-700 distinction. Bohr does not provide this formula. |
 | BE-06 | `Complementary` forbids simultaneous preservation of both sets of prediction conditions. | The physical grounds are supplied by Bohr’s apparatus analysis but are assumptions in this propositional model. |
 | BE-07 | `WarrantTransport` transports a prediction and its conditions to every context. | It is an explicitly over-strong sufficient premise for joint predictive warrant, not EPR’s own invariance-of-reality or locality premise. |
@@ -62,15 +62,15 @@ The central dependency is:
 alternative procedures + context-specific conditions
                  |                         |
                  v                         v
-       two coarse reality claims     complementarity
+       two eligibility claims        complementarity
                  |                         |
                  |                 no common-context warrant
                  v
-      joint predictive warrant only with BE-07 (transport across contexts)
+      BE-07 supplies one sufficient route to joint predictive warrant
 ```
 
 The concrete `bohrScenario` is nonempty: both inductive types have constructors.
-It validates each arrangement-specific prediction and both coarse reality
+It validates each arrangement-specific prediction and both criterion-eligibility
 claims, while refuting a joint warrant and `WarrantTransport`. Separately, an
 external assignment can call both quantities real in this same model. Thus no
 joint predictive warrant is not identified with no simultaneous reality.
@@ -100,9 +100,9 @@ reality or derive either from experimental data.
 |---|---|
 | Restatement of EPR and reply’s announced aim, p. 696 | Checked against original; summarized |
 | Canonical-variable transformation, footnote pp. 696–697 | Visually checked; outside formal scope because no linear algebra or commutator model is introduced |
-| Single-particle slit, rigid diaphragm, recoiling diaphragm, pp. 697–699 | Checked; compressed into BE-02 and BE-06 |
-| Interference loss and uncertainty-relation reasoning, p. 698 | Checked as a source claim; assumed, not derived |
-| Two-particle EPR diaphragm construction and its footnote, pp. 699–700 | Checked; logical prediction structure modeled; physical equivalence assumed |
+| Single-particle slit, rigid diaphragm, recoiling diaphragm, pp. 697–699 | Inspected in the source; compressed into BE-02 and BE-06 |
+| Interference loss and uncertainty-relation reasoning, p. 698 | Inspected in the source; assumed, not derived |
+| Two-particle EPR diaphragm construction and its footnote, pp. 699–700 | Inspected in the source; logical prediction structure modeled; physical equivalence assumed |
 | Decisive distinction between mechanical disturbance and prediction conditions, p. 700 | Checked and explicitly formalized |
 | Time/energy and clock discussion, pp. 700–701 | Checked; outside the principal position/momentum formalization |
 | Object/instrument cut and classical apparatus language, p. 701 | Checked; represented only by scope indexing |
@@ -113,7 +113,7 @@ reality or derive either from experimental data.
 
 Lean checks that complementarity, as defined, rules out one-arrangement joint
 predictive warrant; that separate context-indexed predictions still yield the
-two coarse claims; and that a strong transport premise would be sufficient to
+two criterion-eligibility claims; and that a strong transport premise would be sufficient to
 recombine the predictive warrants. It checks that absence of joint warrant is
 compatible with a context-independent assignment of both realities. A second
 countermodel proves that the predictive critique alone entails no
