@@ -170,9 +170,10 @@ A user test with judges who did not watch the debate.
 ### Q17. Is the legal and historical content in the docs correct?
 **Status:** PARTIAL. K1 has been through the evidence layer (`docs/runs/evidence-1/`) and
 its ledger grade now carries provenance. The rest of `learnings.md` §4 and §6 and the
-death-penalty extraction's factual claims remain unverified. Specific items: (a) the
-reported 30 June 2026 Supreme Court decision on the 2025 birthright order, cited by one
-evidence agent and excluded by the formalizer as past the freeze; (b) the Congressional
+death-penalty extraction's factual claims remain unverified. Specific items: (a) *resolved*: the 30 June 2026 decision exists, *Trump v. Barbara*,
+No. 25-365, 6 to 3, the Clause covers children of parents unlawfully or temporarily
+present (verified 14 September 2026 against supremecourt.gov); it is post-freeze for both
+birthright runs and is recorded as such; (b) the Congressional
 Globe pages 2890–2897, quoted by both agents from OCR or transcription, never from page
 images; (c) the death-penalty extraction's dates, case names and statistics, unchecked
 against the transcript a second time. **Why it matters:** `learnings.md` §4 and §6 cite cases and history from

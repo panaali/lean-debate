@@ -11,9 +11,14 @@ and `AGAINST.md`. Coherence checks on both probability tables are theorems in
 was held 6 June 2026. The AGAINST agent reports a Supreme Court decision on the 2025
 birthright order dated 30 June 2026 and scores K1d with and without it. Ruling: the
 freeze is the debate date, 6 June 2026, so the reported decision is excluded, and the
-AGAINST agent's without-it range (12–25%) is the one used. The formalizer has not
-verified that the decision exists; it is recorded as the agent's report, not as a fact.
-The FOR agent did not search for it and said so.
+AGAINST agent's without-it range (12–25%) is the one used for the frozen run.
+*Verified after the run (14 September 2026):* the decision exists. *Trump v. Barbara*,
+No. 25-365, decided 30 June 2026, 6 to 3, struck down Executive Order 14160 and held that
+the Citizenship Clause covers children born to parents unlawfully or temporarily present
+(slip opinion at supremecourt.gov/opinions/25pdf/25-365_4hdj.pdf; CRS LSB11468). It is
+post-freeze and stays excluded from the run's verdicts; with it, K1d is contradicted as
+controlling law, as the AGAINST agent graded it. The FOR agent did not search for it and
+said so.
 
 **Globe page images.** Both agents quote the Congressional Globe (1866) from
 transcriptions or OCR, not page images; both flag it. Every K1a grade below carries that
@@ -57,7 +62,7 @@ and K1b are not in dispute between the agents.
 
 **The birthright ledger has been updated.** The K1 evidence entry now reads strongly
 supported with this basis, with the inspected and uninspected provenance listed, and the
-reported June 30 decision recorded as unverified and past the freeze.
+June 30 decision recorded as verified, post-freeze, and excluded from the frozen verdicts.
 
 ## What the run does not show
 

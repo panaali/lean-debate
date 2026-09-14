@@ -155,6 +155,21 @@ table. The ledger now carries an EVIDENCE section grading the run's empirical le
 grade there was assigned from general knowledge and nothing was inspected; the report says
 so on every line (`docs/open-questions.md` Q17).
 
+## Post-freeze note (verified 14 September 2026)
+
+The debate was held 6 June 2026 and every verdict above is frozen at that date. On
+30 June 2026 the Supreme Court decided *Trump v. Barbara*, No. 25-365, 6 to 3, striking
+down the 2025 executive order and holding that the Citizenship Clause covers children
+born in the United States to parents unlawfully or temporarily present. That is Mayes's
+conclusion, which the run left UNSUPPORTED after Krikorian refuted her stated route.
+Read against the graph: the holding supplies what the run said was missing, an
+affirmative route to her conclusion that does not go through J17 as she stated it; it
+settles the constitutional branch's disputed node set as a matter of controlling law; and
+it leaves the motion exactly where E27 and E31–E34 put it, since a "should" does not
+follow from what the Constitution now requires. The run's structural findings are
+unchanged by the decision. Its evidence-layer grades for K1 and the constitutional
+leaves would change if the freeze were moved.
+
 ## Later runs (14 September 2026)
 
 Three further runs, each in `docs/runs/<name>/` with a `SETUP.md` fixed before any agent

@@ -64,6 +64,16 @@ which territory the proposition is about. That is not a better debate, only a di
 one, but it shows the disputed set changing when the vocabulary is reviewed by
 adversaries.
 
+## Post-freeze note
+
+B's B10 said no Supreme Court holding before 2025 covered this class and that it could not
+assert whether *Trump v. Barbara* had been decided by the freeze. It was decided 30 June
+2026, 6 to 3, and holds that the Clause covers children of parents unlawfully or
+temporarily present. If the freeze were moved past that date, A4's application to this
+class becomes a holding rather than an extension and B10 falls away; the reading node
+(territory versus constitutional sense) is untouched, since the decision concerns the
+Clause's own domain.
+
 ## What to do next (Q7)
 
 Run again with one debater instructed to win by any means the protocol permits, and

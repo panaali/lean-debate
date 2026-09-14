@@ -251,7 +251,7 @@ def evidence : List Debate.Evidence.Entry :=
                      { source := "Congressional Globe, 39th Cong. 1st Sess. 2890-2897 (1866), OCR only", inspected := false },
                      { source := "Rev. Stat. 2145; Ex parte Crow Dog, 109 U.S. 556 (1883)", inspected := true }],
       challenging := [{ source := "United States v. Wong Kim Ark, 169 U.S. 649 (1898), at 682, 693", inspected := true },
-                      { source := "a reported 30 June 2026 Supreme Court decision on the 2025 order; past the 6 June freeze, not verified by the formalizer", inspected := false }] }
+                      { source := "Trump v. Barbara, No. 25-365 (U.S. June 30, 2026), 6-3: the Clause covers children of parents unlawfully or temporarily present. Verified to exist (supremecourt.gov slip opinion). POST-FREEZE: decided 24 days after the debate; excluded from the run's verdicts", inspected := false }] }
   ]
 
 /-! ## Tallies -/
