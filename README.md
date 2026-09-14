@@ -51,4 +51,13 @@ The project is a working document set, not a publication. To contribute:
   name.
 - Lean changes must build. `lake build` must still report every verdict as depending on no
   axioms, and `Debate/Birthright/Audit.lean` must list every new theorem.
+- Git records what replaced what; sibling Lean modules record what coexists. A change that
+  supersedes an existing formalization (a fix, a rename, a protocol-layer addition) is made
+  in place and committed. A change meant to be *compared* with an existing formalization
+  (a second independent formalization of the same speech, an alternative modelling of the
+  same analogy, a second debate) is added as a sibling module under the same branch
+  namespace, with its own signature, listed in `Audit.lean`, and with a comparison note in
+  `docs/results.md`. No version folders.
+- Each completed run is tagged (`run-birthright-1` is the current one) so the tallies in
+  `docs/results.md` stay reproducible after the protocol layer moves on.
 - Commit as you go, with a message that names the claim or question the change bears on.
