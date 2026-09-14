@@ -57,7 +57,7 @@ Updated 14 September 2026. The roadmap is `docs/thesis.md` §6; this is its curr
 | Evidence-layer types and coherence checks in Lean | done | `Debate/Evidence.lean`, `Debate/Evidence/Examples.lean` |
 | Article V load-bearing in the Motion branch | done | `Debate/Birthright/Motion.lean`, E31–E34 |
 | Adversarial evidence run on leaf K1 (two agents, opposing assignments) | done, tagged `run-evidence-1`; K1 grade fed back into the ledger | `docs/runs/evidence-1/RESULTS.md` |
-| Two-AI debate run on the constitutional proposition | formalized (8 verdicts); back-translation check in progress; RESULTS.md pending | `docs/runs/two-ai-1/` |
+| Two-AI debate run on the constitutional proposition | done, tagged `run-twoai-1`; 8 verdicts; back-translation matched | `docs/runs/two-ai-1/RESULTS.md` |
 | Second debate (death penalty), chosen from titles only | done, tagged `run-deathpenalty-1`; 35 theorems, 9 unstated premises | `docs/runs/death-penalty/RESULTS.md` |
 | Red team of Phase 0 (ten attacks) | done; findings filed, three repaired in Lean, protocol §2.6–2.9, 3.4, 6, 8, 9.7 revised | `docs/redteam-phase0.md`, C4/C5/C6/C17/C19/C20, Q4/Q10/Q19–Q25 |
 | Reusable argument-schema library | not started; now two debates' worth of branches to factor | `docs/open-questions.md` Q11 |

@@ -208,3 +208,40 @@ Referenced from the earlier session and the project files (URLs in `project-over
   and papers, the UN fact-finding mission report and medical annex, Amnesty's 2022
   forensic analysis, the Abdorrahman Boroumand Center dossier, and the Persian-language
   outlets assessed).
+
+## 12. Everything remaining, run (14 September 2026)
+
+The user asked for all remaining roadmap items to be done, with git commits as work
+proceeded and a README that tells outside agents where things stand. In order:
+
+- **Lean items** (`run-birthright-2`): evidence-layer types and decidable coherence checks
+  (`Debate/Evidence.lean`, `Evidence/Examples.lean`); Article V made load-bearing in the
+  Motion branch (E31–E34). 38 theorems, all axiom-free.
+- **Red team of Phase 0** (`docs/redteam-phase0.md`): ten attacks, none touching an
+  inference; three repaired in Lean (`run-birthright-3`: Normative `disanalogy` moved from
+  environment to Newman's claim N-D; nonemptiness witnesses; per-side position witnesses
+  E35–E36); protocol §2.6 reworded and §2.7–2.9, §3.4, §6, §8, §9.7 added or changed;
+  registers updated (C4, C5 CONTESTED; C19, C20; Q19–Q25).
+- **Second debate** (`run-deathpenalty-1`): chosen from titles only, extracted by a
+  separate agent, formalized in six branches (35 theorems). Nine unstated premises, nine
+  non-clashes, one intra-side refutation, and the moderator asking the protocol's bridge
+  question live and being answered with a prediction instead of a value.
+- **Two-AI run 1** (`run-twoai-1`, `Debate/Birthright/TwoAI.lean`): both debaters attacked
+  the signature, as predicted; after rebuttals each accepted the other's premises; the
+  kernel showed both routes valid and isolated the single contested node, the reading of
+  P, which the formalizer's own gloss had left open. Back-translation from opaque
+  identifiers matched.
+- **Evidence run 1** (`run-evidence-1`): two agents with opposite assignments on leaf K1
+  converged; K1 true as stated, its extension to children of unauthorized immigrants
+  weakened (5–35%); both tables kernel-checked for coherence; the overlap check detected
+  one agent's split of a sub-claim; the grade fed back into the birthright ledger. Freeze
+  ruled at the debate date, so a reported 30 June 2026 decision was excluded and marked
+  unverified.
+- Final state: 90 theorems, all axiom-free; five run tags; every run folder with a
+  `RESULTS.md`; README status table current.
+
+Ideas that came up while running and are recorded as next steps rather than done: a
+second independent extraction of the death-penalty transcript to measure recall (Q3); a
+two-AI run with a debater instructed to be deceptive (Q7); an evidence run on a leaf whose
+counterevidence is hard to find, with scoring (Q2); a second red team against the revised
+protocol; the argument-schema library now that two debates' branches exist (Q11).

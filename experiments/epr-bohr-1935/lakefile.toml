@@ -1,0 +1,10 @@
+name = "epr_bohr_1935"
+defaultTargets = ["PaperStudies", "report"]
+
+[[lean_lib]]
+name = "PaperStudies"
+globs = ["PaperStudies.+"]
+
+[[lean_exe]]
+name = "report"
+root = "Main"
