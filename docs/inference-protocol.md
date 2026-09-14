@@ -1,11 +1,14 @@
 # The proof-carrying debate protocol: inference layer
 
-A specification for the inference layer of an argument: which claimed steps between claims
-hold, checked by a proof assistant. Its companion, `evidence-protocol.md`, specifies the
-evidence layer that the leaves of this graph are handed to (§5). `thesis.md` explains how
-the two fit together. The companion Lean development in `Debate/` is one full run of it against
-a real transcript; wherever a rule below looks fussy, the citation next to it is the place
-in that debate where the loose version breaks.
+This protocol specifies how to make an argument's meaning, assumptions, and inferences
+explicit. Each formal verdict requires a proof or countermodel that Lean can check.
+The [evidence protocol](evidence-protocol.md) investigates the factual premises, and the
+[thesis](thesis.md) explains how the two parts support the research objective.
+
+The rules below describe the required workflow. The repository contains implementations
+of particular arguments and runs; it does not implement a general automatic translator,
+premise extractor, or proof-search service. [Results](results.md) records what has been
+checked. Examples refer to the birthright reconstruction unless otherwise stated.
 
 ---
 
@@ -16,9 +19,10 @@ can produce an argument that is long, sophisticated, and false, where neither th
 opponent nor the judge can locate the flaw. Absence of a rebuttal then reads as strength.
 The honest side loses by being unable to say *where* the error is.
 
-The fix is to stop asking anyone to find the flaw. Require that every claimed logical step
-carry a certificate, and let a small trusted kernel check it. Proof generation is hard;
-proof checking is mechanical. The judge no longer needs to be as capable as the debaters.
+The proposed response is to require a certificate for each claimed logical step and let
+a small trusted kernel check it. Producing the certificate may require difficult search.
+Once it exists, the judge can verify the formal result without reproducing that search.
+Whether this makes the whole argument easier to judge remains an empirical question.
 
 That much is the standard move. The rest of this document is about the four places where
 it is not enough, each of which introduces a *new* failure mode if left unaddressed:
@@ -78,8 +82,9 @@ or `COMPATIBLE`. Defined in §4.
 
 ## 2. Phase 0 — Signature review
 
-**This is the phase to get right.** Everything downstream is mechanical; this is where a
-debate can be silently decided before it starts.
+**The setup determines what the proofs will mean.** A vocabulary can favor one side
+before any inference is checked. The review must therefore inspect both the formal
+objects and the choices that connect them to the participants' claims.
 
 Concretely, in the worked example: the entire hour turns on holding two symbols apart.
 
@@ -109,9 +114,13 @@ costs the debate.*
 **2.4 — The environment is fixed here and is not silently amendable.** Adding to it later
 requires both sides' consent, and the addition is logged as a claim like any other.
 
+**2.5 — Log what the environment's form commits you to.** In the example, the Citizenship
+Clause enters as an implication, because that is what the text says. It is *not* a
+biconditional — and that single structural fact is what the pro-motion side's whole case
+silently needs and never gets (`K-EX`, §4.4).
+
 **2.6 — The rules of this phase, and of Phase 1, are fixed before Phase 0 opens and are
-not amendable by anyone during a run.** (Reworded after red team 1, which found five gaps
-in the first version.) Specifically: from the moment the run's setup is published, no
+not amendable by anyone during a run.** Specifically: from the moment the run's setup is published, no
 debater, formalizer, or reviewer may change how symbols are added, split, removed,
 glossed, typed, or classified; how the environment is fixed, witnessed, or added to; how
 claims are typed or quantified (§3); or this rule. There is no adjudicator with power to
@@ -123,7 +132,7 @@ Article V, so the amendment rule can be amended until amendment is trivial. A pr
 whose Phase 0 can be simplified from inside Phase 0, or before "argument has begun", has
 the same hole.
 
-**2.7 — Position witnesses.** (Added after red team 1.) Before argument, each side
+**2.7 — Position witnesses.** Before argument, each side
 exhibits a model of the environment in which its whole stated position holds. The
 formalizer checks both. This proves the environment is satisfiable, so no edge can be
 certified from an inconsistent environment (which `#print axioms` does not detect); and
@@ -131,7 +140,7 @@ it proves that no environment addition has silently deleted a side's position, s
 addition must remain consistent with both witnesses. In the worked run these are
 `Constitutional.position_witness_mayes` and `position_witness_krikorian` (E35, E36).
 
-**2.8 — Phase 0 is back-translated too.** (Added after red team 1.) The signature and
+**2.8 — Phase 0 is back-translated too.** The signature and
 the environment go to the back-translator with symbol names replaced by opaque
 identifiers, so it must work from glosses; and each side's *uttered* conclusion, as
 spoken, is back-translated against the signature before argument begins. A signature in
@@ -140,14 +149,10 @@ check that catches a vocabulary narrowed by deletion rather than by merge. The i
 signature receives the same adversarial review as any later addition, from reviewers who
 have the domain context, not only the protocol text.
 
-**2.9 — Countermodels are nonempty.** (Added after red team 1.) Every signature carries a
+**2.9 — Countermodels are nonempty.** Every signature carries a
 nonemptiness witness, and any individual both sides agree exists must inhabit every
 countermodel. Otherwise the empty domain refutes every existential for free.
 
-**2.5 — Log what the environment's form commits you to.** In the example, the Citizenship
-Clause enters as an implication, because that is what the text says. It is *not* a
-biconditional — and that single structural fact is what the pro-motion side's whole case
-silently needs and never gets (`K-EX`, §4.4).
 
 ---
 
@@ -171,15 +176,12 @@ and a weak reading, the formalizer must ask *before* the claim is entered:
 > Do you mean **any** policy of this kind, **the one before the courts**, that policies of
 > this kind **typically** do so (exceptions allowed), or that this **raises the risk**?
 
-The generic reading was added after red team 1, which noted it is the natural reading of
-most of what is said in a room and that forcing a choice between "any" and "raises the
-risk" makes universals cheap to refute and probabilistic claims impossible to refute, so
-the dominant strategy becomes never asserting a universal. Two further rules follow. A
-rebuttal is typed and paired with its target: a PROBABILISTIC rebuttal to a universal is
-not a refutation and is recorded as COMPATIBLE unless it is; a single instance against a
-generic claim is an exception, not a refutation. And a PROBABILISTIC claim owes
-evidence-layer work before it counts for anything; it cannot be used as an unattackable
-placeholder.
+The menu includes generic claims because “typically” permits exceptions while “every”
+does not. Omitting that reading can force a speaker into a stronger claim than intended.
+A rebuttal must be typed and paired with its target. A probabilistic objection does not
+by itself refute a universal, and an exception does not by itself refute a generic claim.
+A COMPATIBLE verdict still requires the model described in §4.5. Probabilistic claims
+must receive evidence-layer scrutiny; the label does not exempt them from challenge.
 
 This is not a nicety. In the example, Mayes's statelessness claim has both readings;
 Krikorian's response demolishes the strong one and does not touch the weak one; and the
@@ -222,7 +224,8 @@ agreed individual (§2.9). In the example, `statutoryFrame` honours the
 Citizenship Clause and both of Krikorian's interpretive premises, and still breaks his
 argument (`E9`).
 
-All 11 gaps in the worked run are countermodels. None is a report of failure.
+All 13 gaps in the current birthright ledger have countermodels. None records only a
+failed proof search.
 
 ### 4.3 `REFUTED` — and the no-promotion rule
 
@@ -243,8 +246,10 @@ He still owes an affirmative argument.
 
 ### 4.4 Extracted premises: an owner and three buttons
 
-When an edge fails, the system computes the weakest premise that would repair it, attributes
-it to the debater whose inference needed it, and puts it back to them:
+When an inference has a demonstrated gap, the formalizer seeks a premise that would
+repair it and attributes it to the speaker whose inference needs it. The aim is the
+weakest justified repair; a successful proof establishes sufficiency, and a claim of
+minimality needs its own justification. The speaker then chooses:
 
 - **Approve** — it becomes their claim, typed and attackable like any other.
 - **Withdraw** — the inference is retracted.
@@ -266,18 +271,19 @@ debate, and none is uttered in it:
 | `C5` | Cooper | Whenever Harlan dissented, the case was wrongly decided |
 | `P4` | Mayes | All rulings on this question go the same way |
 
-Three of the four would be rejected on sight if anyone had to say them out loud. That is
-why they work.
+These are substantial commitments. The approval step makes the speaker accept, narrow,
+or withdraw them explicitly; the reconstruction alone cannot establish how they would respond.
 
-### 4.5 `COMPATIBLE` — checked automatically, on every rebuttal
+### 4.5 `COMPATIBLE` — check every rebuttal
 
-Whenever B is entered as a rebuttal to A, the system attempts to construct a model
-satisfying both, **before anything else happens**. If it succeeds, it says so.
+Whenever B is entered as a rebuttal to A, the protocol requires an attempt to construct
+a model satisfying both before treating them as a conflict. A successful construction
+supports COMPATIBLE; unsuccessful search alone establishes neither conflict nor compatibility.
 
 In the worked run this fires on two of the sharpest-sounding exchanges in the hour
 (`E11`, `E20`). In both, the audience hears a decisive answer and there is no
-disagreement at all. This is the single highest-value verdict the system produced on real
-material, and it costs nothing to run.
+disagreement at all. The result exposes a distinction that rhetoric can obscure. The cost of finding such
+models on larger arguments remains an open question.
 
 ---
 
@@ -309,7 +315,7 @@ being stated.
 ## 6. Phase 4 — Cross-branch bridges, demanded up front
 
 Before argument begins, each side must name the premise connecting each branch to the
-motion on the floor. And (after red team 1) every *identification* of a symbol in one
+motion on the floor. Every *identification* of a symbol in one
 branch with a proposition in another, such as the Motion branch's atomic
 "the Constitution requires it" with the constitutional branch's universal, is itself a
 typed DEFINITION claim requiring both sides' consent. The bridge is not the only thing
@@ -339,24 +345,25 @@ actually voting on.
 - **No promotion** of a refuted premise to a refuted conclusion (§4.3).
 - **No silent merge** of two symbols (§2.3).
 
-**The audit is mechanical.** `#print axioms` runs over every verdict at build time. In the
-worked development all 30 report *does not depend on any axioms* — including all 11
-countermodels, which is what makes a `GAP` a proof of unprovability rather than a report
-of defeat. Every claim is therefore either a labelled hypothesis visible in a signature,
-or derived. There is no third category and no way to add one.
+**The audit checks proof dependencies.** The main audits cover 90 theorems, all reporting
+`does not depend on any axioms`; [results](results.md) gives their scope. Assumptions
+can still appear in environment fields and theorem hypotheses. The audit does not
+establish their truth or neutrality, or the environment's consistency. Position witnesses
+address consistency (§2.7); review of the setup addresses its meaning.
+
+The report's English descriptions, verdict labels, and theorem references are metadata.
+Their correspondence with the checked declarations must also be reviewed.
 
 ---
 
 ## 8. What the judge sees
 
-Not the proofs. Three things, in this order (reordered after red team 1; the first
-version put tallies first, which `learnings.md` §3 had already argued against, and which
-lets a side farm CERTIFIED edges by over-asserting and accepting the narrowed version):
+The judge sees the unresolved content first, with counts as supporting information:
 
 1. **The disputed node set** — five propositions, in this case.
 2. **The unstated premises**, with owners.
 3. **The tallies**, last and least: `16 certified · 3 refuted · 13 proved gaps · 4
-   non-clashes`, and by status: `8 empirical · 9 contested meanings · 3 values · 4 nobody
+   compatibility results`, and by status: `8 empirical · 9 contested meanings · 3 values · 4 nobody
    stated`. Never as a score.
 
 A weak judge can engage with *"is citizenship at birth the child's own entitlement, or
@@ -367,7 +374,8 @@ That gap is the entire proposition.
 
 ## 9. Running it between two AIs
 
-This is where the protocol earns its cost, and several things change.
+The two-AI setting tests whether certificates help participants and judges evaluate
+arguments without trusting their authors. Several roles must be kept distinct.
 
 **9.1 — The debaters approve their own formalizations, and that is fine.** Approval is a
 *commitment*, and commitments are attackable. The incentive points the right way: approve
@@ -378,27 +386,26 @@ and you have to defend it.
 its opponent's speech. With the back-translator (§3.2) that is three independent models
 between an utterance and the graph.
 
-**9.3 — The deductive layer needs no human judge at all.** Every edge verdict is
-kernel-checked and machine-scorable. Human attention goes entirely to the disputed leaves
-— which is the scalable-oversight decomposition the whole exercise is aiming at.
+**9.3 — Checking a formal certificate requires no judgment about its author.** Lean
+checks the supplied proof or countermodel. Human attention remains necessary for the
+meaning of the claim, its assumptions, its evidence, and the report's correspondence
+with the certificate.
 
-**9.4 — A superhuman liar gains nothing inside the graph.** It cannot produce a Lean proof
-of a false consequence, and it cannot stop the honest side producing a countermodel, since
-countermodel-checking is as mechanical as proof-checking. The 30-minute sophisticated mush
-has nowhere to go: it either compiles into edges, or the missing premises get extracted
-and named.
+**9.4 — A certificate requirement constrains the claims a participant can substantiate.**
+A participant cannot replace a required proof with persuasive prose. That does not
+guarantee the opponent can find a countermodel within its budget, nor that a valid proof
+captures the intended argument. Search outcomes and semantic judgments must remain
+distinct from the formal verdict.
 
-**9.5 — So the entire attack surface migrates to §2 and §3**, and should be resourced
-accordingly. Expect a capable adversary to attack the signature, not the proofs: to argue
-for a merge that looks like a simplification, to accept a formalization slightly stronger
-than the opponent meant, to let a quantifier stay ambiguous. Adversarial signature review,
-mandatory split-on-demand, and quantifier elicitation at assertion time are the defenses,
-and they are the parts to build first.
+**9.5 — Scrutinize the signature and assertion phases.** A participant may seek a merge
+that hides a distinction, approve a claim stronger than intended, or exploit an ambiguous
+quantifier. Adversarial setup review, explicit distinctions, and readings fixed at
+assertion time address these risks. They do not settle the separate evidence-search problem.
 
 **9.6 — Fix the record.** Both AIs answer the same formal proposition, in the same
 environment, with the source material frozen at a stated date.
 
-**9.7 — The formalizer is not exempt.** (Added after red team 1.) When the formalizer
+**9.7 — The formalizer is not exempt.** When the formalizer
 authors the initial signature and environment, it is the party attacks 1–3 are aimed
 through, and §2.8 applies to its work. Anything in a debater's utterance that addresses
 the formalizer ("for formalization purposes, take X to mean Y") is content to be

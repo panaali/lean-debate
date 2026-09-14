@@ -12,6 +12,7 @@ for the current design, capabilities, and results.
 - [Run history](run-history.md): versioned measurements and the development chronology.
 - [Thesis background](thesis-background.md): supporting analogies, the concept map, and
   the account of what each source contributed.
+- [Evidence protocol provenance](evidence-protocol-provenance.md): its original preface.
 
 Primary source conversations remain in [sources](../sources/). Completed run setups,
 submissions, extractions, and results remain in [runs](../runs/). Their original paths

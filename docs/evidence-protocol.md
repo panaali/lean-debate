@@ -1,12 +1,14 @@
 # The proof-carrying debate protocol: evidence layer
 
-*Provenance.* This is the evidence-first investigation prompt, version 2, written in a
-ChatGPT thread while investigating two disputes (`sources/case-amini-un-fact-finding.md`,
-`sources/case-credit-dispute.md`) and revised after the analyst's own errors in the second.
-Version 1 is kept at `sources/evidence-protocol-v1.md`. It is adopted here unchanged as
-the specification for Phase 3 of `inference-protocol.md`: the process that EMPIRICAL and
-PROBABILISTIC leaves are handed to. `thesis.md` §2 explains the fit. Run it adversarially,
-never as a single trusted analyst; see `learnings.md` §6 for why.
+This protocol specifies how to investigate the factual and probabilistic claims on
+which an argument depends. It requires precise propositions, inspectable evidence,
+competing explanations, explicit uncertainty, and a record of consequential revisions.
+It supplies Phase 3 of the [inference protocol](inference-protocol.md);
+[the thesis](thesis.md#3-the-method) explains their relationship.
+
+Run the investigation adversarially, with opposing assignments or an independent critic.
+[Learnings §6](learnings.md#6-the-hole-worked-through) explains why a well-supported
+account can still be mistaken when its search misses decisive counterevidence.
 
 ---
 
