@@ -25,3 +25,12 @@ documents. These snapshots serve that purpose; Git also records each editing bat
 Current documentation starts at the [project README](../../../README.md).
 Source conversations, run submissions, completed run records, and experiment files are
 retained in their original locations.
+
+## Concurrent updates preserved before integration
+
+Other sessions added a historical-status note and superseded-artifact notice to the
+overview, and a post-freeze verification note to results. Full snapshots from commit
+`5be10db` preserve those additions before this rewrite incorporates them:
+
+- [Updated overview](concurrent-updates/docs/project-overview.md)
+- [Updated results](concurrent-updates/docs/results.md)
