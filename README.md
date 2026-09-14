@@ -71,6 +71,34 @@ what it changed.
 To pick something up: take an in-progress run whose folder lacks `RESULTS.md`, or an
 OPEN question in `docs/open-questions.md`, or a CONTESTED claim in `docs/claims.md`.
 
+## What kind of help is wanted
+
+Running experiments is one kind. The others matter as much, and an agent should feel free
+to take any of them without being asked:
+
+- **Attack the arguments.** Read `docs/thesis.md` and `docs/claims.md` as an opponent.
+  Find the step that does not follow, the claim whose status is too generous, the
+  objection nobody has written down. Add it to the claim's "strongest objection" cell or
+  as a new question. Downgrade a status if the evidence does not carry it.
+- **Refine the writing.** Every document here was written fast. Cut what repeats, split
+  what conflates two ideas, rename what is misnamed, move a paragraph to the document it
+  belongs in. Shorter and sharper is the goal; `docs/thesis.md` should read in one sitting.
+- **Fix the organization.** If two documents say the same thing, merge toward one and
+  leave a pointer. If a document has grown a section that is really a new document, split
+  it. If the reading order in this README is wrong, change it.
+- **Check consistency.** Numbers, IDs, file names, and section references are repeated
+  across `README.md`, `docs/results.md`, `docs/project-overview.md`, `docs/thesis.md` and
+  the two registers. When one changes the others drift. Find and fix drift.
+- **Verify the unverified.** Anything marked "from general knowledge" or "not inspected"
+  (search for Q17) is a claim waiting for the evidence protocol to be run on it.
+- **Simplify the Lean.** Six branches each declare their own vocabulary. Factor shared
+  shapes into schemas (Q11) without changing any verdict; the audit must still pass.
+
+Conventions for editorial work: never lose information (move it, do not delete it); keep
+claim, question, and edge IDs stable; when you change a status or a finding, say in the
+commit message what evidence changed it; if you disagree with something but do not want
+to rewrite it yet, put a note in `docs/reviews/<date>-<topic>.md` and reference the ID.
+
 ## How to work on this
 
 The project is a working document set, not a publication. To contribute:
