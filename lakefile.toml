@@ -1,0 +1,10 @@
+name = "debate"
+defaultTargets = ["Debate", "report"]
+
+[[lean_lib]]
+name = "Debate"
+globs = ["Debate.+"]
+
+[[lean_exe]]
+name = "report"
+root = "Main"

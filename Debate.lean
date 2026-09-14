@@ -1,0 +1,9 @@
+import Debate.Protocol
+import Debate.Birthright.Constitutional
+import Debate.Birthright.Ancestry
+import Debate.Birthright.Judicial
+import Debate.Birthright.Policy
+import Debate.Birthright.Normative
+import Debate.Birthright.Motion
+import Debate.Birthright.Audit
+import Debate.Birthright.Ledger
