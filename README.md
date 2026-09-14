@@ -50,6 +50,7 @@ proof terms. Its scope and audit are documented independently of the 90-theorem 
 | [Evidence protocol](docs/evidence-protocol.md) | Rules for investigating factual and probabilistic premises |
 | [Claims](docs/claims.md) and [open questions](docs/open-questions.md) | Evidence for the proposal and tests that would resolve its uncertainties |
 | [Scientific papers](docs/scientific-papers.md) | The proposed extension to papers with linked proofs and evidence records |
+| [Rationality and cognitive biases](docs/related-ideas.md) | Connections to the Sequences, relevant biases, and ways to test whether the protocol improves judgment |
 
 [Learnings §6](docs/learnings.md#6-the-hole-worked-through) explains the central remaining
 risk: checked reasoning can still rest on a biased or incomplete evidence search.

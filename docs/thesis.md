@@ -82,6 +82,12 @@ assumptions inside loaded language; and preserve source provenance. Their conver
 suggests a useful common structure, though their shared origins limit its evidential
 weight ([C12 and Q13](open-questions.md#q13-is-the-two-layer-convergence-real-or-a-shared-prior)).
 
+These requirements connect to practical ideas about rationality: unpack the assumptions
+inside words, investigate how evidence was selected, and revise confidence when new
+evidence arrives. [Rationality and cognitive biases](related-ideas.md) develops the
+connections to the Sequences and identifies tests of whether the protocol makes
+judgments less sensitive to biased presentation.
+
 The repository currently contains formal reconstructions, evidence investigations, and
 reports from specific runs. It does not implement a general service that automatically
 translates any debate, finds the weakest missing premise, or searches every rebuttal for

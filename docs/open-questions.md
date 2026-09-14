@@ -223,3 +223,17 @@ Einstein's detective has to construct the plot. **Candidate answers:** (a) Out o
 the debaters generate, the protocol checks. (b) The extracted-premise mechanism is a weak
 generator: it proposes the missing premise. **Resolves it:** Decide scope; if (b), measure
 whether extracted premises ever lead to arguments nobody had made.
+
+### Q26. Does the protocol reduce susceptibility to biased presentation?
+**Status:** OPEN. **Why it matters:** An inspectable reconstruction is useful only if
+people or models use it well. Formal certificates might help readers distinguish
+validity from believability, or make them overtrust unsupported premises. **Known:** The
+[connections to rationality and cognitive biases](related-ideas.md) identify relevant
+mechanisms and candidate tests; the completed runs do not measure debiasing effects.
+**Candidate answers:** Compare ordinary debate, a structured claim-and-evidence report,
+and that report with formal certificates. Vary conclusion believability independently
+of validity; vary wording, party labels, and source order while preserving content.
+Include evidence tasks with a known source corpus and hard-to-find counterevidence.
+**Resolves it:** Controlled comparisons measuring error detection, false alarms,
+unjustified premise acceptance, probability calibration, and time required. Evaluate
+people and models separately. Related: Q2, Q6, Q15, Q16.
