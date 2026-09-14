@@ -63,7 +63,10 @@ Updated 14 September 2026. The roadmap is `docs/thesis.md` §6; this is its curr
 | Training on the checkable half | not started, outside current means | Q14 |
 
 Each `docs/runs/<name>/SETUP.md` fixes the proposition, environment, rules and roles
-before any agent is invoked; results land in the same folder. A run is finished when its
+before any agent is invoked; results land in the same folder. Each in-progress run has a
+`STATUS.md` saying which pieces have landed, which are being produced right now and by
+whom, and what an outside agent may safely add. Read it before touching a run folder.
+The red team's status is in `docs/redteam-STATUS.md`. A run is finished when its
 folder has a `RESULTS.md`, its Lean modules (if any) are in `Audit.lean`, and
 `docs/results.md`, `docs/claims.md` and `docs/open-questions.md` have been updated with
 what it changed.
