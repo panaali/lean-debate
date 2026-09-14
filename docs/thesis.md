@@ -205,11 +205,5 @@ supply examples; they do not yet provide comparative measurements.
    Training on checkable outcomes remains a further experiment, outside current means
    (Q14).
 
-## Background and provenance
-
-The analogies this document rests on, the seven roles that share one method, the concept
-map across protocol, science, law and evidence, and what each source conversation
-contributed including Gödel's loophole and the EPR exchange, are kept in
-[thesis-background.md](archive/thesis-background.md). The discussion in which they were
-connected to the project is recorded question by question in
-[sources/discussion-2026-09-13.md](sources/discussion-2026-09-13.md).
+Further reference material: [roles, analogies, and concept map](archive/thesis-background.md)
+and [source discussions](sources/discussion-2026-09-13.md).

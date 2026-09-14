@@ -59,7 +59,9 @@ applied review is ready to be removed.
 |---|---|
 | Evidence or objection about the proposal | [Claims](claims.md) or [open questions](open-questions.md) |
 | Finding that changes the project's frame | [Thesis](thesis.md), after its register entry |
-| Detailed reference material or development history | [Project overview](project-overview.md) |
+| Current architecture and implementation details | [Project overview](project-overview.md) |
+| Connections to related ideas and literature | [Related ideas](related-ideas.md), with sources and explicit limits |
+| Superseded descriptions or development history | [Archive](archive/README.md), preserving useful information and links |
 | Run-specific findings and changed tallies | The run's `RESULTS.md` and [project results](results.md) |
 | Raw conversation | [Sources](sources/), with a descriptive name |
 | Deferred critique or editorial proposal | [Reviews](reviews/) |
