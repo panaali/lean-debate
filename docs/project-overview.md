@@ -2,7 +2,7 @@
 
 Proof-carrying debate investigates whether AI can make complex arguments easier to judge
 by exposing their assumptions and making their reasoning independently checkable.
-This page explains the approach, the implementation, and the project's development.
+This page explains the approach, implementation, and boundaries of the current system.
 
 The [thesis](thesis.md) develops the research argument. [Results](results.md) records
 what each experiment found. The [claims ledger](claims.md) and
@@ -38,7 +38,7 @@ The [inference protocol](inference-protocol.md) specifies the workflow. Its phas
 separate decisions about meaning, logic, evidence, and values.
 
 1. **Review the vocabulary and assumptions.** Both sides inspect the setup before
-   arguing. The revised rules also require models witnessing each side's position and
+   arguing. The rules also require models witnessing each side's position and
    independent back-translation of the setup.
 2. **Fix each assertion's meaning.** The formalizer presents the original utterance,
    controlled English, and a formal statement. An independent model back-translates the
@@ -60,7 +60,7 @@ proof, evidence, interpretation, probability, values, definitions, and unstated
 assumptions. Verdicts describe formal relationships: `CERTIFIED`, `REFUTED`,
 `GAP`, or `COMPATIBLE`. The [thesis](thesis.md#3-the-method) defines them.
 
-The revised protocol puts disputed claims first in the judge's report, followed by
+The protocol puts disputed claims first in the judge's report, followed by
 unstated premises and then tallies. This reflects a central finding: a debater can defeat
 an opponent's premise while leaving the opponent's conclusion possible. Counting
 successful steps alone would conceal that distinction.
@@ -103,7 +103,7 @@ protocol's proposed judge-facing order remains implementation work.
 
 The main development audits 90 theorems: 36 birthright verdicts, 35 death-penalty
 verdicts, 8 two-AI verdicts, and 11 evidence checks. All report no axioms.
-[Results](results.md#results) distinguishes these counts and preserves their run history.
+[Results](results.md#results) distinguishes these counts and records the scope of each run.
 
 Across the human-debate reconstructions, recurring findings include unstated premises,
 analogies that depend on a disputed resemblance, and apparent rebuttals that concern
@@ -112,9 +112,8 @@ The two-AI run showed how the initial vocabulary can create the ambiguity a deba
 then has to resolve.
 
 The first evidence run supplied a researched basis for K1 in the birthright ledger.
-The red team found that one of the project's own environment fields encoded a
-participant's substantive premise. The repair made that assumption an explicit,
-contestable claim.
+The setup tests show why a participant's substantive premise must remain an explicit
+claim: placing it in the environment can make a disputed argument appear settled.
 
 ## 6. Learnings and limits
 

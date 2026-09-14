@@ -10,6 +10,8 @@ for the current design, capabilities, and results.
 - [Project-description draft](project-description-draft.md): the draft used to rewrite
   the main descriptions.
 - [Run history](run-history.md): versioned measurements and the development chronology.
+- [Thesis background](thesis-background.md): supporting analogies, the concept map, and
+  the account of what each source contributed.
 
 Primary source conversations remain in [sources](../sources/). Completed run setups,
 submissions, extractions, and results remain in [runs](../runs/). Their original paths

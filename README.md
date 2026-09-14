@@ -23,9 +23,9 @@ cannot reproduce every step themselves.
 
 ## What the project has shown
 
-The first case study reconstructed a debate on birthright citizenship. It exposed
-unstated premises and apparent rebuttals that left the opposing conclusion untouched.
-A second debate, on the death penalty, produced similar patterns. In a separate two-AI
+The birthright-citizenship reconstruction exposes unstated premises and apparent
+rebuttals that leave the opposing conclusion untouched. The death-penalty reconstruction
+shows similar patterns. In a separate two-AI
 run, both sides' arguments were valid under different readings of the question; the
 formalization made that difference explicit. An evidence run tested whether agents
 assigned opposing positions would converge after investigating the same disputed claim.
@@ -52,7 +52,7 @@ was faithfully captured.
 | [Open questions](docs/open-questions.md) | Candidate answers and what would resolve each question |
 | [Inference protocol](docs/inference-protocol.md) | Rules for formalizing arguments and checking inferences |
 | [Evidence protocol](docs/evidence-protocol.md) | Rules for investigating factual and probabilistic claims |
-| [Project overview](docs/project-overview.md) | Development history and detailed explanation of the Lean design |
+| [Project overview](docs/project-overview.md) | Current architecture, workflow, and implementation boundaries |
 | [Scientific papers](docs/scientific-papers.md) | Proposed extension to papers with linked proofs and evidence records |
 | [Contributing](docs/contributing.md) | Useful work, ownership checks, and editing conventions |
 | [Source conversations](docs/sources/) | The discussions from which the project developed |
@@ -92,15 +92,15 @@ ownership and available follow-up work.
 
 | Work | State | Record |
 |---|---|---|
-| Birthright reconstruction and red-team repairs | complete, `run-birthright-3` | [Results](docs/results.md), [Lean](Debate/Birthright/) |
-| Evidence types and initial coherence checks | complete, introduced in `run-birthright-2` | [Types](Debate/Evidence.lean), [examples](Debate/Evidence/Examples.lean) |
-| Article V in the Motion branch | complete, E31–E34 in `run-birthright-2` | [Explanation](docs/results.md#legal-availability-and-policy-recommendations) |
+| Birthright reconstruction | complete, `run-birthright-3` | [Results](docs/results.md), [Lean](Debate/Birthright/) |
+| Evidence types and initial coherence checks | complete | [Types](Debate/Evidence.lean), [examples](Debate/Evidence/Examples.lean) |
+| Article V in the Motion branch | complete, E31–E34 | [Explanation](docs/results.md#legal-availability-and-policy-recommendations) |
 | Adversarial evidence run on K1 | complete, `run-evidence-1`; findings entered in the ledger | [Results](docs/runs/evidence-1/RESULTS.md), [status](docs/runs/evidence-1/STATUS.md) |
 | Two-AI constitutional debate | complete, `run-twoai-1`; 8 verdicts and matching back-translation | [Results](docs/runs/two-ai-1/RESULTS.md), [status](docs/runs/two-ai-1/STATUS.md) |
 | Death-penalty reconstruction | complete, `run-deathpenalty-1`; selected from titles only | [Results](docs/runs/death-penalty/RESULTS.md), [status](docs/runs/death-penalty/STATUS.md) |
 | First Phase 0 red team | complete; ten attacks, protocol revisions, and three Lean repairs | [Findings](docs/redteam-phase0.md), [status](docs/redteam-STATUS.md) |
 | Reusable argument schemas | not started; two debates now supply examples | [Q11](docs/open-questions.md#q11-is-there-a-reusable-library-or-does-every-debate-need-its-own-signatures) |
-| Second red team against the revised protocol | not started | [Available work](docs/redteam-STATUS.md) |
+| Further adversarial tests of the protocol | not started | [Available work](docs/redteam-STATUS.md) |
 | Training on the checkable part | not started, outside current means | [Q14](docs/open-questions.md#q14-does-training-on-the-checkable-half-transfer-to-leaf-honesty) |
 
 [Thesis §6](docs/thesis.md#6-next-steps) explains which experiments would be most

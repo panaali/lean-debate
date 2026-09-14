@@ -144,7 +144,7 @@ bridges. Note the one substantive limit in Article V and whether it needs a symb
 **Status:** CONTESTED. **Why it matters:** C12 is offered as evidence the decomposition is
 right, and the objection is that both layers came from the same user prompting the same
 family of models. **Candidate answers:** (a) The same rules appear in law and statistics
-(Appendix B of `thesis.md`), which predates both. (b) Get an independent derivation: hand
+(Appendix B of `archive/thesis-background.md`), which predates both. (b) Get an independent derivation: hand
 a different agent a fresh dispute with no access to either spec and see what rules it
 writes. **Resolves it:** (b).
 
