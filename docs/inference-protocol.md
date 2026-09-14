@@ -105,11 +105,11 @@ list, with a gloss for each, before anyone argues.
 **2.2 — Either side may demand a symbol be split, at any time, and the demand is granted
 by default.** The burden falls on whoever wants two usages kept merged.
 
-**2.3 — Bias hard toward splitting, because the directions are not symmetric.** Splitting
-is monotone-safe: it can only convert a silent identification into an explicit hypothesis
-that someone must now state and defend. Merging is destructive: it silently discharges
-obligations nobody agreed to discharge. *A split costs a debate about a premise. A merge
-costs the debate.*
+**2.3 — Prefer explicit distinctions to implicit identifications.** Keeping distinct
+usages separate makes a proposed connection an explicit hypothesis that someone must
+defend. Merging them can silently remove that obligation. Splits still require scrutiny
+of their scope and effect on the argument; the default permission is not a guarantee
+that every proposed split preserves the intended meaning.
 
 **2.4 — The environment is fixed here and is not silently amendable.** Adding to it later
 requires both sides' consent, and the addition is logged as a claim like any other.
@@ -120,17 +120,15 @@ biconditional — and that single structural fact is what the pro-motion side's 
 silently needs and never gets (`K-EX`, §4.4).
 
 **2.6 — The rules of this phase, and of Phase 1, are fixed before Phase 0 opens and are
-not amendable by anyone during a run.** Specifically: from the moment the run's setup is published, no
+not amendable by anyone during a run.** From the moment the run's setup is published, no
 debater, formalizer, or reviewer may change how symbols are added, split, removed,
 glossed, typed, or classified; how the environment is fixed, witnessed, or added to; how
 claims are typed or quantified (§3); or this rule. There is no adjudicator with power to
 grant exceptions; a request to change a rule is logged as a refused request and the run
 continues under the published rules. Changes happen only between runs, and the consent
 that authorises them is the consent of the parties to the *next* run, recorded in its
-setup. Gödel's loophole is the reason: on Guerra-Pujol's reading, Article V applies to
-Article V, so the amendment rule can be amended until amendment is trivial. A protocol
-whose Phase 0 can be simplified from inside Phase 0, or before "argument has begun", has
-the same hole.
+setup. Keeping these procedural rules outside the environment prevents a participant
+from removing an obligation by changing the rule that imposes it.
 
 **2.7 — Position witnesses.** Before argument, each side
 exhibits a model of the environment in which its whole stated position holds. The

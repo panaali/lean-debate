@@ -92,13 +92,13 @@ and theorem references require a separate correspondence review.
 
 The birthright case reconstructs *Should America End Birthright Citizenship?*
 (Open to Debate, June 2026), with two speakers on each side. The
-[results](results.md) records its findings. Three findings illustrate what
+[results page](results.md) records its findings. Three findings illustrate what
 the method contributes.
 
 **Failing one condition does not rule out every route to a conclusion.** In the model,
 the Citizenship Clause supplies a sufficient condition for citizenship. Showing that
 someone fails that condition does not establish non-citizenship unless other routes
-are excluded. The reconstruction exposes that additional premise as `K-EX). It emerged
+are excluded. The reconstruction exposes that additional premise as `K-EX`. It emerged
 when the attempted proof needed an assumption the speaker had not stated.
 
 **A rebuttal can defeat an argument while leaving its conclusion untouched.** The
@@ -117,7 +117,8 @@ recommendation by themselves.
 At `run-birthright-3`, the ledger contains 16 certified edges, 3 refutations, 13 gaps,
 and 4 compatibility results, with 4 unstated premises. Two compatibility results concern
 the exchanges above; the other two show that each side's stated position is consistent
-with the environment. The current main audit also includes the two-AI and evidence work described below.
+with the environment. The current main audit also includes the two-AI and evidence work
+described below.
 
 Other completed experiments examine different parts of the method:
 

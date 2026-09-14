@@ -149,29 +149,32 @@ change the frozen run.
 
 Each run has a fixed setup, submissions, and a results record explaining its findings.
 
-**Second debate, death penalty** (`run-deathpenalty-1`, `Debate/DeathPenalty/`). Chosen
-from titles only; extracted by a separate agent. 13 certified, 1 refuted (intra-side), 12
-gaps, 9 compatible; 9 premises nobody stated; disputed set of 5. The is/ought gap
-recurred, on the For side only; the moderator asked the protocol's bridge question live
-and got a prediction in place of a value. The compatibility count includes exchanges and position witnesses. An analogy reduced
-to one premise again. See `docs/runs/death-penalty/RESULTS.md`.
+**[Death penalty](runs/death-penalty/RESULTS.md)** (`run-deathpenalty-1`).
+Selected from titles only and extracted by a separate agent, the reconstruction yields
+13 certified edges, 1 refutation, 12 gaps, and 9 compatibility results. It identifies
+9 unstated premises and a disputed set of 5. The moderator asks whether abolition would
+still be justified if the policy's defects were repaired; the response supplies a
+prediction in place of the requested value premise. The single refutation is between
+speakers on the same side.
 
-**Two-AI run 1** (`Debate/Birthright/TwoAI.lean`, sibling of `Constitutional.lean`). Two
-AI debaters on the constitutional proposition, third-party formalizer, opaque-identifier
-back-translation. Both attacked the signature, as the protocol predicted, not each
-other's inferences. After rebuttals each side accepted every premise of the other's
-route: P under the constitutional reading is certified on premises B accepted, not-P
-under the territorial reading is certified on premises A accepted, and everything but
-the reading node is jointly satisfiable in one two-person world. The formalizer's gloss
-created the ambiguity. See `docs/runs/two-ai-1/`.
+**[Two-AI debate](runs/two-ai-1/RESULTS.md)** (`run-twoai-1`).
+Both participants examine what “born in the United States” means in the setup.
+Each accepts the premises supporting the other's conclusion under a different reading.
+Eight verdicts isolate that difference, including a model in which both positions hold
+together. Back-translation matches the controlled English. Both participants are
+cooperative, so the run tests the mechanics rather than resistance to deception.
 
-**Evidence run 1** (`docs/runs/evidence-1/`). Two evidence agents with opposite
-assignments on leaf K1, no shared context. They converged: K1 is true as stated
-(75–98% on its parts) and does not extend to children of unauthorized immigrants
-(5–35%). Each moved toward the other on the sub-claim its assignment was weakest on.
-Both tables pass the kernel's coherence checks; the interval comparison prompted inspection of two readings of a sub-claim.
-Non-overlap alone does not establish that analysts mean different propositions. The K1 grade in this ledger's EVIDENCE section
-now comes from that run.
+**[Adversarial evidence investigation](runs/evidence-1/RESULTS.md)** (`run-evidence-1`).
+Two agents with opposing assignments investigate K1 without shared context. Their
+assessments support its narrower historical components, with ranges of 75–98%, while
+giving less support to extending the argument to children of unauthorized immigrants.
+For that extension, the frozen comparison uses ranges of 15–35% and 12–25%; the run
+record preserves the alternative assessments and source-cutoff ruling.
+
+Each agent revises the sub-claim its assignment supports least well. Both tables pass
+the selected arithmetic checks. Comparing intervals also prompts scrutiny of two readings
+of K1c; non-overlap alone does not establish that analysts mean different propositions.
+The K1 evidence entry in the main ledger records the investigation's findings and provenance.
 
 ## Layout
 

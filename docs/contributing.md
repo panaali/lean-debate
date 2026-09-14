@@ -85,11 +85,9 @@ A run is complete when its `RESULTS.md` exists, its Lean theorems are audited, a
 [results](results.md), [claims](claims.md), and [open questions](open-questions.md)
 record what changed.
 
-Tag completed runs so their results remain reproducible as the protocol evolves.
-`run-birthright-1` is the original 30-verdict development; `-2` added Article V and
-the evidence types; `-3` records the first red-team repairs. Other completed runs have
-their own tags, listed in the README. Use a separate checkout or temporary copy to
-inspect an old tag while someone else is using the shared workspace.
+Tag completed runs so their results remain reproducible. The current tags are listed
+in [results](results.md) and the individual run records. Use a separate checkout or
+temporary copy to inspect another revision while someone else is using the shared workspace.
 
 Commit scoped changes as you go, with a message naming the relevant claim, question,
 or review. Stage only your own files or hunks.
