@@ -49,3 +49,22 @@ formalizer should have elicited it at setup (§3.4). Both readings are carried a
 of the jurisdiction clause; B does not use that reading. B's American Samoa witness is
 exactly what A's A1 scopes out. So the rebuttal round starts with each side's main
 defensive move already aimed at an attack the other did not make.
+
+
+## Entry 3. After both rebuttals
+
+**Encoded** as `Debate/Birthright/TwoAI.lean`, a sibling of `Constitutional.lean`. Eight
+verdicts, all axiom-free. B1 downgraded to PROBABILISTIC as both sides anticipated; A1
+retyped from DEFINITION to INTERPRETIVE at A's own request, and B3 likewise; both were
+the reading node in disguise.
+
+**What the kernel says.** P under the constitutional reading is CERTIFIED from A2, A3, A4
+and L1, and B accepted every one of those premises. Not-P under the territorial reading
+is CERTIFIED from B1, B2, B4, and A accepted every one of those. A's premises do not
+reach the territorial P (GAP, B's own two-person world). B's premises do not reach
+not-P-constitutional (GAP, same world). A1 as first stated is REFUTED by B's witness.
+Everything either side asserted, apart from the reading node, is jointly satisfiable in
+one world with P-constitutional true and P-territorial false.
+
+**Back-translation** run per §2.8 on an opaque-identifier version of the file; see
+`back-translation.md` and RESULTS.md.

@@ -83,6 +83,21 @@ def Credence.entailsCoherent (p q : Credence) : Prop := p.lo ≤ q.hi
 instance (p q : Credence) : Decidable (p.entailsCoherent q) :=
   inferInstanceAs (Decidable (p.lo ≤ q.hi))
 
+/-- If P entails (Q or R), then Pr(P) ≤ Pr(Q ∨ R), and Pr(Q ∨ R) is at most Pr(Q) + Pr(R)
+but at least max(Pr(Q), Pr(R)); the weakest check that is always sound is against the
+larger upper bound. -/
+def Credence.entailsEitherCoherent (p q r : Credence) : Prop := p.lo ≤ max q.hi r.hi
+
+instance (p q r : Credence) : Decidable (p.entailsEitherCoherent q r) :=
+  inferInstanceAs (Decidable (p.lo ≤ max q.hi r.hi))
+
+/-- Two analysts' intervals for the same proposition overlap. If they do not, either the
+two are not estimating the same proposition, or one of them is wrong. -/
+def Credence.overlaps (p q : Credence) : Prop := p.lo ≤ q.hi ∧ q.lo ≤ p.hi
+
+instance (p q : Credence) : Decidable (p.overlaps q) :=
+  inferInstanceAs (Decidable (_ ∧ _))
+
 /-- A set of mutually exclusive, collectively exhaustive scenarios must admit point values
 summing to 100: the lows must not exceed 100 and the highs must reach it. -/
 def partitionCoherent (cs : List Credence) : Prop :=

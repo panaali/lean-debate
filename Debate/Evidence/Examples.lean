@@ -44,6 +44,41 @@ def creditDisputeScenarios : List Credence :=
 
 theorem creditDispute_partition : partitionCoherent creditDisputeScenarios := by decide
 
+/-! ## Evidence run 1: two agents on K1, opposite assignments
+
+Ranges from `docs/runs/evidence-1/FOR.md` and `AGAINST.md`. The ordering the setup fixed
+was K1d ⇒ K1b ⇒ (K1a or K1c). Both agents' tables satisfy it. The two agents' K1d
+ranges overlap; their K1c ranges do not, which is because AGAINST split K1c into two
+readings and reported both, and its Reading-2 range is a different proposition from
+FOR's K1c. The check found the split. -/
+
+def forK1a : Credence := ⟨80, 92, by decide⟩
+def forK1b : Credence := ⟨88, 95, by decide⟩
+def forK1c : Credence := ⟨75, 88, by decide⟩
+def forK1d : Credence := ⟨15, 35, by decide⟩
+
+def againstK1a : Credence := ⟨93, 98, by decide⟩
+def againstK1b : Credence := ⟨88, 95, by decide⟩
+def againstK1c_some : Credence := ⟨75, 88, by decide⟩
+def againstK1c_general : Credence := ⟨10, 25, by decide⟩
+def againstK1d : Credence := ⟨5, 15, by decide⟩
+/-- AGAINST's K1d if the June 30 decision is excluded as past the freeze. -/
+def againstK1d_noBarbara : Credence := ⟨12, 25, by decide⟩
+
+theorem for_K1d_le_K1b : forK1d.entailsCoherent forK1b := by decide
+theorem for_K1b_le_K1aOrK1c : forK1b.entailsEitherCoherent forK1a forK1c := by decide
+theorem against_K1d_le_K1b : againstK1d.entailsCoherent againstK1b := by decide
+theorem against_K1b_le_K1aOrK1c : againstK1b.entailsEitherCoherent againstK1a againstK1c_some := by decide
+
+/-- The two agents agree on K1d up to overlap (at 15 percent; wider without the June 30
+decision). -/
+theorem K1d_overlap : forK1d.overlaps againstK1d := by decide
+theorem K1d_overlap_noBarbara : forK1d.overlaps againstK1d_noBarbara := by decide
+
+/-- FOR's K1c and AGAINST's general-subjection K1c do not overlap: they are not the same
+proposition. The disputed set is the reading of K1c, exactly as AGAINST reported. -/
+theorem K1c_readings_differ : ¬ forK1c.overlaps againstK1c_general := by decide
+
 /-! ## A rejection -/
 
 /-- An analyst who put "assault caused death" at 30–40% while holding "any assault" at

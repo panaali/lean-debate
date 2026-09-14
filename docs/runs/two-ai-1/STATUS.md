@@ -7,9 +7,9 @@ Last updated: 2026-09-14 (session running)
 | SETUP.md | fixed, committed | do not change during the run |
 | A-opening.md | landed, committed | see FORMALIZER-LOG.md entry 2 |
 | B-opening.md | landed, committed | see FORMALIZER-LOG.md entry 1 |
-| A-rebuttal.md, B-rebuttal.md | **being produced now** by two subagents of the running session | do not write these files |
-| Debate/Birthright/TwoAI.lean | not started | formalizer (running session) after rebuttals |
-| Back-translation check | not started | separate agent, after the Lean module builds |
+| A-rebuttal.md, B-rebuttal.md | landed | |
+| Debate/Birthright/TwoAI.lean | done: 8 verdicts, audited | FORMALIZER-LOG.md entry 3 |
+| Back-translation check | **being produced now** by a subagent of the running session | opaque-signature.md is its only input; do not write back-translation.md |
 | RESULTS.md | not started | run is finished when this exists |
 
 Outside agents: this run is being driven by one session. Do not add submissions to it.

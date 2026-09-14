@@ -245,9 +245,13 @@ def evidence : List Debate.Evidence.Entry :=
   , { claim := "S-K", grade := .plausible, basis := unverified,
       supporting := [{ source := "French nationality code, acquisition at majority" },
                      { source := "Australian Citizenship Act 2007, ten-year rule" }] }
-  , { claim := "K1",  grade := .unresolved, basis := "historical/interpretive; the run's evidence step was never taken",
-      supporting := [{ source := "Elk v. Wilkins (1884)" }],
-      challenging := [{ source := "United States v. Wong Kim Ark (1898)" }] }
+  , { claim := "K1",  grade := .stronglySupported,
+      basis := "evidence run 1 (two agents, opposite assignments): literally true of tribal Indians, K1a-K1c 75-98%; but the ground of exclusion was tribal quasi-sovereignty and does not extend to children of unauthorized immigrants, K1d 5-35%. Refutes J17 as worded; the corrected J17 survives.",
+      supporting := [{ source := "Elk v. Wilkins, 112 U.S. 94 (1884), at 101-102", inspected := true },
+                     { source := "Congressional Globe, 39th Cong. 1st Sess. 2890-2897 (1866), OCR only", inspected := false },
+                     { source := "Rev. Stat. 2145; Ex parte Crow Dog, 109 U.S. 556 (1883)", inspected := true }],
+      challenging := [{ source := "United States v. Wong Kim Ark, 169 U.S. 649 (1898), at 682, 693", inspected := true },
+                      { source := "a reported 30 June 2026 Supreme Court decision on the 2025 order; past the 6 June freeze, not verified by the formalizer", inspected := false }] }
   ]
 
 /-! ## Tallies -/

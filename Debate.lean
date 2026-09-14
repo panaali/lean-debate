@@ -8,6 +8,7 @@ import Debate.Birthright.Policy
 import Debate.Birthright.Normative
 import Debate.Birthright.Motion
 import Debate.Birthright.Audit
+import Debate.Birthright.TwoAI
 import Debate.Birthright.Ledger
 import Debate.DeathPenalty.Innocence
 import Debate.DeathPenalty.Deterrence

@@ -5,6 +5,7 @@ import Debate.Birthright.Policy
 import Debate.Birthright.Normative
 import Debate.Birthright.Motion
 import Debate.Evidence.Examples
+import Debate.Birthright.TwoAI
 
 /-!
 # Audit
@@ -74,10 +75,27 @@ open Debate.Birthright
 #print axioms Motion.certified_lawfullyKeepable
 #print axioms Motion.gap_notRequiredNotUnkeepable
 
+-- Two-AI run 1
+#print axioms TwoAI.certified_A8
+#print axioms TwoAI.certified_Pconst
+#print axioms TwoAI.gap_A_Pterr
+#print axioms TwoAI.certified_notPterr
+#print axioms TwoAI.gap_B_Pconst
+#print axioms TwoAI.certified_A11
+#print axioms TwoAI.refuted_A1
+#print axioms TwoAI.compatible_positions
+
 -- Evidence layer: the checkable slice
 #print axioms Debate.Evidence.Examples.amini_severe_le_any
 #print axioms Debate.Evidence.Examples.amini_cause_le_any
 #print axioms Debate.Evidence.Examples.creditDispute_partition
 #print axioms Debate.Evidence.Examples.rejects_incoherent
+#print axioms Debate.Evidence.Examples.for_K1d_le_K1b
+#print axioms Debate.Evidence.Examples.for_K1b_le_K1aOrK1c
+#print axioms Debate.Evidence.Examples.against_K1d_le_K1b
+#print axioms Debate.Evidence.Examples.against_K1b_le_K1aOrK1c
+#print axioms Debate.Evidence.Examples.K1d_overlap
+#print axioms Debate.Evidence.Examples.K1d_overlap_noBarbara
+#print axioms Debate.Evidence.Examples.K1c_readings_differ
 
 end Debate.Birthright.Audit
