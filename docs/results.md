@@ -7,8 +7,7 @@ how modeling choices can change what an argument appears to establish.
 
 This page records the results and their limits. The [thesis](thesis.md) develops the
 research argument; [learnings](learnings.md) assesses what formal checking adds.
-The [archive](archive/2026-09-14-before-description-edit/docs/results.md) preserves
-the original account and its historical setup instructions.
+Run records retain the source material, submissions, and evidence supporting each finding.
 
 ## Running it
 
@@ -50,22 +49,20 @@ The main development audits **90 theorems**, all reporting no axioms:
 | Evidence layer | 4 initial examples and 7 checks added with evidence run 1 | 11 |
 | **Total** | | **90** |
 
-The birthright tags preserve how the first reconstruction grew:
+The completed human-debate reconstructions have these verdicts:
 
-| Tag | Certified | Refuted | Gap | Compatible | Edges | Audited theorems |
-|---|---:|---:|---:|---:|---:|---:|
-| `run-birthright-1` | 14 | 3 | 11 | 2 | 30 | 30 |
-| `run-birthright-2` | 16 | 3 | 13 | 2 | 34 | 38 |
-| `run-birthright-3` | 16 | 3 | 13 | 4 | 36 | 40 |
+| Run | Tag | Certified | Refuted | Gap | Compatible | Unstated premises |
+|---|---|---:|---:|---:|---:|---:|
+| Birthright citizenship | `run-birthright-3` | 16 | 3 | 13 | 4 | 4 |
+| Death penalty | `run-deathpenalty-1` | 13 | 1 | 12 | 9 | 9 |
 
-The four supporting theorems in the latter two tags are the initial evidence checks.
-Two compatibility results concern exchanges in the transcript; the two added in `-3`
-witness each side's position. They are different kinds of result.
+Compatibility counts include models witnessing whole positions, as well as models of
+claims exchanged during debate. In the birthright ledger, two concern exchanges and
+two witness the participants' positions.
 
-At `run-birthright-3`, the ledger records 8 empirical claims, 9 interpretive claims,
-3 value premises, and 4 unstated premises. The interpretive count rose from 7 in `-1`
-to 8 in `-2` and 9 in `-3`. No substantive debate claim is labeled `PROVED`:
-the checked results concern relationships between claims.
+The birthright ledger records 8 empirical claims, 9 interpretive claims, and 3 value
+premises, alongside its 4 unstated premises. No substantive debate claim is labeled
+`PROVED`: the checked results concern relationships between claims.
 
 ### The four premises nobody stated
 
@@ -115,11 +112,10 @@ constitutional branch concerns what the law requires. The motion asks what Ameri
 should do. E27 and E28 demonstrate the missing connections; E29 and E30 show how
 explicit normative bridges would supply them.
 
-### Article V made load-bearing (added in run-birthright-2)
+### Legal availability and policy recommendations
 
-Reading Gödel's loophole (Suber's hypothesis: Article V constrains procedure, not content)
-showed that the Motion branch's `AmendableByArticleV` field was declared and never used.
-Four verdicts now use it. Under Suber's reading (`G-S`), amendability (`G-A`) and
+The Motion branch distinguishes what the law requires, what can lawfully be changed,
+and what should be done. Under Suber's reading (`G-S`), amendability (`G-A`) and
 non-entrenchment (`G-E`), ending birthright citizenship is lawfully available even where
 the Constitution currently requires it (`E31`), so "the Constitution requires it" does not
 deliver "it cannot lawfully be ended" (`E32`, countermodel). Symmetrically, where the
@@ -129,50 +125,29 @@ legal availability. Each side still needs its normative bridge, NB1 or NB2, to t
 its legal argument into a recommendation. Suber's reading is entered as a SHARED,
 INTERPRETIVE node so either side may contest it.
 
-### Red team 1 repairs (run-birthright-3)
+### Assumptions and evidence
 
-`docs/redteam-phase0.md` produced ten attacks on Phase 0; none touches an inference. Three
-were repaired in the Lean development. The Normative branch's `disanalogy` environment
-field was one side's premise in the environment; it is now claim `N-D`, owned by Newman,
-and `E26` depends on it (contested meanings 8 → 9). Every signature with an existential
-in play carries a nonemptiness witness, so the empty domain is no longer a free
-countermodel. Each side of the constitutional branch has a position witness (`E35`,
-`E36`, COMPATIBLE), proving the environment satisfiable and each whole position
-consistent with it, which the axiom audit alone cannot show. Tallies: 16 certified, 3
-refuted, 13 gaps, 4 compatible; 40 theorems audited, all axiom-free.
+The setup makes substantive assumptions explicit and requires nonempty domains and
+models witnessing each side's position. In the birthright model, Newman's disanalogy
+principle is claim N-D, and E26 depends on it. E35 and E36 establish that the environment
+permits each side's constitutional position. These checks establish satisfiability;
+they do not establish neutrality.
 
-### Evidence layer (added in run-birthright-2)
+[Evidence.lean](../Debate/Evidence.lean) defines grades, provenance records, and
+subjective probability intervals. [Examples.lean](../Debate/Evidence/Examples.lean)
+checks selected orderings, partition sums, and overlaps. These are arithmetic guarantees,
+not guarantees about calibration or the completeness of the source search.
 
-`Debate/Evidence.lean` types the evidence layer: a grade scale, provenance records that
-say what was inspected and never what it means, and calibrated credences as percent
-intervals with two decidable coherence checks (entailment ordering, partition sum).
-`Debate/Evidence/Examples.lean` runs those checks on the two real probability tables the
-evidence layer produced in `docs/sources/` and shows the check rejecting an incoherent
-table. The initial EVIDENCE section displayed grades assigned from general knowledge or debate
-agreement without source inspection. Evidence run 1 later supplied an investigated
-basis for K1, recorded separately from the remaining unverified entries (Q17).
-The arithmetic checks establish selected constraints, not calibration of the estimates
-or adequacy of the evidence search.
+The K1 ledger entry has an investigated basis from evidence run 1. Other entries retain
+their stated limitations, including grades assigned from general knowledge or agreement
+without inspection. The evidence run fixed its source cutoff at 6 June 2026; later legal
+developments and verification are recorded separately in the
+[run results](runs/evidence-1/RESULTS.md#formalizer-rulings). They do not retroactively
+change the frozen run.
 
-## Post-freeze note (verified 14 September 2026)
+## Other completed experiments
 
-The debate was held 6 June 2026 and every verdict above is frozen at that date. On
-30 June 2026 the Supreme Court decided *Trump v. Barbara*, No. 25-365, 6 to 3, striking
-down the 2025 executive order and holding that the Citizenship Clause covers children
-born in the United States to parents unlawfully or temporarily present. That is Mayes's
-conclusion, which the run left UNSUPPORTED after Krikorian refuted her stated route.
-Read against the graph: the holding supplies what the run said was missing, an
-affirmative route to her conclusion that does not go through J17 as she stated it; it
-settles the constitutional branch's disputed node set as a matter of controlling law; and
-it leaves the motion exactly where E27 and E31–E34 put it, since a "should" does not
-follow from what the Constitution now requires. The run's structural findings are
-unchanged by the decision. Its evidence-layer grades for K1 and the constitutional
-leaves would change if the freeze were moved.
-
-## Later runs (14 September 2026)
-
-Three further runs, each in `docs/runs/<name>/` with a `SETUP.md` fixed before any agent
-was invoked and a `RESULTS.md` when finished.
+Each run has a fixed setup, submissions, and a results record explaining its findings.
 
 **Second debate, death penalty** (`run-deathpenalty-1`, `Debate/DeathPenalty/`). Chosen
 from titles only; extracted by a separate agent. 13 certified, 1 refuted (intra-side), 12

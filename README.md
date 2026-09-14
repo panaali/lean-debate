@@ -56,9 +56,7 @@ was faithfully captured.
 | [Scientific papers](docs/scientific-papers.md) | Proposed extension to papers with linked proofs and evidence records |
 | [Contributing](docs/contributing.md) | Useful work, ownership checks, and editing conventions |
 | [Source conversations](docs/sources/) | The discussions from which the project developed |
-
-Earlier wording and details moved out of the main pages are preserved in the
-[pre-edit archive](docs/archive/2026-09-14-before-description-edit/INDEX.md).
+| [Archive](docs/archive/README.md) | Preserved earlier descriptions, tallies, and development history |
 
 Read [Learnings §6](docs/learnings.md#6-the-hole-worked-through) before presenting the
 project: checked reasoning can still rest on a biased or incomplete evidence search.
@@ -96,7 +94,7 @@ ownership and available follow-up work.
 |---|---|---|
 | Birthright reconstruction and red-team repairs | complete, `run-birthright-3` | [Results](docs/results.md), [Lean](Debate/Birthright/) |
 | Evidence types and initial coherence checks | complete, introduced in `run-birthright-2` | [Types](Debate/Evidence.lean), [examples](Debate/Evidence/Examples.lean) |
-| Article V in the Motion branch | complete, E31–E34 in `run-birthright-2` | [Explanation](docs/results.md#article-v-made-load-bearing-added-in-run-birthright-2) |
+| Article V in the Motion branch | complete, E31–E34 in `run-birthright-2` | [Explanation](docs/results.md#legal-availability-and-policy-recommendations) |
 | Adversarial evidence run on K1 | complete, `run-evidence-1`; findings entered in the ledger | [Results](docs/runs/evidence-1/RESULTS.md), [status](docs/runs/evidence-1/STATUS.md) |
 | Two-AI constitutional debate | complete, `run-twoai-1`; 8 verdicts and matching back-translation | [Results](docs/runs/two-ai-1/RESULTS.md), [status](docs/runs/two-ai-1/STATUS.md) |
 | Death-penalty reconstruction | complete, `run-deathpenalty-1`; selected from titles only | [Results](docs/runs/death-penalty/RESULTS.md), [status](docs/runs/death-penalty/STATUS.md) |

@@ -94,7 +94,7 @@ translates any debate, finds the weakest missing premise, or searches every rebu
 a countermodel. Lean checks the supplied formal objects; the report's English descriptions
 and theorem references require a separate correspondence review.
 
-## 4. One worked run
+## 4. What the experiments show
 
 The first case study reconstructed *Should America End Birthright Citizenship?*
 (Open to Debate, June 2026), with two speakers on each side. The
@@ -123,8 +123,7 @@ recommendation by themselves.
 At `run-birthright-3`, the ledger contains 16 certified edges, 3 refutations, 13 gaps,
 and 4 compatibility results, with 4 unstated premises. Two compatibility results concern
 the exchanges above; the other two show that each side's stated position is consistent
-with the environment. The tag audits 40 theorems: 36 debate verdicts and 4 initial
-evidence checks. Earlier tags retain the original 30 verdicts and the Article V extension.
+with the environment. The current main audit also includes the two-AI and evidence work described below.
 
 Subsequent experiments broadened the test:
 
@@ -183,10 +182,8 @@ than handling claims as they arrive.
 
 ## 6. Next steps
 
-The completed milestones include the evidence types and initial coherence checks
-(`run-birthright-2`), the Article V extension, a second debate, a two-AI run, an
-adversarial evidence investigation, and the first Phase 0 red team. The next experiments
-should test the limits those runs exposed.
+The next experiments should test reliability, usefulness, and cost. The completed runs
+supply examples; they do not yet provide comparative measurements.
 
 1. **Measure the quality of the reconstruction.** Use independent extractions and domain
    review to count important problems found, problems missed, and false alarms introduced
