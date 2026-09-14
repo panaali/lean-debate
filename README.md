@@ -46,6 +46,31 @@ lake build       # builds the library and prints the axiom audit
 lake exe report  # prints the judge-facing ledger
 ```
 
+## Status and where to go next
+
+Updated 14 September 2026. The roadmap is `docs/thesis.md` §6; this is its current state.
+
+| Item | State | Where |
+|---|---|---|
+| Birthright run through the inference layer | done, tagged `run-birthright-2` | `Debate/Birthright/`, `docs/results.md` |
+| Evidence-layer types and coherence checks in Lean | done | `Debate/Evidence.lean`, `Debate/Evidence/Examples.lean` |
+| Article V load-bearing in the Motion branch | done | `Debate/Birthright/Motion.lean`, E31–E34 |
+| Adversarial evidence run on leaf K1 (two agents, opposing assignments) | in progress | `docs/runs/evidence-1/` |
+| Two-AI debate run on the constitutional proposition | in progress, openings stage | `docs/runs/two-ai-1/` |
+| Second debate (death penalty), chosen from titles only | in progress, extraction stage | `docs/runs/death-penalty/` |
+| Red team of Phase 0 (vocabulary, environment, meta-rule attacks) | in progress | `docs/redteam-phase0.md` when written |
+| Reusable argument-schema library | not started | `docs/open-questions.md` Q11 |
+| Training on the checkable half | not started, outside current means | Q14 |
+
+Each `docs/runs/<name>/SETUP.md` fixes the proposition, environment, rules and roles
+before any agent is invoked; results land in the same folder. A run is finished when its
+folder has a `RESULTS.md`, its Lean modules (if any) are in `Audit.lean`, and
+`docs/results.md`, `docs/claims.md` and `docs/open-questions.md` have been updated with
+what it changed.
+
+To pick something up: take an in-progress run whose folder lacks `RESULTS.md`, or an
+OPEN question in `docs/open-questions.md`, or a CONTESTED claim in `docs/claims.md`.
+
 ## How to work on this
 
 The project is a working document set, not a publication. To contribute:
