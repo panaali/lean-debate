@@ -81,7 +81,7 @@ usefulness would most directly test the proposal.
 
 Before editing, read the relevant `SETUP.md` and `STATUS.md` and check
 `git status --short`. Run records are in [docs/runs](docs/runs/);
-[red-team status](docs/redteam-STATUS.md) lists available follow-up work.
+[red-team status](docs/runs/phase0-redteam-1/STATUS.md) lists available follow-up work.
 An unfinished task may already belong to another session.
 
 ## Repository map

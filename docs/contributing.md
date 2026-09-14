@@ -7,7 +7,7 @@ writing, test the protocol, or challenge what the project claims to have shown. 
 ## Choose available work
 
 Read the relevant run's `SETUP.md` and `STATUS.md`, or the
-[red-team status](redteam-STATUS.md), before starting. Check `git status --short` and
+[red-team status](runs/phase0-redteam-1/STATUS.md), before starting. Check `git status --short` and
 inspect changes in files you intend to edit. A piece marked “not started” may already be
 reserved for a session's next step; a missing `RESULTS.md` means unfinished, not unowned.
 Reservations can include shared code and documentation outside the run folder.

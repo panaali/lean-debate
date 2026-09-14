@@ -140,7 +140,7 @@ Other completed experiments examine different parts of the method:
   assignments converged on a narrower reading of the pivotal historical claim K1.
   Their findings entered the ledger. Checks of their probability intervals establish
   arithmetic constraints, not the adequacy of their evidence search.
-- **[Phase 0 red team](redteam-phase0.md):** ten attacks targeted the setup rather than
+- **[Phase 0 red team](runs/phase0-redteam-1/RESULTS.md):** ten attacks targeted the setup rather than
   the proofs. One exposed a substantive premise hidden in the project's own environment.
   The current requirements make substantive assumptions explicit and require nonempty
   domains and models witnessing each side's position.

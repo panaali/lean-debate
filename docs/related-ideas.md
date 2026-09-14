@@ -262,7 +262,9 @@ another commitment.
 
 The [claims ledger](claims.md) records the proposal's commitments and objections; the
 [open questions](open-questions.md) distinguishes what is implemented from what remains
-to be tested. These are the main connections to the current work:
+to be tested. The [Phase 0 red-team report](runs/phase0-redteam-1/RESULTS.md) gives the
+concrete attacks behind the setup questions. These are the main connections to the
+current work:
 
 | Idea | Where to inspect it | Current boundary |
 |---|---|---|

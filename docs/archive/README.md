@@ -19,3 +19,13 @@ Primary source conversations remain in [sources](../sources/). Completed run set
 submissions, extractions, and results remain in [runs](../runs/). Their original paths
 are retained so evidence references stay usable. This cleanup removes none of those
 materials or any Lean code.
+
+## Relocated run records
+
+Original source discussions and snapshots retain the paths used when they were written.
+The records are now available at these locations:
+
+| Original path | Current location |
+|---|---|
+| `docs/redteam-phase0.md` | [Phase 0 red-team results](../runs/phase0-redteam-1/RESULTS.md) |
+| `docs/redteam-STATUS.md` | [Phase 0 red-team status](../runs/phase0-redteam-1/STATUS.md) |

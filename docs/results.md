@@ -147,7 +147,17 @@ change the frozen run.
 
 ## Other completed experiments
 
-Each run has a fixed setup, submissions, and a results record explaining its findings.
+The debate and evidence runs have fixed setups, submissions, and results records.
+The Phase 0 review documents adversarial attacks on the protocol.
+
+**[Phase 0 red team](runs/phase0-redteam-1/RESULTS.md).**
+The review develops ten attacks on the vocabulary, environment, and setup rules.
+It identifies ways to hide substantive assumptions or remove a position without
+invalidating the conditional proofs. Current safeguards include witnesses for each
+side's position, nonempty countermodels, and review of the setup's meaning. The
+[status record](runs/phase0-redteam-1/STATUS.md) lists the completed repairs and the
+open task of independently testing the revised rules. Satisfiability alone does not
+establish that the setup is neutral.
 
 **[Death penalty](runs/death-penalty/RESULTS.md)** (`run-deathpenalty-1`).
 Selected from titles only and extracted by a separate agent, the reconstruction yields

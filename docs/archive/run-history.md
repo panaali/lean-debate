@@ -22,7 +22,7 @@ the main audit; current totals are recorded in results.
 - [Original birthright findings and version notes](2026-09-14-before-description-edit/docs/results.md)
 - [Later source-verification note](2026-09-14-before-description-edit/concurrent-updates/docs/results.md#post-freeze-note-verified-14-september-2026)
 - [Original learnings and proposed priorities](2026-09-14-before-description-edit/docs/learnings.md)
-- [First Phase 0 red team](../redteam-phase0.md)
+- [First Phase 0 red team](../runs/phase0-redteam-1/RESULTS.md)
 - [Source discussion and session decisions](../sources/discussion-2026-09-13.md)
 
 The private findings artifact linked in the original overview is superseded. It describes
