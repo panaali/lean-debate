@@ -3,7 +3,7 @@
 
 This file formalizes a small logical core of Bohr's reply to EPR.  It does not
 formalize Hilbert-space quantum mechanics or derive the apparatus claims.  In
-particular, `Predicts` and `ConditionsPreserved` are kept distinct, as are lack
+particular, `predicts` and `predictionConditionsPreserved` are kept distinct, as are lack
 of mechanical disturbance and preservation of the conditions that make a
 prediction meaningful.
 -/
@@ -29,8 +29,9 @@ structure Scenario where
   predictionConditionsPreserved : Arrangement → Quantity → Prop
   represents : Arrangement → Quantity → Prop
 
-/-- EPR's criterion read without retaining the measurement arrangement. -/
-def CoarseReality (s : Scenario) (q : Quantity) : Prop :=
+/-- Eligibility for EPR's sufficient criterion after forgetting the arrangement.
+This is a predictive warrant, not a definition of physical reality. -/
+def CriterionEligible (s : Scenario) (q : Quantity) : Prop :=
   ∃ a, s.mechanicallyUndisturbed a ∧ s.predicts a q
 
 /-- Bohr-style warrant: the quantity is indexed by the conditions of prediction. -/
@@ -75,10 +76,10 @@ theorem no_joint_warrant_of_complementary
   obtain ⟨a, hp, hm⟩ := hj
   exact h a ⟨hp.2.2, hm.2.2⟩
 
-/-- Alternative context-indexed predictions still imply both coarse reality claims. -/
-theorem coarse_realities_of_alternatives
+/-- Alternative context-indexed predictions still imply eligibility claims for both quantities. -/
+theorem criterion_eligibility_of_alternatives
     (s : Scenario) (h : AlternativePredictions s) :
-    CoarseReality s .position ∧ CoarseReality s .momentum := by
+    CriterionEligible s .position ∧ CriterionEligible s .momentum := by
   constructor
   · obtain ⟨a, ha⟩ := h.1
     exact ⟨a, ha.1, ha.2.1⟩
@@ -92,12 +93,12 @@ conditions to every arrangement, while EPR denies that simultaneous prediction
 is required for simultaneous reality.
 -/
 def WarrantTransport (s : Scenario) : Prop :=
-  ∀ q, CoarseReality s q → ∀ a, ContextualWarrant s a q
+  ∀ q, CriterionEligible s q → ∀ a, ContextualWarrant s a q
 
-/-- The joint conclusion follows once the missing transport bridge is stated explicitly. -/
+/-- The joint-warrant target follows under this explicitly strong sufficient bridge. -/
 theorem joint_warrant_of_transport
     (s : Scenario) (ht : WarrantTransport s)
-    (hp : CoarseReality s .position) (hm : CoarseReality s .momentum) :
+    (hp : CriterionEligible s .position) (hm : CriterionEligible s .momentum) :
     JointWarrant s := by
   exact ⟨.positionFrame, ht .position hp .positionFrame,
     ht .momentum hm .positionFrame⟩
@@ -121,10 +122,10 @@ theorem bohr_alternative_predictions : AlternativePredictions bohrScenario := by
   · exact ⟨.momentumBalance, True.intro, Or.inr ⟨rfl, rfl⟩,
       Or.inr ⟨rfl, rfl⟩⟩
 
-theorem bohr_coarse_position_and_momentum :
-    CoarseReality bohrScenario .position ∧
-      CoarseReality bohrScenario .momentum :=
-  coarse_realities_of_alternatives bohrScenario bohr_alternative_predictions
+theorem bohr_criterion_eligible_position_and_momentum :
+    CriterionEligible bohrScenario .position ∧
+      CriterionEligible bohrScenario .momentum :=
+  criterion_eligibility_of_alternatives bohrScenario bohr_alternative_predictions
 
 theorem bohr_complementary : Complementary bohrScenario := by
   intro a h
@@ -149,8 +150,8 @@ theorem no_joint_warrant_compatible_with_simultaneous_reality :
 
 theorem bohr_transport_fails : ¬ WarrantTransport bohrScenario := by
   intro ht
-  have hp : CoarseReality bohrScenario .position :=
-    bohr_coarse_position_and_momentum.1
+  have hp : CriterionEligible bohrScenario .position :=
+    bohr_criterion_eligible_position_and_momentum.1
   have h := ht .position hp .momentumBalance
   rcases h.2.2 with hbad | hbad
   · exact Arrangement.noConfusion hbad.1

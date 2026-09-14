@@ -4,8 +4,10 @@ import PaperStudies.Report
 # Full theorem audit
 
 Every theorem declared in EPR.lean, Bohr.lean and Comparison.lean is listed below.
-A clean build must report no axioms for every entry. This checks formal dependencies,
-not physical truth, authorial fidelity, or the neutrality of definitions/hypotheses.
+Expected: 42 entries have no axioms; the two integer prediction identities use
+`propext` through Lean's core integer lemmas. No entry uses `sorryAx` or a
+user-declared axiom. This checks formal dependencies, not physical truth,
+authorial fidelity, or the neutrality of definitions/hypotheses.
 -/
 
 #print axioms PaperStudies.EPR.separate_realities
@@ -31,10 +33,10 @@ not physical truth, authorial fidelity, or the neutrality of definitions/hypothe
 #print axioms PaperStudies.EPR.swap_scale
 #print axioms PaperStudies.EPR.noncommutation_allows_common_eigenvector
 #print axioms PaperStudies.Bohr.no_joint_warrant_of_complementary
-#print axioms PaperStudies.Bohr.coarse_realities_of_alternatives
+#print axioms PaperStudies.Bohr.criterion_eligibility_of_alternatives
 #print axioms PaperStudies.Bohr.joint_warrant_of_transport
 #print axioms PaperStudies.Bohr.bohr_alternative_predictions
-#print axioms PaperStudies.Bohr.bohr_coarse_position_and_momentum
+#print axioms PaperStudies.Bohr.bohr_criterion_eligible_position_and_momentum
 #print axioms PaperStudies.Bohr.bohr_complementary
 #print axioms PaperStudies.Bohr.bohr_no_joint_warrant
 #print axioms PaperStudies.Bohr.no_joint_warrant_compatible_with_simultaneous_reality

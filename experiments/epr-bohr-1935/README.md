@@ -51,8 +51,11 @@ lake env lean PaperStudies/Audit.lean
 The build covers both paper articles, the comparison, the report, and the audit.
 The report has **33 result entries**: 17 EPR, 11 Bohr, and 5 comparison entries.
 The audit covers **44 theorem declarations**, including 11 supporting results that
-do not have separate report entries. Every audited declaration must report
-`does not depend on any axioms`.
+do not have separate report entries. **42 have no axiom dependencies.** The two general
+integer identities, `EPR.position_prediction` and `EPR.momentum_prediction`, depend on
+Lean's standard propositional extensionality axiom (`propext`) through core integer
+lemmas. There are no user-declared axioms or unfinished proofs. All central argument
+proofs, countermodels, and comparisons have no axiom dependencies.
 
 ## Proofs and presentation
 
