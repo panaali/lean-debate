@@ -170,7 +170,12 @@ A user test with judges who did not watch the debate.
 ### Q17. Is the legal and historical content in the docs correct?
 **Status:** PARTIAL. K1 has been through the evidence layer (`docs/runs/evidence-1/`) and
 its ledger grade now carries provenance. The rest of `learnings.md` §4 and §6 and the
-death-penalty extraction's factual claims remain unverified. **Why it matters:** `learnings.md` §4 and §6 cite cases and history from
+death-penalty extraction's factual claims remain unverified. Specific items: (a) the
+reported 30 June 2026 Supreme Court decision on the 2025 birthright order, cited by one
+evidence agent and excluded by the formalizer as past the freeze; (b) the Congressional
+Globe pages 2890–2897, quoted by both agents from OCR or transcription, never from page
+images; (c) the death-penalty extraction's dates, case names and statistics, unchecked
+against the transcript a second time. **Why it matters:** `learnings.md` §4 and §6 cite cases and history from
 general knowledge, unverified. If quoted, they must be checked first. **Candidate
 answer:** Run `evidence-protocol.md` on those paragraphs. **Resolves it:** Doing so.
 

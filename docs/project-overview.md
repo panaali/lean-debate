@@ -1,5 +1,11 @@
 # Proof-carrying debate: project overview
 
+> **Status note (14 September 2026).** Sections 1–6 describe the project as it stood after
+> the first run and are kept as the long reference. Later work (runs 2 and 3 of the
+> birthright debate, the death-penalty debate, the two-AI run, the evidence run, the red
+> team) is summarized in §6a and §7 and in full in `results.md`, `thesis.md` §6 and
+> `docs/runs/`. The tallies in §5 are the first run's.
+
 This document describes the `debate` project as a whole: where it came from, what it
 contains, what it found, and where it stands. It is written from the full record of the
 one Claude Code session that produced the project (17–26 August 2026) and from every file
@@ -543,8 +549,9 @@ project is now two specifications and one worked run of the first.
 
 ## 8. Artifacts and references
 
-- Findings page published from the session (private unless shared):
-  https://claude.ai/code/artifact/6c67c01c-a57b-4b48-9ec2-50377366aada
+- Findings page published from the first session (private unless shared), **superseded**:
+  it shows the first run's 30-verdict tallies and none of the later runs. Treat
+  `results.md` as current. https://claude.ai/code/artifact/6c67c01c-a57b-4b48-9ec2-50377366aada
 - Debate transcript used as source: Open to Debate, *Should America End Birthright
   Citizenship?*, June 2026 (opentodebate.substack.com).
 - Interview the alignment framing comes from: 80,000 Hours podcast with Geoffrey Irving.
