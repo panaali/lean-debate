@@ -96,6 +96,10 @@ def claims : List Claim :=
   , { id := "N-R",  speaker := .newman,    status := .interpretive,
       formal := "Normative.N_ownRight",
       english := "Citizenship by birth is the child's own entitlement, not a parental transfer." }
+  , { id := "N-D",  speaker := .newman,    status := .interpretive,
+      formal := "Normative.N_disanalogy",
+      english := "Removing a person's own entitlement is not relevantly like recovering what they hold by transfer."
+      note := "Was an environment field until run-birthright-3; red team 1 identified it as Newman's premise. Now his to defend." }
   , { id := "NB1",  speaker := .newman,    status := .normative,
       formal := "Motion.entrenchmentDecisive",
       english := "What the Constitution currently requires settles what America should do."
@@ -187,7 +191,7 @@ def edges : List Edge :=
   , { id := "E25", premises := ["C-S", "C-A"], concl := "C-T",
       verdict := .certified, witness := "Normative.certified_analogy",
       note := "Minutes of vivid argument reduce to C-A. That is what an analogy is: a way of asserting a premise without stating it." }
-  , { id := "E26", premises := ["N-R", "C-P"], concl := "not C-A",
+  , { id := "E26", premises := ["N-D", "N-R", "C-P"], concl := "not C-A",
       verdict := .certified, witness := "Normative.certified_newmanBlocksAnalogy",
       note := "Newman's real reply, at the joint. The debate as held never reaches this point." }
   , { id := "E27", premises := ["the Constitution requires birthright citizenship"],
@@ -212,6 +216,12 @@ def edges : List Edge :=
   , { id := "E34", premises := ["G-C", "the Constitution does not require it"], concl := "it cannot lawfully be kept",
       verdict := .gap, witness := "Motion.gap_notRequiredNotUnkeepable",
       note := "Symmetrically: the pro-motion legal case leaves the motion where NB2 alone can carry it." }
+  , { id := "E35", premises := ["L1", "J17", "M-L", "Mayes's conclusion"], concl := "jointly satisfiable",
+      verdict := .compatible, witness := "Constitutional.position_witness_mayes",
+      note := "Position witness (protocol 2.7): the environment is satisfiable and Mayes's whole position lives in it." }
+  , { id := "E36", premises := ["L1", "K1", "K-R", "K-A", "K-EX", "Krikorian's conclusion"], concl := "jointly satisfiable",
+      verdict := .compatible, witness := "Constitutional.position_witness_krikorian",
+      note := "Position witness (protocol 2.7) for the pro-motion side." }
   ]
 
 /-! ## Evidence layer: grades for the leaves

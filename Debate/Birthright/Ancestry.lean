@@ -24,6 +24,8 @@ structure Vocab where
   /-- Acquired it some other way: naturalisation, statute, descent, treaty, annexation. -/
   CitizenByOtherRoute : Person → Prop
   Citizen : Person → Prop
+  /-- Nonemptiness witness (red team 1, attack 4.2). -/
+  someone : Person
 
 /-- **[SHARED / DEFINITION].** Citizenship is acquired through some legal route: one is a
 citizen exactly if one is a citizen by birthright or by some other route. Uncontroversial,
@@ -55,6 +57,7 @@ def statuteVocab : Vocab where
   CitizenByBirthright := fun _ => False
   CitizenByOtherRoute := fun _ => True
   Citizen := fun _ => True
+  someone := ()
 
 def statuteFrame : Frame where
   toVocab := statuteVocab

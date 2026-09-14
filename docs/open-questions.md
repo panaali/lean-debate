@@ -47,7 +47,10 @@ transcript and compare extracted-premise sets. **Resolves it:** Either experimen
 scorecard.
 
 ### Q4. Does split-on-demand have a cost model, and can it be abused?
-**Status:** OPEN. **Why it matters:** C4 grants any split by default; an adversary could
+**Status:** PARTIAL. Red team 1 (attack 3) shows that any *cap* on splits is itself the
+attack: a "scoping split" rule requiring a separating claim inverts §2.3 on exactly the
+splits that matter. So the answer to abuse is not a cap. The remaining question is
+stalling, which no run has yet exhibited. **Why it matters:** C4 grants any split by default; an adversary could
 split endlessly to stall or to fragment the opponent's claims. **Candidate answers:** (a)
 Splits are free but each new symbol's gloss must be approved by both sides, so a split
 that changes nothing is visible. (b) A split that the splitter never uses in a subsequent
@@ -98,8 +101,11 @@ edge stays uncertified without being scored against either side. **Resolves it:*
 with a larger signature, and a decision on whether to add UNKNOWN.
 
 ### Q10. Can the meta-rule (§2.6) be enforced structurally rather than by prose?
-**Status:** PARTIAL (candidate (b) stated as `Debate.Evidence.preservesBoard` in
-`run-birthright-2`; not yet wired into a run or tested against a disguised merge). **Why it matters:** C5. A rule that lives only in a document is the thing
+**Status:** CONTESTED. Red team 1 §3.5: `preservesBoard` is vacuous at Phase 0 (the board
+is empty) and checks claims, not admissible models; the obligation should be
+model-preservation (every model of the old environment that satisfies a side's position
+witness remains a model of the new one). §2.6 reworded to close G1–G5. Candidate (b)
+should be restated as model preservation over the position witnesses of §2.7. **Why it matters:** C5. A rule that lives only in a document is the thing
 Gödel's loophole is about. **Candidate answers:** (a) Environment and Phase 0 rules as a
 Lean structure with no update operation exposed during a run. (b) Any change to the
 environment is itself a theorem obligation: show the old and new environments agree on
@@ -154,6 +160,43 @@ A user test with judges who did not watch the debate.
 **Status:** OPEN. **Why it matters:** `learnings.md` §4 and §6 cite cases and history from
 general knowledge, unverified. If quoted, they must be checked first. **Candidate
 answer:** Run `evidence-protocol.md` on those paragraphs. **Resolves it:** Doing so.
+
+### Q19. Is the environment satisfiable, and how is that checked?
+**Status:** ANSWERED (red team 1 attack 4.1; §2.7; `Constitutional.position_witness_*`,
+E35, E36). The axiom audit does not detect an inconsistent environment; per-side position
+witnesses do. Remaining: extend witnesses to every branch, not only the constitutional one.
+
+### Q20. Does the empty domain refute existentials for free?
+**Status:** ANSWERED (red team 1 attack 4.2; §2.9). Yes, it did. Nonemptiness witnesses
+added to the Constitutional, Ancestry, and Normative signatures in run-birthright-3.
+Remaining: the rule that agreed individuals must inhabit every countermodel is stated,
+not enforced.
+
+### Q21. Does back-translation cover the signature and environment, and can symbol names leak the reading?
+**Status:** PARTIAL (red team 1 attack 4.3; §2.8 added). Names are now to be replaced by
+opaque identifiers and the environment back-translated. Not yet done in any run; the
+two-AI run's back-translation step is the first test.
+
+### Q22. Does the quantifier menu let a side evade refutation by weak typing?
+**Status:** PARTIAL (red team 1 attack 4.4; §3.4 gains the generic reading, a type-pairing
+rule for rebuttals, and the rule that PROBABILISTIC claims owe evidence work). Untested.
+
+### Q23. Can tallies be farmed, and should the judge see them at all?
+**Status:** PARTIAL (red team 1 attack 4.5; §8 reordered to put the disputed node set
+first and tallies last, resolving the contradiction with `learnings.md` §3). The
+narrow-the-conclusion button still yields a CERTIFIED edge per narrowing; whether to
+count those separately is open.
+
+### Q24. Is a cross-branch identification a claim?
+**Status:** PARTIAL (red team 1 attack 4.6; §6 now requires typed DEFINITION
+identifications with both sides' consent). The Motion branch's atomic
+`ConstitutionRequires` is not yet linked to the constitutional branch by such a claim in
+the Lean development.
+
+### Q25. Who reviews the formalizer, and can an utterance inject instructions into it?
+**Status:** PARTIAL (red team 1 attack 4.7; §9.7 added). Two-AI run 1 is the first case:
+its formalizer wrote the Phase 0 gloss "born within US territory", which B exploited,
+and no reviewer with domain context saw the signature before the debaters did.
 
 ### Q18. What generates the hypotheses?
 **Status:** OPEN. **Why it matters:** Both protocols check arguments; neither invents them.

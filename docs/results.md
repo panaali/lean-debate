@@ -50,8 +50,8 @@ merely unrefuted. Nobody wins by being harder to refute than their opponent can 
 There are **no `axiom` declarations anywhere**. The debate vocabulary is a signature, the
 agreed constitutional text is a structure field, arguments are theorems quantified over
 all models. `Debate/Birthright/Audit.lean` prints `#print axioms` for all 30 verdicts;
-every one reports *does not depend on any axioms*. As of `run-birthright-2` the audit
-covers 38 theorems: the 30 original verdicts, 4 for the Article V section added after the
+every one reports *does not depend on any axioms*. As of `run-birthright-3` the audit
+covers 40 theorems: the 30 original verdicts, 4 for the Article V section added after the
 Gödel's-loophole reading, and 4 coherence checks in the evidence layer.
 
 ## Results
@@ -61,15 +61,16 @@ edges certified .......... 16
 edges refuted ............ 3
 edges with proved gaps ... 13    (countermodel exhibited; no proof exists)
 apparent clashes that are
-  not clashes ............ 2
+  not clashes ............ 4
 
 premises needing evidence  8
-contested meanings ....... 8
+contested meanings ....... 9
 value premises ........... 3
 premises nobody stated ... 4
 ```
 
-These are the `run-birthright-2` tallies. `run-birthright-1` (git tag) had 14 certified,
+These are the `run-birthright-3` tallies (compatible went from 2 to 4 with the position
+witnesses; contested meanings from 8 to 9 with N-D). `run-birthright-1` (git tag) had 14 certified,
 11 gaps, 7 contested meanings; the difference is the Article V section (E31–E34, claims
 G-S, G-E, G-A, G-C) described under "Article V made load-bearing" below.
 
@@ -130,6 +131,18 @@ required" does not deliver "cannot lawfully be kept" (`E34`). The consequence: n
 side's constitutional case can rest on *legality* at all. Each rests only on its own
 unstated normative bridge, NB1 or NB2. Suber's reading is entered as a SHARED,
 INTERPRETIVE node so either side may contest it.
+
+### Red team 1 repairs (run-birthright-3)
+
+`docs/redteam-phase0.md` produced ten attacks on Phase 0; none touches an inference. Three
+were repaired in the Lean development. The Normative branch's `disanalogy` environment
+field was one side's premise in the environment; it is now claim `N-D`, owned by Newman,
+and `E26` depends on it (contested meanings 8 → 9). Every signature with an existential
+in play carries a nonemptiness witness, so the empty domain is no longer a free
+countermodel. Each side of the constitutional branch has a position witness (`E35`,
+`E36`, COMPATIBLE), proving the environment satisfiable and each whole position
+consistent with it, which the axiom audit alone cannot show. Tallies: 16 certified, 3
+refuted, 13 gaps, 4 compatible; 40 theorems audited, all axiom-free.
 
 ### Evidence layer (added in run-birthright-2)
 

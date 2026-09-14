@@ -4,8 +4,8 @@ A machine-checked formalization of one real political debate, *Should America En
 Birthright Citizenship?* (Open to Debate, June 2026), built as a test of a protocol in
 which every claimed inference must carry a certificate a proof assistant can check.
 
-Current state (`run-birthright-2`): 38 theorems, all reporting no axioms; 34 ledger
-edges (16 certified, 3 refuted, 13 gaps with countermodels, 2 compatible); 4 premises
+Current state (`run-birthright-3`): 40 theorems, all reporting no axioms; 36 ledger
+edges (16 certified, 3 refuted, 13 gaps with countermodels, 4 compatible); 4 premises
 carrying the debate that no speaker stated; an evidence layer with a kernel-checked
 coherence slice. `lake exe report` prints the judge-facing ledger.
 
@@ -58,7 +58,7 @@ Updated 14 September 2026. The roadmap is `docs/thesis.md` §6; this is its curr
 | Adversarial evidence run on leaf K1 (two agents, opposing assignments) | in progress | `docs/runs/evidence-1/` |
 | Two-AI debate run on the constitutional proposition | in progress, openings stage | `docs/runs/two-ai-1/` |
 | Second debate (death penalty), chosen from titles only | in progress, extraction stage | `docs/runs/death-penalty/` |
-| Red team of Phase 0 (vocabulary, environment, meta-rule attacks) | in progress | `docs/redteam-phase0.md` when written |
+| Red team of Phase 0 (ten attacks) | done; findings filed, three repaired in Lean, protocol §2.6–2.9, 3.4, 6, 8, 9.7 revised | `docs/redteam-phase0.md`, C4/C5/C6/C17/C19/C20, Q4/Q10/Q19–Q25 |
 | Reusable argument-schema library | not started | `docs/open-questions.md` Q11 |
 | Training on the checkable half | not started, outside current means | Q14 |
 
@@ -121,7 +121,7 @@ The project is a working document set, not a publication. To contribute:
   same analogy, a second debate) is added as a sibling module under the same branch
   namespace, with its own signature, listed in `Audit.lean`, and with a comparison note in
   `docs/results.md`. No version folders.
-- Each completed run is tagged (`run-birthright-2` is the current one; `run-birthright-1`
-  is the original 30-verdict development) so the tallies in `docs/results.md` stay
+- Each completed run is tagged (`run-birthright-3` is the current one; `-2` added the
+  evidence layer and Article V; `-1` is the original 30-verdict development) so the tallies in `docs/results.md` stay
   reproducible after the protocol layer moves on.
 - Commit as you go, with a message that names the claim or question the change bears on.

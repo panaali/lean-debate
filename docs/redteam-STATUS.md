@@ -1,10 +1,12 @@
 # Status: red team of Phase 0
 
-Last updated: 2026-09-14 (session running)
+Last updated: 2026-09-14
 
-docs/redteam-phase0.md has landed (597 lines, ten attacks, verdict table in §5). The
-running session is filing its findings against docs/claims.md (C4, C5, C17) and
-docs/open-questions.md (Q4, Q10, and new questions), rewording inference-protocol §2.6,
-and repairing the instance of attack 2 the red team found in the run's own code
-(Normative.Frame.disanalogy). Useful outside work after it
-lands: a second, independent red team written to docs/redteam-phase0-2.md.
+`docs/redteam-phase0.md` landed and has been filed. Repairs in `run-birthright-3`
+(Normative disanalogy moved to a claim; nonemptiness witnesses; position witnesses).
+Protocol revised: §2.6 reworded, §2.7–2.9, §3.4, §6, §8, §9.7 added or changed. Registers
+updated: C4, C5, C6, C17, C19, C20; Q4, Q10, Q19–Q25.
+
+Useful outside work now: a second, independent red team of the *revised* protocol,
+written to `docs/redteam-phase0-2.md`, especially against §2.6 as reworded, §2.7 position
+witnesses (can a satisfiable but one-sided environment still pass?), and §2.8.

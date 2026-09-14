@@ -38,6 +38,8 @@ open Debate.Birthright
 #print axioms Constitutional.gap_krikorianConclusion
 #print axioms Constitutional.certified_krikorianConclusion
 #print axioms Constitutional.compatible_K1_withMayesConclusion
+#print axioms Constitutional.position_witness_mayes
+#print axioms Constitutional.position_witness_krikorian
 
 -- Ancestry
 #print axioms Ancestry.gap_ancestry

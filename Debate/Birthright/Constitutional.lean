@@ -57,6 +57,9 @@ structure Vocab where
   BornToUnauthorizedParents : Person → Prop
   /-- Member of a foreign criminal organization operating in the US (Mayes's example). -/
   CartelMember : Person → Prop
+  /-- Nonemptiness witness: the domain contains at least one person. Without it the empty
+  domain is a countermodel to every existential (red team 1, attack 4.2). -/
+  someone : Person
 
 /-- **L1 [SHARED / SOURCE-VERIFIED].** The Citizenship Clause of the Fourteenth
 Amendment, as both sides state it: born in the US *and* subject to the jurisdiction
@@ -145,6 +148,7 @@ def vacuousVocab : Vocab where
   USCitizenAtBirth := fun _ => False
   BornToUnauthorizedParents := fun _ => True
   CartelMember := fun _ => False
+  someone := ()
 
 def vacuousFrame : Frame where
   toVocab := vacuousVocab
@@ -163,6 +167,7 @@ def splitVocab : Vocab where
   USCitizenAtBirth := fun b => b = true
   BornToUnauthorizedParents := fun b => b = true
   CartelMember := fun _ => False
+  someone := true
 
 def splitFrame : Frame where
   toVocab := splitVocab
@@ -180,6 +185,7 @@ def statutoryVocab : Vocab where
   USCitizenAtBirth := fun _ => True
   BornToUnauthorizedParents := fun _ => True
   CartelMember := fun _ => False
+  someone := ()
 
 def statutoryFrame : Frame where
   toVocab := statutoryVocab
@@ -318,5 +324,47 @@ theorem compatible_K1_withMayesConclusion :
       ∀ p : F.toVocab.Person,
         F.toVocab.BornToUnauthorizedParents p → F.toVocab.USCitizenAtBirth p :=
   ⟨splitFrame, ⟨false, trivial, fun h => Bool.noConfusion h⟩, fun _ h => h⟩
+
+/-! ## 8. Position witnesses (inference-protocol §2.7, after red team 1)
+
+Each side must exhibit a frame in which its *whole* stated position holds together with
+the environment. This does two jobs. It proves the environment is satisfiable at all, so
+that no theorem here is certified by `False.elim` from an inconsistent environment
+(attack 4.1); and it proves that no environment addition has silently deleted a side's
+position (attack 2), because such an addition would have to be shown consistent with
+both witnesses. -/
+
+/-- A world in which Mayes's whole position holds: everyone answerable to US law meets
+the jurisdiction condition, these children are answerable, and they are citizens. -/
+def mayesVocab : Vocab where
+  Person := Unit
+  BornInUS := fun _ => True
+  SubjectToUSJurisdiction := fun _ => True
+  SubjectToUSLaw := fun _ => True
+  ExclusiveAllegiance := fun _ => False
+  USCitizenAtBirth := fun _ => True
+  BornToUnauthorizedParents := fun _ => True
+  CartelMember := fun _ => False
+  someone := ()
+
+def mayesFrame : Frame where
+  toVocab := mayesVocab
+  citizenship_clause := fun _ _ _ => trivial
+
+/-- **COMPATIBLE (position witness, Mayes).** J17, M-L, and her conclusion hold together
+with the Citizenship Clause. -/
+theorem position_witness_mayes :
+    ∃ F : Frame, J17 F.toVocab ∧ childrenSubjectToLaw F.toVocab ∧
+      ∀ p : F.toVocab.Person, F.toVocab.BornToUnauthorizedParents p → F.toVocab.USCitizenAtBirth p :=
+  ⟨mayesFrame, fun _ _ => trivial, fun _ _ => trivial, fun _ _ => trivial⟩
+
+/-- **COMPATIBLE (position witness, Krikorian).** K1, K-R, K-A, K-EX and his conclusion
+hold together with the Citizenship Clause. `vacuousFrame` is such a world. -/
+theorem position_witness_krikorian :
+    ∃ F : Frame, K1 F.toVocab ∧ K_exclusiveReading F.toVocab ∧
+      K_childrenNotExclusive F.toVocab ∧ K_clauseExhaustive F.toVocab ∧
+      ∀ p : F.toVocab.Person, F.toVocab.BornToUnauthorizedParents p → ¬ F.toVocab.USCitizenAtBirth p :=
+  ⟨vacuousFrame, ⟨(), trivial, fun h => h⟩, fun _ => Iff.rfl, fun _ _ h => h,
+    fun _ h => h, fun _ _ h => h⟩
 
 end Debate.Birthright.Constitutional

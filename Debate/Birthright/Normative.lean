@@ -30,21 +30,22 @@ structure Vocab where
   RemovesOwnRightOfChild : Policy → Prop
   endBirthright : Policy
   recoverStolenMoney : Policy
+  /-- Nonemptiness witness. Without it the empty domain is a countermodel to every
+  existential (red team 1, attack 4.2). -/
+  someChild : Child
 
-/-- **[SHARED / DEFINITION].** What an analogy has to do to work, and when it fails.
+/-- **[SHARED / DEFINITION].** What an analogy has to do to work: if two policies are
+relevantly similar, a verdict about one carries to the other. Without this an analogy is
+decoration. A stipulation about the word "analogous", not a moral claim.
 
-* `analogy_transfer`: if two policies are relevantly similar, a verdict about one carries
-  to the other. Without this an analogy is decoration.
-* `disanalogy`: taking away what is a person's own is not relevantly similar to
-  recovering what they hold only by transfer.
-
-Both are stipulations about the word "analogous", not moral claims, and either side may
-reopen them — but each would have to do so explicitly. -/
+*Run history.* Until run-birthright-3 this structure had a second field, `disanalogy`
+(taking away what is a person's own is not relevantly similar to recovering what is held
+by transfer). Red team 1 (attack 2, "the run's own frames") identified it as one side's
+premise placed in the environment: it is exactly what Newman needs and Cooper would
+contest. It is now the claim `N_disanalogy`, owned by Newman. -/
 structure Frame extends Vocab where
   analogy_transfer :
     ∀ (p q : Policy) (c : Child), Analogous p q → ¬ Penalizes q c → ¬ Penalizes p c
-  disanalogy :
-    ∀ p q : Policy, RemovesOwnRightOfChild p → RemovesParentalTransfer q → ¬ Analogous p q
 
 /-- **V17 [Newman, NORMATIVE].** Do not impose penalties on a child solely for parental
 conduct. Cooper does not dispute this. -/
@@ -76,6 +77,12 @@ def N_ownRight (V : Vocab) : Prop := V.RemovesOwnRightOfChild V.endBirthright
 /-- **C-P [Cooper, agreed].** Stolen money in a child's hands is a parental transfer. -/
 def C_parentalTransfer (V : Vocab) : Prop := V.RemovesParentalTransfer V.recoverStolenMoney
 
+/-- **N-D [Newman, INTERPRETIVE].** Taking away what is a person's own is not relevantly
+similar to recovering what they hold only by transfer. Formerly an environment field; see
+the `Frame` docstring. Cooper may contest it, which is the point of its being a claim. -/
+def N_disanalogy (V : Vocab) : Prop :=
+  ∀ p q : V.Policy, V.RemovesOwnRightOfChild p → V.RemovesParentalTransfer q → ¬ V.Analogous p q
+
 /-- A world where the two policies are not relevantly similar: recovering the money
 penalizes nobody, ending birthright citizenship penalizes everybody. -/
 def disanalogousVocab : Vocab where
@@ -89,11 +96,11 @@ def disanalogousVocab : Vocab where
   RemovesOwnRightOfChild := fun _ => False
   endBirthright := true
   recoverStolenMoney := false
+  someChild := ()
 
 def disanalogousFrame : Frame where
   toVocab := disanalogousVocab
   analogy_transfer := fun _ _ _ ha _ => ha.elim
-  disanalogy := fun _ _ _ hq => hq.elim
 
 /-- **CERTIFIED.** Newman's argument is valid. Since Cooper grants V17, everything turns
 on the classification N-C — which is exactly where Cooper aims the analogy. -/
@@ -127,9 +134,9 @@ than a competing story about bank robbers.
 
 The debate as held never reaches this point. Cooper's analogy is answered with a different
 framing rather than at the joint, and the exchange ends unresolved. -/
-theorem certified_newmanBlocksAnalogy (F : Frame)
-    (hn : N_ownRight F.toVocab) (hp : C_parentalTransfer F.toVocab) :
-    ¬ C_analogy F.toVocab :=
-  F.disanalogy F.endBirthright F.recoverStolenMoney hn hp
+theorem certified_newmanBlocksAnalogy (V : Vocab)
+    (hd : N_disanalogy V) (hn : N_ownRight V) (hp : C_parentalTransfer V) :
+    ¬ C_analogy V :=
+  hd V.endBirthright V.recoverStolenMoney hn hp
 
 end Debate.Birthright.Normative

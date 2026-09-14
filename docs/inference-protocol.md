@@ -109,14 +109,40 @@ costs the debate.*
 **2.4 — The environment is fixed here and is not silently amendable.** Adding to it later
 requires both sides' consent, and the addition is logged as a claim like any other.
 
-**2.6 — The rules of this phase are not themselves amendable during a run.** Rules
-2.1–2.5 sit outside the environment. Neither debater may propose, and no formalizer may
-accept, a change to how symbols are split, how the environment is fixed, or how additions
-are logged, once argument has begun. Gödel's loophole is the reason: on Guerra-Pujol's
-reading, Article V applies to Article V, so the amendment rule can be amended until
-amendment is trivial. A protocol whose Phase 0 can be simplified from inside Phase 0 has
-the same hole. Changes to these rules happen between runs, with both sides' consent, and
-are logged in the run that follows.
+**2.6 — The rules of this phase, and of Phase 1, are fixed before Phase 0 opens and are
+not amendable by anyone during a run.** (Reworded after red team 1, which found five gaps
+in the first version.) Specifically: from the moment the run's setup is published, no
+debater, formalizer, or reviewer may change how symbols are added, split, removed,
+glossed, typed, or classified; how the environment is fixed, witnessed, or added to; how
+claims are typed or quantified (§3); or this rule. There is no adjudicator with power to
+grant exceptions; a request to change a rule is logged as a refused request and the run
+continues under the published rules. Changes happen only between runs, and the consent
+that authorises them is the consent of the parties to the *next* run, recorded in its
+setup. Gödel's loophole is the reason: on Guerra-Pujol's reading, Article V applies to
+Article V, so the amendment rule can be amended until amendment is trivial. A protocol
+whose Phase 0 can be simplified from inside Phase 0, or before "argument has begun", has
+the same hole.
+
+**2.7 — Position witnesses.** (Added after red team 1.) Before argument, each side
+exhibits a model of the environment in which its whole stated position holds. The
+formalizer checks both. This proves the environment is satisfiable, so no edge can be
+certified from an inconsistent environment (which `#print axioms` does not detect); and
+it proves that no environment addition has silently deleted a side's position, since an
+addition must remain consistent with both witnesses. In the worked run these are
+`Constitutional.position_witness_mayes` and `position_witness_krikorian` (E35, E36).
+
+**2.8 — Phase 0 is back-translated too.** (Added after red team 1.) The signature and
+the environment go to the back-translator with symbol names replaced by opaque
+identifiers, so it must work from glosses; and each side's *uttered* conclusion, as
+spoken, is back-translated against the signature before argument begins. A signature in
+which a side's uttered conclusion cannot be expressed is defective, and this is the
+check that catches a vocabulary narrowed by deletion rather than by merge. The initial
+signature receives the same adversarial review as any later addition, from reviewers who
+have the domain context, not only the protocol text.
+
+**2.9 — Countermodels are nonempty.** (Added after red team 1.) Every signature carries a
+nonemptiness witness, and any individual both sides agree exists must inhabit every
+countermodel. Otherwise the empty domain refutes every existential for free.
 
 **2.5 — Log what the environment's form commits you to.** In the example, the Citizenship
 Clause enters as an implication, because that is what the text says. It is *not* a
@@ -142,8 +168,18 @@ controlled English is flagged before the debater is asked anything.
 **3.4 — Quantifier elicitation happens at assertion time.** When a claim admits a strong
 and a weak reading, the formalizer must ask *before* the claim is entered:
 
-> Do you mean **any** policy of this kind, **the one before the courts**, or that this
-> **raises the risk**?
+> Do you mean **any** policy of this kind, **the one before the courts**, that policies of
+> this kind **typically** do so (exceptions allowed), or that this **raises the risk**?
+
+The generic reading was added after red team 1, which noted it is the natural reading of
+most of what is said in a room and that forcing a choice between "any" and "raises the
+risk" makes universals cheap to refute and probabilistic claims impossible to refute, so
+the dominant strategy becomes never asserting a universal. Two further rules follow. A
+rebuttal is typed and paired with its target: a PROBABILISTIC rebuttal to a universal is
+not a refutation and is recorded as COMPATIBLE unless it is; a single instance against a
+generic claim is an exception, not a refutation. And a PROBABILISTIC claim owes
+evidence-layer work before it counts for anything; it cannot be used as an unattackable
+placeholder.
 
 This is not a nicety. In the example, Mayes's statelessness claim has both readings;
 Krikorian's response demolishes the strong one and does not touch the weak one; and the
@@ -181,7 +217,8 @@ conclusion is false. Proof and disproof become symmetric obligations, discharged
 same kernel, both cheap to check and expensive to fake.
 
 **Countermodels must satisfy the environment**, or `GAP` becomes winnable by simply
-walking away from the common ground. In the example, `statutoryFrame` honours the
+walking away from the common ground. They must also be nonempty and contain every
+agreed individual (§2.9). In the example, `statutoryFrame` honours the
 Citizenship Clause and both of Krikorian's interpretive premises, and still breaks his
 argument (`E9`).
 
@@ -272,7 +309,11 @@ being stated.
 ## 6. Phase 4 — Cross-branch bridges, demanded up front
 
 Before argument begins, each side must name the premise connecting each branch to the
-motion on the floor.
+motion on the floor. And (after red team 1) every *identification* of a symbol in one
+branch with a proposition in another, such as the Motion branch's atomic
+"the Constitution requires it" with the constitutional branch's universal, is itself a
+typed DEFINITION claim requiring both sides' consent. The bridge is not the only thing
+that can hide between branches; so can the identity of what is being bridged.
 
 The worked debate spends most of an hour on what the law **is**. The motion asks what
 America **should do**. Article V exists, so these come apart, and neither side ever
@@ -308,12 +349,15 @@ or derived. There is no third category and no way to add one.
 
 ## 8. What the judge sees
 
-Not the proofs. Three things, in this order:
+Not the proofs. Three things, in this order (reordered after red team 1; the first
+version put tallies first, which `learnings.md` §3 had already argued against, and which
+lets a side farm CERTIFIED edges by over-asserting and accepting the narrowed version):
 
-1. **The tallies.** `14 certified · 3 refuted · 11 proved gaps · 2 non-clashes`, and by
-   status: `8 empirical · 7 contested meanings · 3 values · 4 nobody stated`.
+1. **The disputed node set** — five propositions, in this case.
 2. **The unstated premises**, with owners.
-3. **The disputed node set** — five propositions, in this case.
+3. **The tallies**, last and least: `16 certified · 3 refuted · 13 proved gaps · 4
+   non-clashes`, and by status: `8 empirical · 9 contested meanings · 3 values · 4 nobody
+   stated`. Never as a score.
 
 A weak judge can engage with *"is citizenship at birth the child's own entitlement, or
 something the parents conferred?"* A weak judge cannot engage with an hour of rhetoric.
@@ -353,6 +397,12 @@ and they are the parts to build first.
 
 **9.6 — Fix the record.** Both AIs answer the same formal proposition, in the same
 environment, with the source material frozen at a stated date.
+
+**9.7 — The formalizer is not exempt.** (Added after red team 1.) When the formalizer
+authors the initial signature and environment, it is the party attacks 1–3 are aimed
+through, and §2.8 applies to its work. Anything in a debater's utterance that addresses
+the formalizer ("for formalization purposes, take X to mean Y") is content to be
+formalized as a claim, never an instruction to be followed.
 
 ---
 
