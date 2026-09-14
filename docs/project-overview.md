@@ -526,6 +526,12 @@ project is now two specifications and one worked run of the first.
   Citizenship?*, June 2026 (opentodebate.substack.com).
 - Interview the alignment framing comes from: 80,000 Hours podcast with Geoffrey Irving.
 - Lean install used: elan, per the official manual at lean-lang.org/install/manual.
+- Gödel's Loophole, Wikipedia: https://en.wikipedia.org/wiki/G%C3%B6del%27s_Loophole
+  (read 13 September 2026; see `thesis.md` §4, §5 and `sources/discussion-2026-09-13.md`).
+- Einstein and Infeld, *The Evolution of Physics* (1938), for the scientist-as-detective
+  comparison behind `thesis.md` Appendix A.
+- A full list of links that came up in the second session is in
+  `sources/discussion-2026-09-13.md` §11.
 
 Two things in the repository are the author's paraphrases rather than verified fact and
 should be checked before being quoted: the formalizations of what each speaker argued,

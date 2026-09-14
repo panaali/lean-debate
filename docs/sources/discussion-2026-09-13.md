@@ -1,6 +1,6 @@
-# Discussion record, 13 September 2026
+# Discussion record, 13–14 September 2026
 
-A Claude Code session, run in this directory. The user asked a series of questions after
+A Claude Code session, run in this directory (git history begins at its first commit). The user asked a series of questions after
 the investigation files were added to the project; the answers are recorded here in the
 order asked, condensed but with nothing dropped. `thesis.md` is the synthesis; this is the
 record it was synthesized from.
@@ -124,3 +124,87 @@ should be written and updated to formalize the project.
   for the Lean build directory.
 - No Lean source was changed. The Lean items in the roadmap (`thesis.md` §6) need a build
   to verify and have not been made.
+
+## 8. What is the best format for the project's main document?
+
+**Answer given:** a short paper in Markdown, in the repository next to the code. Reasons:
+the project's own rule is that a presentation must lead with what it did not check, and a
+fixed section order (problem, claim, method, one worked run, limits, next steps) enforces
+that; the evidence is the build, so the document should sit beside `lake build` and cite
+it; it should be readable in one sitting, under about two thousand words, with everything
+else linked. A published web page makes sense later as a rendering, not as the source of
+truth. `thesis.md` was reshaped into that order, with roles, concept map, and per-source
+notes as appendices.
+
+## 9. Purpose clarified: a working surface for agents, not a publication
+
+The user then said the goal is not publication but to elaborate the idea so that several
+agents can work on it, find issues with the proposal, and find open questions and possible
+answers.
+
+**Done in response:** the project's own method was applied to the proposal.
+`claims.md` lists every substantive claim with a stable ID (C1–C18), a status
+(SUPPORTED, ARGUED, CONJECTURE, CONTESTED), the evidence, and the strongest objection.
+`open-questions.md` lists every unresolved question (Q1–Q18) with why it matters, what is
+known, candidate answers, and what would resolve it. The two cross-reference each other
+and the run's edge IDs. `README.md` gained a "How to work on this" section with the
+conventions: reference by ID, never delete, change status only with evidence, Lean changes
+must build with the axiom audit intact, commit as you go.
+
+Ideas raised in this session that are now recorded as questions rather than left in chat:
+a fifth verdict, UNKNOWN, for when no countermodel is found (Q9); a library of argument
+schemas so a second debate does not start from zero (Q11); provenance objects checkable
+outside Lean even when the search is not (Q2); environment changes as theorem obligations
+that preserve every claim already on the board (Q10); independence-of-sources as a typed
+leaf that must itself be sourced (Q8); measuring the formalizer's recall and precision on
+texts with known holes (Q3); sensitivity of verdicts to alternative formalizations of the
+same analogy (Q15); whether the two-layer convergence is real or a shared prior (Q13).
+
+## 10. Earlier in the session
+
+The user pointed out that the original Claude Code session might have started from
+another directory. All project folders were searched; the only substantive sessions are in
+this project's folder, and the one that built the project recorded this directory as its
+working directory from its first message. The user asked that only that session be read,
+and declined a rebuild of the Lean project during this session, so no build was run and no
+Lean source was changed.
+
+## 11. Links and references that came up
+
+Read or fetched in this session:
+
+- Gödel's Loophole, Wikipedia: https://en.wikipedia.org/wiki/G%C3%B6del%27s_Loophole.
+  Names and dates cited from it: Gödel's discovery in 1947 while preparing for his
+  citizenship examination at Princeton; Oskar Morgenstern and Albert Einstein accompanying
+  him to Trenton; Judge Phillip Forman; John Nowak calling it "one of the great unsolved
+  problems of constitutional law"; Peter Suber, *The Paradox of Self-Amendment* (1990),
+  the procedural-limits-only hypothesis; F. E. Guerra-Pujol, "Gödel's Loophole" (2012),
+  the Article-V-applies-to-itself hypothesis; Morgenstern's notes first published in 2019,
+  which misdate the test to 1946; Rudy Rucker's 2008 novel *Mathematicians in Love* as an
+  alternative telling.
+
+Cited by the user:
+
+- Albert Einstein and Leopold Infeld, *The Evolution of Physics: From Early Concepts to
+  Relativity and Quanta* (1938): the scientist as a detective who cannot turn to the back
+  of the book to check the answers.
+
+Referenced from the earlier session and the project files (URLs in `project-overview.md`
+§8 and inside the source conversations):
+
+- Open to Debate, *Should America End Birthright Citizenship?*, June 2026, transcript on
+  opentodebate.substack.com.
+- 80,000 Hours podcast, Geoffrey Irving on scalable oversight and debate; the obfuscated
+  arguments problem and the physics debate experiment.
+- Lean 4 installation manual, lean-lang.org/install/manual.
+- The findings page published from the first session:
+  https://claude.ai/code/artifact/6c67c01c-a57b-4b48-9ec2-50377366aada.
+- Cases named in `learnings.md` §4 from general knowledge, unverified: *United States v.
+  Wong Kim Ark* (1898), *Elk v. Wilkins* (1884), *Plessy v. Ferguson* (1896).
+- From `sources/analytic-philosophy-and-bell.md`: the EPR paper (1935) and Bell's theorem
+  (1964).
+- The evidence-layer source files carry their own links to the primary material they
+  inspected (Bubeck's and Alpöge's posts, Buckmaster's statement, OpenAI's announcement
+  and papers, the UN fact-finding mission report and medical annex, Amnesty's 2022
+  forensic analysis, the Abdorrahman Boroumand Center dossier, and the Persian-language
+  outlets assessed).
