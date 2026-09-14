@@ -75,6 +75,7 @@ not establish that a caption faithfully describes a scientific claim.
 | [SOURCES.md](SOURCES.md) | Original papers, page conventions, and inspection limits |
 | [SETUP.md](SETUP.md) | Source selection, scope, and roles fixed before delegation |
 | [STATUS.md](STATUS.md) | Completion and validation record |
+| [LEARNINGS.md](LEARNINGS.md) | Lessons and remaining criticisms from this conversion |
 | [Comparison.lean](PaperStudies/Comparison.lean) | Explicit mappings and checked comparison |
 | [Report.lean](PaperStudies/Report.lean) | Proof-bearing result entries and rendering |
 | [Audit.lean](PaperStudies/Audit.lean) | Every theorem declaration in the experiment |
