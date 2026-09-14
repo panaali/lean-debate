@@ -50,23 +50,34 @@ def Status.label : Status → String
 /-- Who asserted it. `shared` = fixed in the common environment before the debate,
 and therefore not attackable by either side without reopening the environment. -/
 inductive Speaker where
-  | mayes | newman | krikorian | cooper | moderator | shared
+  -- Birthright citizenship (Open to Debate, June 2026)
+  | mayes | newman | krikorian | cooper
+  -- Death penalty (Intelligence Squared U.S., April 2015; transcript July 2026)
+  | scheck | rustTierney | scheidegger | blecker
+  | moderator | shared
 deriving Repr, DecidableEq
 
 def Speaker.label : Speaker → String
-  | .mayes     => "Mayes"
-  | .newman    => "Newman"
-  | .krikorian => "Krikorian"
-  | .cooper    => "Cooper"
-  | .moderator => "Moderator"
-  | .shared    => "SHARED"
+  | .mayes       => "Mayes"
+  | .newman      => "Newman"
+  | .krikorian   => "Krikorian"
+  | .cooper      => "Cooper"
+  | .scheck      => "Scheck"
+  | .rustTierney => "Rust-Tierney"
+  | .scheidegger => "Scheidegger"
+  | .blecker     => "Blecker"
+  | .moderator   => "Moderator"
+  | .shared      => "SHARED"
 
-/-- Which side of the motion "Should America end birthright citizenship?". -/
+/-- Which side of the motion. Birthright: "Should America end birthright citizenship?".
+Death penalty: "Abolish the death penalty". -/
 def Speaker.side : Speaker → String
-  | .mayes | .newman     => "against motion"
-  | .krikorian | .cooper => "for motion"
-  | .moderator           => "-"
-  | .shared              => "-"
+  | .mayes | .newman            => "against motion"
+  | .krikorian | .cooper        => "for motion"
+  | .scheck | .rustTierney      => "for motion"
+  | .scheidegger | .blecker     => "against motion"
+  | .moderator                  => "-"
+  | .shared                     => "-"
 
 /-- A node of the argument graph. `english` is the controlled-English view that the
 debater actually approves; `formal` names the Lean definition carrying it. The debater
@@ -126,9 +137,9 @@ def wrap (s : String) (width : Nat) (indent : Nat) : String :=
   out ++ line
 
 def Claim.render (c : Claim) : String :=
-  pad c.id 6 ++ pad c.status.label 14 ++ pad c.speaker.label 11 ++
-  wrap c.english 68 31 ++
-  (if c.note.isEmpty then "" else "\n" ++ pad "" 31 ++ "-- " ++ wrap c.note 65 34)
+  pad c.id 6 ++ pad c.status.label 14 ++ pad c.speaker.label 13 ++
+  wrap c.english 66 33 ++
+  (if c.note.isEmpty then "" else "\n" ++ pad "" 33 ++ "-- " ++ wrap c.note 63 36)
 
 def Edge.render (e : Edge) : String :=
   e.verdict.mark ++ "  " ++ pad e.id 7 ++

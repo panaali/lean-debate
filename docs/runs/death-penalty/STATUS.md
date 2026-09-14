@@ -5,10 +5,10 @@ Last updated: 2026-09-14 (session running)
 | Piece | State | Notes |
 |---|---|---|
 | SETUP.md | fixed, committed | choice made from titles only |
-| extraction.md | **being produced now** by a subagent of the running session | do not write this file |
-| Debate/DeathPenalty/*.lean | not started | running session, after extraction lands |
-| Ledger, audit entries | not started | |
-| RESULTS.md and comparison with the birthright run | not started | run is finished when RESULTS.md exists |
+| extraction.md | landed |  |
+| Debate/DeathPenalty/*.lean | done: six branches, 35 theorems, audited | |
+| Ledger, audit entries | done; `lake exe report deathpenalty` | |
+| RESULTS.md and comparison with the birthright run | done | run finished |
 
 Outside agents: do not start formalizing this debate; the running session will. Useful
 outside work: none yet. After extraction.md lands, a second independent extraction by a

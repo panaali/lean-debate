@@ -9,3 +9,11 @@ import Debate.Birthright.Normative
 import Debate.Birthright.Motion
 import Debate.Birthright.Audit
 import Debate.Birthright.Ledger
+import Debate.DeathPenalty.Innocence
+import Debate.DeathPenalty.Deterrence
+import Debate.DeathPenalty.Desert
+import Debate.DeathPenalty.Race
+import Debate.DeathPenalty.Alternative
+import Debate.DeathPenalty.Motion
+import Debate.DeathPenalty.Audit
+import Debate.DeathPenalty.Ledger
