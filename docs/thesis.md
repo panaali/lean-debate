@@ -95,7 +95,9 @@ journalism give them, are in Appendices A and B.
 
 ## 4. One worked run
 
-The full pipeline was run on one real hour of argument: *Should America End Birthright
+The full pipeline has now been run on two real debates, a two-AI debate, and one
+evidence leaf; `results.md` carries all four. The first run is described here, since it
+is the one the rest of the documents were written around: *Should America End Birthright
 Citizenship?* (Open to Debate, June 2026). Two speakers for, two against. Results in
 `results.md`; the Lean development in `Debate/`.
 
@@ -185,11 +187,18 @@ every theorem reporting no axioms.
    by design: they catch incoherence, not lopsided search.
 4. **Done (`run-birthright-2`): Article V load-bearing.** See Section 4. Suber's reading
    is a contestable node, not an assumption.
-5. **A second debate**, chosen before reading it, through both layers.
-6. **A two-AI run** on the birthright motion, third-party formalizer, back-translator,
-   sources frozen at a stated date.
-7. **Red team Phase 0.** Try to win purely by proposing a vocabulary, and separately by
-   proposing a simplification to the Phase 0 rules.
+5. **Done (`run-deathpenalty-1`): a second debate**, chosen from titles only. Nine
+   unstated premises; the is/ought gap recurred; the moderator asked the bridge question
+   live. Next: a second independent extraction to measure recall (Q3).
+6. **Done (two-AI run 1): a two-AI run** on the constitutional proposition. Both debaters
+   attacked the signature; the kernel isolated the one contested node. Next: a run with a
+   debater instructed to be deceptive (Q7).
+7. **Done (red team 1): Phase 0 red-teamed.** Ten attacks, none touching an inference;
+   protocol revised (§2.6–2.9, §3.4, §6, §8, §9.7); one attack found in the run's own
+   code and repaired. Next: a second red team against the revised protocol.
+8. **Done (`run-evidence-1`): adversarial evidence run** on one leaf. Two opposed agents
+   converged; grade fed back into the ledger. Next: a leaf where the counterevidence is
+   hard to find, and scoring (Q2).
 
 ---
 

@@ -4,10 +4,11 @@ A machine-checked formalization of one real political debate, *Should America En
 Birthright Citizenship?* (Open to Debate, June 2026), built as a test of a protocol in
 which every claimed inference must carry a certificate a proof assistant can check.
 
-Current state (`run-birthright-3`): 40 theorems, all reporting no axioms; 36 ledger
-edges (16 certified, 3 refuted, 13 gaps with countermodels, 4 compatible); 4 premises
-carrying the debate that no speaker stated; an evidence layer with a kernel-checked
-coherence slice. `lake exe report` prints the judge-facing ledger.
+Current state: 90 theorems across two debates, a two-AI run and the evidence layer, all
+reporting no axioms. Birthright (`run-birthright-3`): 36 ledger edges, 4 unstated
+premises. Death penalty (`run-deathpenalty-1`): 35 edges, 9 unstated premises. Two-AI
+run 1: 8 verdicts. Evidence run 1: two ledgers on one leaf, kernel-checked for coherence.
+`lake exe report` prints the birthright ledger, `lake exe report deathpenalty` the other.
 
 ## Layout
 
@@ -55,11 +56,12 @@ Updated 14 September 2026. The roadmap is `docs/thesis.md` §6; this is its curr
 | Birthright run through the inference layer | done, tagged `run-birthright-2` | `Debate/Birthright/`, `docs/results.md` |
 | Evidence-layer types and coherence checks in Lean | done | `Debate/Evidence.lean`, `Debate/Evidence/Examples.lean` |
 | Article V load-bearing in the Motion branch | done | `Debate/Birthright/Motion.lean`, E31–E34 |
-| Adversarial evidence run on leaf K1 (two agents, opposing assignments) | in progress | `docs/runs/evidence-1/` |
-| Two-AI debate run on the constitutional proposition | in progress, openings stage | `docs/runs/two-ai-1/` |
-| Second debate (death penalty), chosen from titles only | in progress, extraction stage | `docs/runs/death-penalty/` |
+| Adversarial evidence run on leaf K1 (two agents, opposing assignments) | done, tagged `run-evidence-1`; K1 grade fed back into the ledger | `docs/runs/evidence-1/RESULTS.md` |
+| Two-AI debate run on the constitutional proposition | formalized (8 verdicts); back-translation check in progress; RESULTS.md pending | `docs/runs/two-ai-1/` |
+| Second debate (death penalty), chosen from titles only | done, tagged `run-deathpenalty-1`; 35 theorems, 9 unstated premises | `docs/runs/death-penalty/RESULTS.md` |
 | Red team of Phase 0 (ten attacks) | done; findings filed, three repaired in Lean, protocol §2.6–2.9, 3.4, 6, 8, 9.7 revised | `docs/redteam-phase0.md`, C4/C5/C6/C17/C19/C20, Q4/Q10/Q19–Q25 |
-| Reusable argument-schema library | not started | `docs/open-questions.md` Q11 |
+| Reusable argument-schema library | not started; now two debates' worth of branches to factor | `docs/open-questions.md` Q11 |
+| Second red team, against the revised protocol | not started | `docs/redteam-STATUS.md` |
 | Training on the checkable half | not started, outside current means | Q14 |
 
 Each `docs/runs/<name>/SETUP.md` fixes the proposition, environment, rules and roles

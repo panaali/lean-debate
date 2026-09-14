@@ -24,7 +24,9 @@ it produces. (b) The value is real only in the adversarial two-AI case (C14).
 readers identify as the real disputed points.
 
 ### Q2. Can the leaf-honesty hole (learnings §6) be closed, or only narrowed?
-**Status:** OPEN. **Why it matters:** The green-across-the-board scenario makes the
+**Status:** PARTIAL. Candidate (b) run once (`docs/runs/evidence-1/`): two opposed agents
+converged and each conceded on its weakest sub-claim. Narrowed on that instance; not
+closed, and the instance was an easy one. **Why it matters:** The green-across-the-board scenario makes the
 system worse than nothing if unaddressed. **Known:** `evidence-protocol.md` narrows it by
 forcing advocacy for each party and falsification tests, but nothing in it is checkable by
 anyone but the agent that ran it. **Candidate answers:** (a) A counterevidence agent scored
@@ -37,7 +39,11 @@ with it. **Resolves it:** Build (a) or (b) and test on a case with known ground 
 where the supporting evidence is easier to find than the counterevidence.
 
 ### Q3. Can a language model find Gödel-style holes in real English at scale? What are its recall and precision?
-**Status:** OPEN. **Why it matters:** This is the central claim (C13) and it rests on one
+**Status:** PARTIAL. A second debate (death penalty) chosen from titles only produced nine
+unstated premises and five disputed nodes through the same pipeline, so the method
+generalizes to a second transcript. Recall and precision are still unmeasured; a second
+independent extraction of the same transcript (`docs/runs/death-penalty/STATUS.md`) is
+the next step. **Why it matters:** This is the central claim (C13) and it rests on one
 finding in one run. **Known:** K-EX was found because the proof would not close. The same
 model wrote the formalization, so the hole may be an artefact of its own vocabulary
 choices. **Candidate answers:** (a) Run the formalizer on texts with known holes
@@ -75,7 +81,12 @@ with the actual speaker, which is what the protocol specifies and this run lacke
 **Resolves it:** (a) for the four premises in the run.
 
 ### Q7. What happens in a two-AI run?
-**Status:** OPEN. **Why it matters:** C14 says this is where the whole thing earns its
+**Status:** PARTIAL (one run, `docs/runs/two-ai-1/`, `Debate/Birthright/TwoAI.lean`).
+Both debaters attacked the signature in their openings, exactly as §9.5 predicted; the
+formalizer's own gloss created the opening. After rebuttals each side accepted the
+other's premises and the kernel showed both routes valid, with the only disagreement
+being which proposition P is. Neither debater was adversarial in the Irving sense;
+whether a deceptive debater gains anything remains untested. **Why it matters:** C14 says this is where the whole thing earns its
 cost. **Known:** `inference-protocol.md` §9 specifies the setup: third-party formalizer,
 back-translator, frozen sources, same formal proposition. **Candidate answers:** None
 until run. **Resolves it:** Running it on the birthright motion.
@@ -157,7 +168,9 @@ these two readings did you mean" questions, never evaluates an argument. **Resol
 A user test with judges who did not watch the debate.
 
 ### Q17. Is the legal and historical content in the docs correct?
-**Status:** OPEN. **Why it matters:** `learnings.md` §4 and §6 cite cases and history from
+**Status:** PARTIAL. K1 has been through the evidence layer (`docs/runs/evidence-1/`) and
+its ledger grade now carries provenance. The rest of `learnings.md` §4 and §6 and the
+death-penalty extraction's factual claims remain unverified. **Why it matters:** `learnings.md` §4 and §6 cite cases and history from
 general knowledge, unverified. If quoted, they must be checked first. **Candidate
 answer:** Run `evidence-protocol.md` on those paragraphs. **Resolves it:** Doing so.
 

@@ -155,20 +155,51 @@ table. The ledger now carries an EVIDENCE section grading the run's empirical le
 grade there was assigned from general knowledge and nothing was inspected; the report says
 so on every line (`docs/open-questions.md` Q17).
 
+## Later runs (14 September 2026)
+
+Three further runs, each in `docs/runs/<name>/` with a `SETUP.md` fixed before any agent
+was invoked and a `RESULTS.md` when finished.
+
+**Second debate, death penalty** (`run-deathpenalty-1`, `Debate/DeathPenalty/`). Chosen
+from titles only; extracted by a separate agent. 13 certified, 1 refuted (intra-side), 12
+gaps, 9 compatible; 9 premises nobody stated; disputed set of 5. The is/ought gap
+recurred, on the For side only; the moderator asked the protocol's bridge question live
+and got a prediction in place of a value. Nine non-clashes in one hour. An analogy reduced
+to one premise again. See `docs/runs/death-penalty/RESULTS.md`.
+
+**Two-AI run 1** (`Debate/Birthright/TwoAI.lean`, sibling of `Constitutional.lean`). Two
+AI debaters on the constitutional proposition, third-party formalizer, opaque-identifier
+back-translation. Both attacked the signature, as the protocol predicted, not each
+other's inferences. After rebuttals each side accepted every premise of the other's
+route: P under the constitutional reading is certified on premises B accepted, not-P
+under the territorial reading is certified on premises A accepted, and everything but
+the reading node is jointly satisfiable in one two-person world. The formalizer's gloss
+created the ambiguity. See `docs/runs/two-ai-1/`.
+
+**Evidence run 1** (`docs/runs/evidence-1/`). Two evidence agents with opposite
+assignments on leaf K1, no shared context. They converged: K1 is true as stated
+(75–98% on its parts) and does not extend to children of unauthorized immigrants
+(5–35%). Each moved toward the other on the sub-claim its assignment was weakest on.
+Both tables pass the kernel's coherence checks; the overlap check detected that one agent
+had split a sub-claim into two readings. The K1 grade in this ledger's EVIDENCE section
+now comes from that run.
+
 ## Layout
 
 ```
 Debate/Protocol.lean               statuses, verdicts, rendering — no debate content
 Debate/Evidence.lean               evidence-layer types; credence coherence; the meta-rule
 Debate/Evidence/Examples.lean      coherence checks on two real probability tables
+Debate/DeathPenalty/               second debate: six branches, ledger, audit
 Debate/Birthright/
+  TwoAI.lean                       two-AI run 1 on the constitutional proposition
   Constitutional.lean              the Citizenship Clause; "subject to the jurisdiction"
   Ancestry.lean                    "none of us would be citizens"
   Judicial.lean                    Harlan's dissents; predicting the Supreme Court
   Policy.lean                      statelessness; the moderator's domain objection
   Normative.lean                   punishing children; the stolen-money analogy
   Motion.lean                      the is/ought gap; Article V made load-bearing
-  Audit.lean                       #print axioms for all 38 theorems
+  Audit.lean                       #print axioms for every birthright, two-AI and evidence theorem
   Ledger.lean                      the judge-facing report
 ```
 
