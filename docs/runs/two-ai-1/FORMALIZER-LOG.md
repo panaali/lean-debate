@@ -28,3 +28,24 @@ consistency claim.
 **Downgrade noted, not yet applied.** B1 is an existential established by demographic
 inference rather than a named witness. B anticipates a downgrade to PROBABILISTIC. Decision
 deferred until A responds.
+
+## Entry 2. After both openings, before rebuttals
+
+**Split demands unified.** A demands `BornInUSProper` (a State, DC, or an incorporated
+territory: where the Clause applies of its own force). B demands `BornInUSConst` (born "in
+the United States" in the constitutional sense as construed by the courts). The glosses
+coincide. One symbol, `BornInUSConst`, carries both; `BornInUSTerritory` keeps the
+original territorial gloss. A's constant `WongKimArk` is granted. B's `BornInAmericanSamoa`
+and `ParentsUndocumentedAliens` are granted.
+
+**The disputed reading of P is now explicit.** A's A1 asserts (as a DEFINITION) that
+P's "born in the United States" means `BornInUSConst`. B's B3 asserts (as a DEFINITION)
+that it means `BornInUSTerritory`. Both are typed DEFINITION and they conflict, which
+means neither is a definition: the meaning of P's subject term is a contested node. The
+formalizer should have elicited it at setup (§3.4). Both readings are carried as
+`P_territory` and `P_const`; each side's route is checked against both.
+
+**Each side has pre-empted the other.** A's A6–A8 block an exclusive-allegiance reading
+of the jurisdiction clause; B does not use that reading. B's American Samoa witness is
+exactly what A's A1 scopes out. So the rebuttal round starts with each side's main
+defensive move already aimed at an attack the other did not make.
